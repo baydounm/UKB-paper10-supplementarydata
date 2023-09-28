@@ -1,0 +1,36 @@
+**FA**
+ccl2: positive
+gdf15:negative
+igfbp4: negative
+lamp3: negative
+tnfrsf4: positive
+wfdc2: negative 
+
+**MD**
+adamts15: positive
+ccl2: negative 
+ceacam5:positive
+fcer2: negative
+gdf15:positive
+krt5: negative
+wfdc2:positive
+
+**ICVF**
+igfbp4:negative
+phospho1:positive
+wfdc2:negative
+
+
+**ISOVF:
+gdf15:positive
+thbs2:positive
+tnfsf13:positive
+
+**OD:
+gdf15:positive
+tnfrsf1a:positive
+vsig4:positive
+igfbp4:positive
+ncan:positive
+
+ 

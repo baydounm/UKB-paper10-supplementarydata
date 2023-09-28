@@ -1,0 +1,69 @@
+{smcl}
+{com}{sf}{ul off}{txt}
+{com}. 
+. use "E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\UK_BIOBANK_PROJECT\UKB_PAPER8C_PERIODONTALDISEASE_DMRI_PROTEOMICS\DATA\finaldata_unimputedfin",clear
+{txt}
+{com}. 
+. 
+. bysort LE8_TOTALSCOREtert: su LE8_TOTALSCORE if sample_final==1, det
+
+{txt}{hline}
+-> LE8_TOTALSCOREtert = 1
+
+                       LE8_TOTALSCORE
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res}      255       171.4286
+{txt} 5%    {res}      325            195
+{txt}10%    {res}      360            210       {txt}Obs         {res}      1,743
+{txt}25%    {res}      405            215       {txt}Sum of wgt. {res}      1,743
+
+{txt}50%    {res}      445                      {txt}Mean          {res}  432.081
+                        {txt}Largest       Std. dev.     {res} 53.25254
+{txt}75%    {res} 474.2857            495
+{txt}90%    {res} 485.7143            495       {txt}Variance      {res} 2835.833
+{txt}95%    {res} 491.4286            495       {txt}Skewness      {res}-1.328034
+{txt}99%    {res}      495            495       {txt}Kurtosis      {res} 4.962595
+
+{txt}{hline}
+-> LE8_TOTALSCOREtert = 2
+
+                       LE8_TOTALSCORE
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} 497.1429       497.1429
+{txt} 5%    {res}      500       497.1429
+{txt}10%    {res}      505       497.1429       {txt}Obs         {res}      1,665
+{txt}25%    {res}      515       497.1429       {txt}Sum of wgt. {res}      1,665
+
+{txt}50%    {res}      535                      {txt}Mean          {res} 536.9946
+                        {txt}Largest       Std. dev.     {res} 23.25992
+{txt}75%    {res}      555            575
+{txt}90%    {res}      570            575       {txt}Variance      {res}  541.024
+{txt}95%    {res}      575            575       {txt}Skewness      {res}-.0046755
+{txt}99%    {res}      575            575       {txt}Kurtosis      {res} 1.792376
+
+{txt}{hline}
+-> LE8_TOTALSCOREtert = 3
+
+                       LE8_TOTALSCORE
+{hline 61}
+      Percentiles      Smallest
+ 1%    {res} 577.1429       577.1429
+{txt} 5%    {res}      580       577.1429
+{txt}10%    {res}      585       577.1429       {txt}Obs         {res}      1,681
+{txt}25%    {res}      600       577.1429       {txt}Sum of wgt. {res}      1,681
+
+{txt}50%    {res}      625                      {txt}Mean          {res} 635.3509
+                        {txt}Largest       Std. dev.     {res} 45.41937
+{txt}75%    {res} 662.8571            780
+{txt}90%    {res} 702.8571            780       {txt}Variance      {res} 2062.919
+{txt}95%    {res}      730            790       {txt}Skewness      {res} .9020769
+{txt}99%    {res}      760            800       {txt}Kurtosis      {res} 3.203598
+
+{txt}
+{com}. 
+. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}
