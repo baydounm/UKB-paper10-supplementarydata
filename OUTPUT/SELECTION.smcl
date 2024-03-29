@@ -1,0 +1,193 @@
+{smcl}
+{com}{sf}{ul off}{txt}
+{com}. use "E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\UK_BIOBANK_PROJECT\UKB_PAPER8D_LE8PROTDEM\DATA\UKB_PAPER8D_LE8PROTDEM",clear
+{txt}
+{com}. 
+. 
+. *********************REVISION****************************
+. 
+. capture drop samplefinal_initial
+{txt}
+{com}. gen samplefinal_initial=.
+{txt}(502,409 missing values generated)
+
+{com}. replace samplefinal_initial=1 if sample_final==1
+{txt}(28,974 real changes made)
+
+{com}. replace samplefinal_initial=0 if samplefinal_initial==. & AGE>=50
+{txt}(355,668 real changes made)
+
+{com}. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\UK_BIOBANK_PROJECT\UKB_PAPER8D_LE8PROTDEM\DATA\UKB_PAPER8D_LE8PROTDEM.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. logistic samplefinal_initial AGE SEX NonWhite SES householdsize
+{res}
+{txt}{col 1}Logistic regression{col 56}{lalign 13:Number of obs}{col 69} = {res}{ralign 7:356,090}
+{txt}{col 56}{lalign 13:LR chi2({res:5})}{col 69} = {res}{ralign 7:116.02}
+{txt}{col 56}{lalign 13:Prob > chi2}{col 69} = {res}{ralign 7:0.0000}
+{txt}{col 1}{lalign 14:Log likelihood}{col 15} = {res}{ralign 10:-100393.41}{txt}{col 56}{lalign 13:Pseudo R2}{col 69} = {res}{ralign 7:0.0006}
+
+{txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}samplefinal_initial{col 21}{c |} Odds ratio{col 33}   Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
+{hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 16}AGE {c |}{col 21}{res}{space 2}  1.00927{col 33}{space 2}  .001188{col 44}{space 1}    7.84{col 53}{space 3}0.000{col 61}{space 4} 1.006945{col 74}{space 3} 1.011601
+{txt}{space 16}SEX {c |}{col 21}{res}{space 2} .9607232{col 33}{space 2} .0118483{col 44}{space 1}   -3.25{col 53}{space 3}0.001{col 61}{space 4} .9377793{col 74}{space 3} .9842284
+{txt}{space 11}NonWhite {c |}{col 21}{res}{space 2} 1.053242{col 33}{space 2} .0319645{col 44}{space 1}    1.71{col 53}{space 3}0.087{col 61}{space 4} .9924192{col 74}{space 3} 1.117792
+{txt}{space 16}SES {c |}{col 21}{res}{space 2} .9550169{col 33}{space 2} .0087021{col 44}{space 1}   -5.05{col 53}{space 3}0.000{col 61}{space 4} .9381125{col 74}{space 3} .9722259
+{txt}{space 6}householdsize {c |}{col 21}{res}{space 2} 1.008635{col 33}{space 2} .0053493{col 44}{space 1}    1.62{col 53}{space 3}0.105{col 61}{space 4} .9982045{col 74}{space 3} 1.019174
+{txt}{space 14}_cons {c |}{col 21}{res}{space 2} .0525926{col 33}{space 2} .0041493{col 44}{space 1}  -37.33{col 53}{space 3}0.000{col 61}{space 4} .0450576{col 74}{space 3} .0613875
+{txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {bf:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. 
+. tab samplefinal_initial SEX, row col chi
+{txt}
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 2}{it:row percentage}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+samplefina {c |}          SEX
+ l_initial {c |}         1          2 {c |}     Total
+{hline 11}{c +}{hline 22}{c +}{hline 10}
+         0 {c |}{res}   162,154    193,494 {txt}{c |}{res}   355,648 
+           {txt}{c |}{res}     45.59      54.41 {txt}{c |}{res}    100.00 
+           {txt}{c |}{res}     92.18      92.71 {txt}{c |}{res}     92.47 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+         1 {c |}{res}    13,759     15,215 {txt}{c |}{res}    28,974 
+           {txt}{c |}{res}     47.49      52.51 {txt}{c |}{res}    100.00 
+           {txt}{c |}{res}      7.82       7.29 {txt}{c |}{res}      7.53 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+     Total {c |}{res}   175,913    208,709 {txt}{c |}{res}   384,622 
+           {txt}{c |}{res}     45.74      54.26 {txt}{c |}{res}    100.00 
+           {txt}{c |}{res}    100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}1{txt}) = {res} 38.7016  {txt} Pr = {res}0.000
+{txt}
+{com}. tab samplefinal_initial NonWhite, row col chi 
+{txt}
+{c TLC}{hline 19}{c TRC}
+{c |} Key{col 21}{c |}
+{c LT}{hline 19}{c RT}
+{c |}{space 5}{it:frequency}{col 21}{c |}
+{c |}{space 2}{it:row percentage}{col 21}{c |}
+{c |}{space 1}{it:column percentage}{col 21}{c |}
+{c BLC}{hline 19}{c BRC}
+
+samplefina {c |}   ethnic grouping 3
+ l_initial {c |}     white  Non-White {c |}     Total
+{hline 11}{c +}{hline 22}{c +}{hline 10}
+         0 {c |}{res}   339,112     16,556 {txt}{c |}{res}   355,668 
+           {txt}{c |}{res}     95.35       4.65 {txt}{c |}{res}    100.00 
+           {txt}{c |}{res}     92.45      92.85 {txt}{c |}{res}     92.47 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+         1 {c |}{res}    27,699      1,275 {txt}{c |}{res}    28,974 
+           {txt}{c |}{res}     95.60       4.40 {txt}{c |}{res}    100.00 
+           {txt}{c |}{res}      7.55       7.15 {txt}{c |}{res}      7.53 
+{txt}{hline 11}{c +}{hline 22}{c +}{hline 10}
+     Total {c |}{res}   366,811     17,831 {txt}{c |}{res}   384,642 
+           {txt}{c |}{res}     95.36       4.64 {txt}{c |}{res}    100.00 
+           {txt}{c |}{res}    100.00     100.00 {txt}{c |}{res}    100.00 
+
+{txt}          Pearson chi2({res}1{txt}) = {res}  3.9223  {txt} Pr = {res}0.048
+{txt}
+{com}. reg samplefinal_initial AGE
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   384,619
+{txt}{hline 13}{c +}{hline 34}   F(1, 384617)    = {res}    11.47
+{txt}       Model {c |} {res} .799069719         1  .799069719   {txt}Prob > F        ={res}    0.0007
+{txt}    Residual {c |} {res} 26790.5405   384,617  .069655113   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0000
+{txt}       Total {c |} {res} 26791.3396   384,618  .069657009   {txt}Root MSE        =   {res} .26392
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}samplefina~l{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}AGE {c |}{col 14}{res}{space 2} .0002645{col 26}{space 2} .0000781{col 37}{space 1}    3.39{col 46}{space 3}0.001{col 54}{space 4} .0001115{col 67}{space 3} .0004176
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .0593078{col 26}{space 2} .0047501{col 37}{space 1}   12.49{col 46}{space 3}0.000{col 54}{space 4} .0499977{col 67}{space 3} .0686178
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg samplefinal_initial SES
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   357,646
+{txt}{hline 13}{c +}{hline 34}   F(1, 357644)    = {res}    31.54
+{txt}       Model {c |} {res} 2.34773895         1  2.34773895   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 26624.3796   357,644  .074443803   {txt}R-squared       ={res}    0.0001
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0001
+{txt}       Total {c |} {res} 26626.7273   357,645   .07445016   {txt}Root MSE        =   {res} .27284
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}samplefina~l{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      t{col 46}   P>|t|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}SES {c |}{col 14}{res}{space 2} -.003693{col 26}{space 2} .0006576{col 37}{space 1}   -5.62{col 46}{space 3}0.000{col 54}{space 4} -.004982{col 67}{space 3}-.0024041
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .0808345{col 26}{space 2} .0004573{col 37}{space 1}  176.75{col 46}{space 3}0.000{col 54}{space 4} .0799381{col 67}{space 3} .0817309
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg samplefinal_initial householdsize
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}   381,025
+{txt}{hline 13}{c +}{hline 34}   F(1, 381023)    = {res}     0.92
+{txt}       Model {c |} {res} .064350524         1  .064350524   {txt}Prob > F        ={res}    0.3386
+{txt}    Residual {c |} {res} 26770.6874   381,023   .07026003   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0000
+{txt}       Total {c |} {res} 26770.7517   381,024  .070260014   {txt}Root MSE        =   {res} .26507
+
+{txt}{hline 14}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}samplefinal~l{col 15}{c |} Coefficient{col 27}  Std. err.{col 39}      t{col 47}   P>|t|{col 55}     [95% con{col 68}f. interval]
+{hline 14}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+householdsize {c |}{col 15}{res}{space 2}-.0003415{col 27}{space 2} .0003568{col 38}{space 1}   -0.96{col 47}{space 3}0.339{col 55}{space 4}-.0010409{col 68}{space 3} .0003579
+{txt}{space 8}_cons {c |}{col 15}{res}{space 2} .0768037{col 27}{space 2} .0009041{col 38}{space 1}   84.95{col 47}{space 3}0.000{col 55}{space 4} .0750316{col 68}{space 3} .0785758
+{txt}{hline 14}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. bysort samplefinal_initial: su AGE SES householdsize
+
+{txt}{hline}
+-> samplefinal_initial = 0
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 9}AGE {c |}{res}    355,645    60.56711    5.444151   50.00137   73.69199
+{txt}{space 9}SES {c |}{res}    328,672   -.0464156    .6934405  -2.704226   1.807114
+{txt}households~e {c |}{res}    352,051    2.230273    1.205543          1         60
+
+{txt}{hline}
+-> samplefinal_initial = 1
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 9}AGE {c |}{res}     28,974    60.67986     5.50548   50.00137   70.98973
+{txt}{space 9}SES {c |}{res}     28,974   -.0702908    .6971128  -2.528219   1.757327
+{txt}households~e {c |}{res}     28,974    2.223235    1.177014          1         61
+
+{txt}{hline}
+-> samplefinal_initial = .
+
+    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 9}AGE {c |}{res}    117,767    45.46717    2.742084   37.41821   49.99863
+{txt}{space 9}SES {c |}{res}    114,220    .0681585    .7219972  -2.539996   1.749102
+{txt}households~e {c |}{res}    116,815    3.099396    1.479142          1        100
+
+{txt}
+{com}. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\UK_BIOBANK_PROJECT\UKB_PAPER8D_LE8PROTDEM\DATA\UKB_PAPER8D_LE8PROTDEM.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}
