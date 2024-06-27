@@ -1,0 +1,24 @@
+
+**      +-----------------------------------------------------------------------------------------------------------------+
+**      |                                                                                                         command |
+**      |-----------------------------------------------------------------------------------------------------------------|
+**   1. |      regr zodam poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**   2. |     regr zefna4 poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**   3. |    regr zacvrl1 poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**   4. |     regr zgdf15 poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**   5. |       regr zren poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**      |-----------------------------------------------------------------------------------------------------------------|
+**   6. |  regr ztnfrsf1a poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**   7. |   regr ztnfrsf4 poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**   8. |     regr zvsig4 poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**   9. |      regr zcd83 poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**  10. |     regr zwfdc2 poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**      |-----------------------------------------------------------------------------------------------------------------|
+**  11. |     regr zil2ra poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**  12. | regr ztnfrsf10b poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**  13. |   regr zcolec12 poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**  14. |      regr zrelt poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**  15. |     regr zplaur poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE  if sample_final==1 , beta |
+**      +-----------------------------------------------------------------------------------------------------------------+
+
+TOTAL: 15 HITS
