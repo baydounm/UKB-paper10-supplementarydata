@@ -1,0 +1,1445 @@
+{smcl}
+{com}{sf}{ul off}{txt}
+{com}. 
+. use "E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\UK_BIOBANK_PROJECT\UKB_PAPER8C_PERIODONTALDISEASE_DMRI_PROTEOMICS\DATA\finaldata_unimputedfin",clear
+{txt}
+{com}. 
+. ****************************************************************************************************
+. 
+. capture drop M1
+{txt}
+{com}. gen M1=zwfdc2
+{txt}(399 missing values generated)
+
+{com}. 
+. capture drop M2
+{txt}
+{com}. gen M2=zgdf15
+{txt}(29 missing values generated)
+
+{com}. 
+. capture drop FA
+{txt}
+{com}. gen FA=zFA_mean
+{txt}
+{com}. 
+. capture drop MD
+{txt}
+{com}. gen MD=zMD_mean
+{txt}
+{com}. 
+. capture drop ISOVF
+{txt}
+{com}. gen ISOVF=zISOVF_mean
+{txt}
+{com}. 
+. capture drop ICVF
+{txt}
+{com}. gen ICVF=zICVF_mean
+{txt}
+{com}. 
+. capture drop OD
+{txt}
+{com}. gen OD=zOD_mean
+{txt}
+{com}. 
+. 
+. capture drop PD
+{txt}
+{com}. gen PD=poororalhealth_sev
+{txt}
+{com}. 
+. capture drop HS
+{txt}
+{com}. gen HS=householdsize
+{txt}
+{com}. 
+. capture drop LE8
+{txt}
+{com}. gen LE8=LE8_TOTALSCORE
+{txt}
+{com}. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\UK_BIOBANK_PROJECT\UKB_PAPER8C_PERIODONTALDISEASE_DMRI_PROTEOMICS\DATA\finaldata_unimputedfin.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. *********************OVERALL***********
+. 
+. 
+. **Fully adjusted model**
+.  sem (AGE -> FA, ) (AGE -> MD, ) (AGE -> ISOVF, ) (AGE -> ICVF, ) (AGE -> OD, ) (AGE -> PROT, ) (AGE -> PD, ) (PROT <- _cons@0, ) (PROT -> FA, ) (PROT -> MD, ) (PROT -> ISOVF, ) (PROT -> ICVF, ) (PROT -> OD, ) (PROT@1 -> M1, ) (PROT -> M2, ) (SEX -> FA, ) (SEX -> MD, ) (SEX -> ISOVF, ) (SEX -> ICVF, ) (SEX -> OD, ) (SEX -> PROT, ) (SEX -> PD, ) (PD -> FA, ) (PD -> MD, ) (PD -> ISOVF, ) (PD -> ICVF, ) (PD -> OD, ) (PD -> PROT, ) (SES -> FA, ) (SES -> MD, ) (SES -> ISOVF, ) (SES -> ICVF, ) (SES -> OD, ) (SES -> PROT, ) (SES -> PD, ) (HS -> FA, ) (HS -> MD, ) (HS -> ISOVF, ) (HS -> ICVF, ) (HS -> OD, ) (HS -> PROT, ) (HS -> PD, ) (LE8 -> FA, ) (LE8 -> MD, ) (LE8 -> ISOVF, ) (LE8 -> ICVF, ) (LE8 -> OD, ) (LE8 -> PROT, ) (LE8 -> PD, ) if sample_final==1, latent(PROT ) cov(e.FA*e.MD e.FA*e.ICVF e.FA*e.ISOVF e.FA*e.OD e.MD*e.ICVF e.MD*e.ISOVF e.MD*e.OD e.ICVF*e.ISOVF e.ICVF*e.OD e.ISOVF*e.OD e.PROT@1 e.M1@1) nocapslatent
+{res}{txt}(426 observations with missing values excluded)
+
+Endogenous variables
+{p 2 15 2}Observed:{space 4}{res}FA MD ISOVF ICVF OD PD{p_end}
+{txt}{p 2 15 2}Measurement:{space 1}{res}M1 M2{p_end}
+{txt}{p 2 15 2}Latent:{space 6}{res}PROT{p_end}
+{txt}
+Exogenous variables
+{p 2 12 2}Observed:{space 1}{res}AGE SEX SES HS LE8{p_end}
+{txt}
+Fitting target model:
+Iteration 0:{space 2}Log likelihood = {res:-109160.38}  (not concave)
+Iteration 1:{space 2}Log likelihood = {res:-100792.03}  (not concave)
+Iteration 2:{space 2}Log likelihood = {res:-99701.667}  (not concave)
+Iteration 3:{space 2}Log likelihood = {res:  -97612.2}  (not concave)
+Iteration 4:{space 2}Log likelihood = {res:-96965.422}  (not concave)
+Iteration 5:{space 2}Log likelihood = {res: -93107.41}  (not concave)
+Iteration 6:{space 2}Log likelihood = {res:-92344.883}  (not concave)
+Iteration 7:{space 2}Log likelihood = {res:-92212.843}  
+Iteration 8:{space 2}Log likelihood = {res:-92084.972}  (not concave)
+Iteration 9:{space 2}Log likelihood = {res:-92033.018}  (not concave)
+Iteration 10:{space 1}Log likelihood = {res:-92008.341}  (not concave)
+Iteration 11:{space 1}Log likelihood = {res:-91980.932}  (not concave)
+Iteration 12:{space 1}Log likelihood = {res:-91958.403}  
+Iteration 13:{space 1}Log likelihood = {res: -91733.47}  (not concave)
+Iteration 14:{space 1}Log likelihood = {res: -91681.29}  (not concave)
+Iteration 15:{space 1}Log likelihood = {res:-91653.618}  (not concave)
+Iteration 16:{space 1}Log likelihood = {res:-91644.277}  (not concave)
+Iteration 17:{space 1}Log likelihood = {res: -91638.57}  (not concave)
+Iteration 18:{space 1}Log likelihood = {res:-91635.548}  
+Iteration 19:{space 1}Log likelihood = {res:-91556.539}  
+Iteration 20:{space 1}Log likelihood = {res:-91555.732}  
+Iteration 21:{space 1}Log likelihood = {res: -91555.73}  
+
+{col 1}Structural equation model{col 58}{lalign 13:Number of obs}{col 71} = {res}{ralign 5:4,663}
+{txt}{col 1}Estimation method: {res:ml}
+
+{col 1}{lalign 14:Log likelihood}{col 15} = {res}{ralign 9:-91555.73}
+
+{p 0 7}{space 1}{text:( 1)}{space 1} [M1]PROT = 1{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [/]var(e.M1) = 1{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [/]var(e.PROT) = 1{p_end}
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 20}{c |}{col 32}      OIM
+{col 20}{c |} Coefficient{col 32}  std. err.{col 44}      z{col 52}   P>|z|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural        {col 20}{txt}{c |}
+{space 2}{col 3}FA              {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2}-.1154656{col 32}{space 2} .0449318{col 43}{space 1}   -2.57{col 52}{space 3}0.010{col 60}{space 4}-.2035304{col 73}{space 3}-.0274008
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2}-.0773925{col 32}{space 2} .0208015{col 43}{space 1}   -3.72{col 52}{space 3}0.000{col 60}{space 4}-.1181627{col 73}{space 3}-.0366223
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0401102{col 32}{space 2}  .002254{col 43}{space 1}  -17.79{col 52}{space 3}0.000{col 60}{space 4} -.044528{col 73}{space 3}-.0356923
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0949863{col 32}{space 2} .0279719{col 43}{space 1}   -3.40{col 52}{space 3}0.001{col 60}{space 4}-.1498103{col 73}{space 3}-.0401624
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0418401{col 32}{space 2}  .021506{col 43}{space 1}    1.95{col 52}{space 3}0.052{col 60}{space 4}-.0003109{col 73}{space 3} .0839912
+{txt}{space 16}HS {c |}{col 20}{res}{space 2} .0219196{col 32}{space 2} .0126672{col 43}{space 1}    1.73{col 52}{space 3}0.084{col 60}{space 4}-.0029077{col 73}{space 3} .0467468
+{txt}{space 15}LE8 {c |}{col 20}{res}{space 2} .0006172{col 32}{space 2} .0001527{col 43}{space 1}    4.04{col 52}{space 3}0.000{col 60}{space 4} .0003178{col 73}{space 3} .0009165
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} 2.111732{col 32}{space 2} .1561812{col 43}{space 1}   13.52{col 52}{space 3}0.000{col 60}{space 4} 1.805623{col 73}{space 3} 2.417842
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}MD              {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .0895361{col 32}{space 2} .0435346{col 43}{space 1}    2.06{col 52}{space 3}0.040{col 60}{space 4} .0042099{col 73}{space 3} .1748623
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2}  .075868{col 32}{space 2} .0201859{col 43}{space 1}    3.76{col 52}{space 3}0.000{col 60}{space 4} .0363043{col 73}{space 3} .1154317
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}  .051759{col 32}{space 2} .0021851{col 43}{space 1}   23.69{col 52}{space 3}0.000{col 60}{space 4} .0474764{col 73}{space 3} .0560417
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0784511{col 32}{space 2}  .027102{col 43}{space 1}   -2.89{col 52}{space 3}0.004{col 60}{space 4}-.1315701{col 73}{space 3} -.025332
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0265323{col 32}{space 2} .0208371{col 43}{space 1}    1.27{col 52}{space 3}0.203{col 60}{space 4}-.0143076{col 73}{space 3} .0673722
+{txt}{space 16}HS {c |}{col 20}{res}{space 2} -.020403{col 32}{space 2}  .012273{col 43}{space 1}   -1.66{col 52}{space 3}0.096{col 60}{space 4}-.0444576{col 73}{space 3} .0036516
+{txt}{space 15}LE8 {c |}{col 20}{res}{space 2} .0000656{col 32}{space 2}  .000148{col 43}{space 1}    0.44{col 52}{space 3}0.658{col 60}{space 4}-.0002245{col 73}{space 3} .0003556
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-2.841468{col 32}{space 2} .1513297{col 43}{space 1}  -18.78{col 52}{space 3}0.000{col 60}{space 4}-3.138069{col 73}{space 3}-2.544868
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF           {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .0873405{col 32}{space 2} .0437898{col 43}{space 1}    1.99{col 52}{space 3}0.046{col 60}{space 4} .0015141{col 73}{space 3} .1731669
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2} .0892067{col 32}{space 2} .0202221{col 43}{space 1}    4.41{col 52}{space 3}0.000{col 60}{space 4} .0495721{col 73}{space 3} .1288414
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0489294{col 32}{space 2}  .002195{col 43}{space 1}   22.29{col 52}{space 3}0.000{col 60}{space 4} .0446273{col 73}{space 3} .0532314
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0647991{col 32}{space 2} .0272609{col 43}{space 1}   -2.38{col 52}{space 3}0.017{col 60}{space 4}-.1182295{col 73}{space 3}-.0113687
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0478558{col 32}{space 2} .0209598{col 43}{space 1}    2.28{col 52}{space 3}0.022{col 60}{space 4} .0067753{col 73}{space 3} .0889363
+{txt}{space 16}HS {c |}{col 20}{res}{space 2}-.0222463{col 32}{space 2} .0123457{col 43}{space 1}   -1.80{col 52}{space 3}0.072{col 60}{space 4}-.0464435{col 73}{space 3} .0019509
+{txt}{space 15}LE8 {c |}{col 20}{res}{space 2}-.0001745{col 32}{space 2} .0001488{col 43}{space 1}   -1.17{col 52}{space 3}0.241{col 60}{space 4}-.0004662{col 73}{space 3} .0001172
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-2.598593{col 32}{space 2} .1523707{col 43}{space 1}  -17.05{col 52}{space 3}0.000{col 60}{space 4}-2.897234{col 73}{space 3}-2.299952
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF            {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2}-.0669302{col 32}{space 2} .0458677{col 43}{space 1}   -1.46{col 52}{space 3}0.145{col 60}{space 4}-.1568291{col 73}{space 3} .0229688
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2}-.0412117{col 32}{space 2} .0212649{col 43}{space 1}   -1.94{col 52}{space 3}0.053{col 60}{space 4}-.0828901{col 73}{space 3} .0004667
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0341981{col 32}{space 2} .0023011{col 43}{space 1}  -14.86{col 52}{space 3}0.000{col 60}{space 4}-.0387082{col 73}{space 3} -.029688
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0309106{col 32}{space 2} .0285546{col 43}{space 1}   -1.08{col 52}{space 3}0.279{col 60}{space 4}-.0868765{col 73}{space 3} .0250554
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0002274{col 32}{space 2} .0219535{col 43}{space 1}   -0.01{col 52}{space 3}0.992{col 60}{space 4}-.0432555{col 73}{space 3} .0428007
+{txt}{space 16}HS {c |}{col 20}{res}{space 2} .0200829{col 32}{space 2} .0129311{col 43}{space 1}    1.55{col 52}{space 3}0.120{col 60}{space 4}-.0052616{col 73}{space 3} .0454275
+{txt}{space 15}LE8 {c |}{col 20}{res}{space 2}-.0001639{col 32}{space 2} .0001559{col 43}{space 1}   -1.05{col 52}{space 3}0.293{col 60}{space 4}-.0004695{col 73}{space 3} .0001417
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} 2.036206{col 32}{space 2} .1591405{col 43}{space 1}   12.80{col 52}{space 3}0.000{col 60}{space 4} 1.724296{col 73}{space 3} 2.348115
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD              {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .0525825{col 32}{space 2} .0481371{col 43}{space 1}    1.09{col 52}{space 3}0.275{col 60}{space 4}-.0417645{col 73}{space 3} .1469295
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2} .0729906{col 32}{space 2} .0221999{col 43}{space 1}    3.29{col 52}{space 3}0.001{col 60}{space 4} .0294795{col 73}{space 3} .1165017
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0173238{col 32}{space 2} .0024108{col 43}{space 1}    7.19{col 52}{space 3}0.000{col 60}{space 4} .0125986{col 73}{space 3}  .022049
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2} .0477879{col 32}{space 2} .0299674{col 43}{space 1}    1.59{col 52}{space 3}0.111{col 60}{space 4}-.0109472{col 73}{space 3} .1065229
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0475481{col 32}{space 2} .0230406{col 43}{space 1}   -2.06{col 52}{space 3}0.039{col 60}{space 4}-.0927068{col 73}{space 3}-.0023895
+{txt}{space 16}HS {c |}{col 20}{res}{space 2}-.0034434{col 32}{space 2}  .013572{col 43}{space 1}   -0.25{col 52}{space 3}0.800{col 60}{space 4}-.0300441{col 73}{space 3} .0231573
+{txt}{space 15}LE8 {c |}{col 20}{res}{space 2}-.0008188{col 32}{space 2} .0001636{col 43}{space 1}   -5.00{col 52}{space 3}0.000{col 60}{space 4}-.0011395{col 73}{space 3}-.0004982
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-.7188996{col 32}{space 2} .1672408{col 43}{space 1}   -4.30{col 52}{space 3}0.000{col 60}{space 4}-1.046686{col 73}{space 3}-.3911137
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD              {col 20}{c |}
+{space 15}AGE {c |}{col 20}{res}{space 2} .0080136{col 32}{space 2} .0006249{col 43}{space 1}   12.82{col 52}{space 3}0.000{col 60}{space 4} .0067888{col 73}{space 3} .0092384
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0127209{col 32}{space 2}  .009114{col 43}{space 1}   -1.40{col 52}{space 3}0.163{col 60}{space 4} -.030584{col 73}{space 3} .0051422
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0388461{col 32}{space 2} .0070066{col 43}{space 1}   -5.54{col 52}{space 3}0.000{col 60}{space 4}-.0525786{col 73}{space 3}-.0251135
+{txt}{space 16}HS {c |}{col 20}{res}{space 2} .0057936{col 32}{space 2} .0041434{col 43}{space 1}    1.40{col 52}{space 3}0.162{col 60}{space 4}-.0023272{col 73}{space 3} .0139145
+{txt}{space 15}LE8 {c |}{col 20}{res}{space 2}-.0002391{col 32}{space 2}  .000049{col 43}{space 1}   -4.88{col 52}{space 3}0.000{col 60}{space 4}-.0003351{col 73}{space 3}-.0001431
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-.1966492{col 32}{space 2} .0509756{col 43}{space 1}   -3.86{col 52}{space 3}0.000{col 60}{space 4}-.2965596{col 73}{space 3}-.0967388
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT            {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .2262851{col 32}{space 2} .0547159{col 43}{space 1}    4.14{col 52}{space 3}0.000{col 60}{space 4}  .119044{col 73}{space 3} .3335263
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0550024{col 32}{space 2} .0024604{col 43}{space 1}   22.36{col 52}{space 3}0.000{col 60}{space 4} .0501801{col 73}{space 3} .0598247
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2} -.141981{col 32}{space 2} .0340539{col 43}{space 1}   -4.17{col 52}{space 3}0.000{col 60}{space 4}-.2087254{col 73}{space 3}-.0752365
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0745285{col 32}{space 2} .0262925{col 43}{space 1}   -2.83{col 52}{space 3}0.005{col 60}{space 4}-.1260609{col 73}{space 3}-.0229961
+{txt}{space 16}HS {c |}{col 20}{res}{space 2}-.0362505{col 32}{space 2} .0154832{col 43}{space 1}   -2.34{col 52}{space 3}0.019{col 60}{space 4} -.066597{col 73}{space 3}-.0059041
+{txt}{space 15}LE8 {c |}{col 20}{res}{space 2}-.0014262{col 32}{space 2} .0001836{col 43}{space 1}   -7.77{col 52}{space 3}0.000{col 60}{space 4}-.0017861{col 73}{space 3}-.0010664
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement       {col 20}{txt}{c |}
+{space 2}{col 3}M1              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{space 13}_cons {c |}{col 20}{res}{space 2} -1.95448{col 32}{space 2} .1934876{col 43}{space 1}  -10.10{col 52}{space 3}0.000{col 60}{space 4}-2.333709{col 73}{space 3}-1.575251
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2} .8800832{col 32}{space 2} .0196591{col 43}{space 1}   44.77{col 52}{space 3}0.000{col 60}{space 4} .8415521{col 73}{space 3} .9186142
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-1.717473{col 32}{space 2} .1680156{col 43}{space 1}  -10.22{col 52}{space 3}0.000{col 60}{space 4}-2.046777{col 73}{space 3}-1.388168
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}var(e.FA){c |}{col 20}{res}{space 2} .8514013{col 32}{space 2} .0176741{col 60}{space 4}  .817456{col 73}{space 3} .8867562
+{txt}{space 10}var(e.MD){c |}{col 20}{res}{space 2} .7991954{col 32}{space 2} .0165917{col 60}{space 4}  .767329{col 73}{space 3} .8323851
+{txt}{space 7}var(e.ISOVF){c |}{col 20}{res}{space 2} .8081063{col 32}{space 2} .0167902{col 60}{space 4} .7758592{col 73}{space 3} .8416936
+{txt}{space 8}var(e.ICVF){c |}{col 20}{res}{space 2} .8884915{col 32}{space 2} .0184126{col 60}{space 4} .8531266{col 73}{space 3} .9253224
+{txt}{space 10}var(e.OD){c |}{col 20}{res}{space 2} .9777909{col 32}{space 2}  .020286{col 60}{space 4} .9388286{col 73}{space 3}  1.01837
+{txt}{space 10}var(e.PD){c |}{col 20}{res}{space 2} .0916285{col 32}{space 2} .0018976{col 60}{space 4} .0879837{col 73}{space 3} .0954243
+{txt}{space 10}var(e.M1){c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{space 10}var(e.M2){c |}{col 20}{res}{space 2} .2941025{col 32}{space 2} .0220046{col 60}{space 4} .2539874{col 73}{space 3} .3405533
+{txt}{space 8}var(e.PROT){c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}cov(e.FA,e.MD){c |}{col 20}{res}{space 2}-.6474017{col 32}{space 2} .0153967{col 43}{space 1}  -42.05{col 52}{space 3}0.000{col 60}{space 4}-.6775787{col 73}{space 3}-.6172248
+{txt}{space 2}cov(e.FA,e.ISOVF){c |}{col 20}{res}{space 2}-.3597077{col 32}{space 2} .0132849{col 43}{space 1}  -27.08{col 52}{space 3}0.000{col 60}{space 4}-.3857456{col 73}{space 3}-.3336699
+{txt}{space 3}cov(e.FA,e.ICVF){c |}{col 20}{res}{space 2} .6386501{col 32}{space 2} .0158266{col 43}{space 1}   40.35{col 52}{space 3}0.000{col 60}{space 4} .6076306{col 73}{space 3} .6696697
+{txt}{space 5}cov(e.FA,e.OD){c |}{col 20}{res}{space 2}-.4724618{col 32}{space 2} .0150835{col 43}{space 1}  -31.32{col 52}{space 3}0.000{col 60}{space 4}-.5020248{col 73}{space 3}-.4428988
+{txt}{space 2}cov(e.MD,e.ISOVF){c |}{col 20}{res}{space 2} .5546575{col 32}{space 2}  .014346{col 43}{space 1}   38.66{col 52}{space 3}0.000{col 60}{space 4} .5265398{col 73}{space 3} .5827751
+{txt}{space 3}cov(e.MD,e.ICVF){c |}{col 20}{res}{space 2}-.6470314{col 32}{space 2} .0155828{col 43}{space 1}  -41.52{col 52}{space 3}0.000{col 60}{space 4}-.6775731{col 73}{space 3}-.6164897
+{txt}{space 5}cov(e.MD,e.OD){c |}{col 20}{res}{space 2} .1299711{col 32}{space 2} .0131153{col 43}{space 1}    9.91{col 52}{space 3}0.000{col 60}{space 4} .1042656{col 73}{space 3} .1556766
+{txt}cov(e.ISOVF,e.ICVF){c |}{col 20}{res}{space 2}-.1055268{col 32}{space 2} .0125314{col 43}{space 1}   -8.42{col 52}{space 3}0.000{col 60}{space 4}-.1300879{col 73}{space 3}-.0809658
+{txt}{space 2}cov(e.ISOVF,e.OD){c |}{col 20}{res}{space 2} .2354595{col 32}{space 2} .0135058{col 43}{space 1}   17.43{col 52}{space 3}0.000{col 60}{space 4} .2089887{col 73}{space 3} .2619303
+{txt}{space 3}cov(e.ICVF,e.OD){c |}{col 20}{res}{space 2} .0431445{col 32}{space 2} .0136802{col 43}{space 1}    3.15{col 52}{space 3}0.002{col 60}{space 4} .0163318{col 73}{space 3} .0699573
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+LR test of model vs. saturated: chi2({res:12}) = {ralign 7:{res:{ralign 7:1574.17}}}{col 65}Prob > chi2 = {res}{ralign 6:{ralign 6:0.0000}}
+{txt}
+{com}. 
+. estat teffects
+{res}
+
+{txt}Direct effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0895361{col 26}{space 2} .0435346{col 37}{space 1}    2.06{col 46}{space 3}0.040{col 54}{space 4} .0042099{col 67}{space 3} .1748623
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}  .075868{col 26}{space 2} .0201859{col 37}{space 1}    3.76{col 46}{space 3}0.000{col 54}{space 4} .0363043{col 67}{space 3} .1154317
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}  .051759{col 26}{space 2} .0021851{col 37}{space 1}   23.69{col 46}{space 3}0.000{col 54}{space 4} .0474764{col 67}{space 3} .0560417
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0784511{col 26}{space 2}  .027102{col 37}{space 1}   -2.89{col 46}{space 3}0.004{col 54}{space 4}-.1315701{col 67}{space 3} -.025332
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0265323{col 26}{space 2} .0208371{col 37}{space 1}    1.27{col 46}{space 3}0.203{col 54}{space 4}-.0143076{col 67}{space 3} .0673722
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} -.020403{col 26}{space 2}  .012273{col 37}{space 1}   -1.66{col 46}{space 3}0.096{col 54}{space 4}-.0444576{col 67}{space 3} .0036516
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2} .0000656{col 26}{space 2}  .000148{col 37}{space 1}    0.44{col 46}{space 3}0.658{col 54}{space 4}-.0002245{col 67}{space 3} .0003556
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0873405{col 26}{space 2} .0437898{col 37}{space 1}    1.99{col 46}{space 3}0.046{col 54}{space 4} .0015141{col 67}{space 3} .1731669
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0892067{col 26}{space 2} .0202221{col 37}{space 1}    4.41{col 46}{space 3}0.000{col 54}{space 4} .0495721{col 67}{space 3} .1288414
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0489294{col 26}{space 2}  .002195{col 37}{space 1}   22.29{col 46}{space 3}0.000{col 54}{space 4} .0446273{col 67}{space 3} .0532314
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0647991{col 26}{space 2} .0272609{col 37}{space 1}   -2.38{col 46}{space 3}0.017{col 54}{space 4}-.1182295{col 67}{space 3}-.0113687
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0478558{col 26}{space 2} .0209598{col 37}{space 1}    2.28{col 46}{space 3}0.022{col 54}{space 4} .0067753{col 67}{space 3} .0889363
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0222463{col 26}{space 2} .0123457{col 37}{space 1}   -1.80{col 46}{space 3}0.072{col 54}{space 4}-.0464435{col 67}{space 3} .0019509
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0001745{col 26}{space 2} .0001488{col 37}{space 1}   -1.17{col 46}{space 3}0.241{col 54}{space 4}-.0004662{col 67}{space 3} .0001172
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0669302{col 26}{space 2} .0458677{col 37}{space 1}   -1.46{col 46}{space 3}0.145{col 54}{space 4}-.1568291{col 67}{space 3} .0229688
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0412117{col 26}{space 2} .0212649{col 37}{space 1}   -1.94{col 46}{space 3}0.053{col 54}{space 4}-.0828901{col 67}{space 3} .0004667
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0341981{col 26}{space 2} .0023011{col 37}{space 1}  -14.86{col 46}{space 3}0.000{col 54}{space 4}-.0387082{col 67}{space 3} -.029688
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0309106{col 26}{space 2} .0285546{col 37}{space 1}   -1.08{col 46}{space 3}0.279{col 54}{space 4}-.0868765{col 67}{space 3} .0250554
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0002274{col 26}{space 2} .0219535{col 37}{space 1}   -0.01{col 46}{space 3}0.992{col 54}{space 4}-.0432555{col 67}{space 3} .0428007
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0200829{col 26}{space 2} .0129311{col 37}{space 1}    1.55{col 46}{space 3}0.120{col 54}{space 4}-.0052616{col 67}{space 3} .0454275
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0001639{col 26}{space 2} .0001559{col 37}{space 1}   -1.05{col 46}{space 3}0.293{col 54}{space 4}-.0004695{col 67}{space 3} .0001417
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0525825{col 26}{space 2} .0481371{col 37}{space 1}    1.09{col 46}{space 3}0.275{col 54}{space 4}-.0417645{col 67}{space 3} .1469295
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0729906{col 26}{space 2} .0221999{col 37}{space 1}    3.29{col 46}{space 3}0.001{col 54}{space 4} .0294795{col 67}{space 3} .1165017
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0173238{col 26}{space 2} .0024108{col 37}{space 1}    7.19{col 46}{space 3}0.000{col 54}{space 4} .0125986{col 67}{space 3}  .022049
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0477879{col 26}{space 2} .0299674{col 37}{space 1}    1.59{col 46}{space 3}0.111{col 54}{space 4}-.0109472{col 67}{space 3} .1065229
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0475481{col 26}{space 2} .0230406{col 37}{space 1}   -2.06{col 46}{space 3}0.039{col 54}{space 4}-.0927068{col 67}{space 3}-.0023895
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0034434{col 26}{space 2}  .013572{col 37}{space 1}   -0.25{col 46}{space 3}0.800{col 54}{space 4}-.0300441{col 67}{space 3} .0231573
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0008188{col 26}{space 2} .0001636{col 37}{space 1}   -5.00{col 46}{space 3}0.000{col 54}{space 4}-.0011395{col 67}{space 3}-.0004982
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD        {col 14}{c |}
+{space 9}AGE {c |}{col 14}{res}{space 2} .0080136{col 26}{space 2} .0006249{col 37}{space 1}   12.82{col 46}{space 3}0.000{col 54}{space 4} .0067888{col 67}{space 3} .0092384
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0127209{col 26}{space 2}  .009114{col 37}{space 1}   -1.40{col 46}{space 3}0.163{col 54}{space 4} -.030584{col 67}{space 3} .0051422
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0388461{col 26}{space 2} .0070066{col 37}{space 1}   -5.54{col 46}{space 3}0.000{col 54}{space 4}-.0525786{col 67}{space 3}-.0251135
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0057936{col 26}{space 2} .0041434{col 37}{space 1}    1.40{col 46}{space 3}0.162{col 54}{space 4}-.0023272{col 67}{space 3} .0139145
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0002391{col 26}{space 2}  .000049{col 37}{space 1}   -4.88{col 46}{space 3}0.000{col 54}{space 4}-.0003351{col 67}{space 3}-.0001431
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2262851{col 26}{space 2} .0547159{col 37}{space 1}    4.14{col 46}{space 3}0.000{col 54}{space 4}  .119044{col 67}{space 3} .3335263
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0550024{col 26}{space 2} .0024604{col 37}{space 1}   22.36{col 46}{space 3}0.000{col 54}{space 4} .0501801{col 67}{space 3} .0598247
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} -.141981{col 26}{space 2} .0340539{col 37}{space 1}   -4.17{col 46}{space 3}0.000{col 54}{space 4}-.2087254{col 67}{space 3}-.0752365
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0745285{col 26}{space 2} .0262925{col 37}{space 1}   -2.83{col 46}{space 3}0.005{col 54}{space 4}-.1260609{col 67}{space 3}-.0229961
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0362505{col 26}{space 2} .0154832{col 37}{space 1}   -2.34{col 46}{space 3}0.019{col 54}{space 4} -.066597{col 67}{space 3}-.0059041
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0014262{col 26}{space 2} .0001836{col 37}{space 1}   -7.77{col 46}{space 3}0.000{col 54}{space 4}-.0017861{col 67}{space 3}-.0010664
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 8}PROT {c |}{col 14}{res}{space 2}        1{col 26}{txt}  (constrained)
+{space 9}AGE {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SEX {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SES {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}HS {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}LE8 {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 2}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 8}PROT {c |}{col 14}{res}{space 2} .8800832{col 26}{space 2} .0196591{col 37}{space 1}   44.77{col 46}{space 3}0.000{col 54}{space 4} .8415521{col 67}{space 3} .9186142
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SEX {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SES {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}HS {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}LE8 {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.1154656{col 26}{space 2} .0449318{col 37}{space 1}   -2.57{col 46}{space 3}0.010{col 54}{space 4}-.2035304{col 67}{space 3}-.0274008
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0773925{col 26}{space 2} .0208015{col 37}{space 1}   -3.72{col 46}{space 3}0.000{col 54}{space 4}-.1181627{col 67}{space 3}-.0366223
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0401102{col 26}{space 2}  .002254{col 37}{space 1}  -17.79{col 46}{space 3}0.000{col 54}{space 4} -.044528{col 67}{space 3}-.0356923
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0949863{col 26}{space 2} .0279719{col 37}{space 1}   -3.40{col 46}{space 3}0.001{col 54}{space 4}-.1498103{col 67}{space 3}-.0401624
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0418401{col 26}{space 2}  .021506{col 37}{space 1}    1.95{col 46}{space 3}0.052{col 54}{space 4}-.0003109{col 67}{space 3} .0839912
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0219196{col 26}{space 2} .0126672{col 37}{space 1}    1.73{col 46}{space 3}0.084{col 54}{space 4}-.0029077{col 67}{space 3} .0467468
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2} .0006172{col 26}{space 2} .0001527{col 37}{space 1}    4.04{col 46}{space 3}0.000{col 54}{space 4} .0003178{col 67}{space 3} .0009165
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+
+Indirect effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0171678{col 26}{space 2} .0061835{col 37}{space 1}    2.78{col 46}{space 3}0.005{col 54}{space 4} .0050484{col 67}{space 3} .0292872
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2}  .005028{col 26}{space 2} .0011821{col 37}{space 1}    4.25{col 46}{space 3}0.000{col 54}{space 4} .0027111{col 67}{space 3} .0073449
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0121292{col 26}{space 2} .0040227{col 37}{space 1}   -3.02{col 46}{space 3}0.003{col 54}{space 4}-.0200135{col 67}{space 3}-.0042448
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0097994{col 26}{space 2} .0031052{col 37}{space 1}   -3.16{col 46}{space 3}0.002{col 54}{space 4}-.0158855{col 67}{space 3}-.0037132
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0021321{col 26}{space 2} .0014708{col 37}{space 1}   -1.45{col 46}{space 3}0.147{col 54}{space 4}-.0050147{col 67}{space 3} .0007506
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0001337{col 26}{space 2}  .000034{col 37}{space 1}   -3.94{col 46}{space 3}0.000{col 54}{space 4}-.0002003{col 67}{space 3}-.0000671
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0201862{col 26}{space 2} .0066946{col 37}{space 1}    3.02{col 46}{space 3}0.003{col 54}{space 4} .0070649{col 67}{space 3} .0333074
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0057683{col 26}{space 2} .0011883{col 37}{space 1}    4.85{col 46}{space 3}0.000{col 54}{space 4} .0034392{col 67}{space 3} .0080973
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0140335{col 26}{space 2} .0043304{col 37}{space 1}   -3.24{col 46}{space 3}0.001{col 54}{space 4}-.0225209{col 67}{space 3}-.0055461
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0108254{col 26}{space 2} .0033445{col 37}{space 1}   -3.24{col 46}{space 3}0.001{col 54}{space 4}-.0173806{col 67}{space 3}-.0042702
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0026108{col 26}{space 2} .0016432{col 37}{space 1}   -1.59{col 46}{space 3}0.112{col 54}{space 4}-.0058314{col 67}{space 3} .0006097
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0001529{col 26}{space 2} .0000351{col 37}{space 1}   -4.36{col 46}{space 3}0.000{col 54}{space 4}-.0002217{col 67}{space 3}-.0000841
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0093256{col 26}{space 2} .0053223{col 37}{space 1}   -1.75{col 46}{space 3}0.080{col 54}{space 4}-.0197571{col 67}{space 3} .0011059
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2}-.0028778{col 26}{space 2}  .001232{col 37}{space 1}   -2.34{col 46}{space 3}0.019{col 54}{space 4}-.0052925{col 67}{space 3}-.0004631
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0068213{col 26}{space 2} .0034546{col 37}{space 1}    1.97{col 46}{space 3}0.048{col 54}{space 4} .0000504{col 67}{space 3} .0135922
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0060337{col 26}{space 2} .0026695{col 37}{space 1}    2.26{col 46}{space 3}0.024{col 54}{space 4} .0008015{col 67}{space 3} .0112658
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0010521{col 26}{space 2} .0010796{col 37}{space 1}    0.97{col 46}{space 3}0.330{col 54}{space 4}-.0010638{col 67}{space 3} .0031681
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}  .000077{col 26}{space 2} .0000333{col 37}{space 1}    2.31{col 46}{space 3}0.021{col 54}{space 4} .0000118{col 67}{space 3} .0001423
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0165167{col 26}{space 2} .0064152{col 37}{space 1}    2.57{col 46}{space 3}0.010{col 54}{space 4} .0039432{col 67}{space 3} .0290902
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0045684{col 26}{space 2} .0012921{col 37}{space 1}    3.54{col 46}{space 3}0.000{col 54}{space 4}  .002036{col 67}{space 3} .0071008
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0112423{col 26}{space 2} .0041068{col 37}{space 1}   -2.74{col 46}{space 3}0.006{col 54}{space 4}-.0192915{col 67}{space 3}-.0031931
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0081241{col 26}{space 2} .0031758{col 37}{space 1}   -2.56{col 46}{space 3}0.011{col 54}{space 4}-.0143486{col 67}{space 3}-.0018996
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0022456{col 26}{space 2} .0014431{col 37}{space 1}   -1.56{col 46}{space 3}0.120{col 54}{space 4} -.005074{col 67}{space 3} .0005828
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0001206{col 26}{space 2} .0000364{col 37}{space 1}   -3.32{col 46}{space 3}0.001{col 54}{space 4}-.0001919{col 67}{space 3}-.0000493
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD        {col 14}{c |}
+{space 9}AGE {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SEX {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SES {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}HS {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}LE8 {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 2}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0018134{col 26}{space 2} .0004607{col 37}{space 1}    3.94{col 46}{space 3}0.000{col 54}{space 4} .0009104{col 67}{space 3} .0027163
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0028786{col 26}{space 2} .0021766{col 37}{space 1}   -1.32{col 46}{space 3}0.186{col 54}{space 4}-.0071447{col 67}{space 3} .0013876
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0087903{col 26}{space 2} .0026517{col 37}{space 1}   -3.31{col 46}{space 3}0.001{col 54}{space 4}-.0139875{col 67}{space 3}-.0035931
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}  .001311{col 26}{space 2} .0009897{col 37}{space 1}    1.32{col 46}{space 3}0.185{col 54}{space 4}-.0006288{col 67}{space 3} .0032508
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0000541{col 26}{space 2} .0000171{col 37}{space 1}   -3.16{col 46}{space 3}0.002{col 54}{space 4}-.0000877{col 67}{space 3}-.0000205
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2262851{col 26}{space 2} .0547159{col 37}{space 1}    4.14{col 46}{space 3}0.000{col 54}{space 4}  .119044{col 67}{space 3} .3335263
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0568157{col 26}{space 2} .0024319{col 37}{space 1}   23.36{col 46}{space 3}0.000{col 54}{space 4} .0520493{col 67}{space 3} .0615822
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1448595{col 26}{space 2} .0341113{col 37}{space 1}   -4.25{col 46}{space 3}0.000{col 54}{space 4}-.2117163{col 67}{space 3}-.0780027
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0833188{col 26}{space 2} .0262629{col 37}{space 1}   -3.17{col 46}{space 3}0.002{col 54}{space 4}-.1347931{col 67}{space 3}-.0318444
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0349395{col 26}{space 2} .0155088{col 37}{space 1}   -2.25{col 46}{space 3}0.024{col 54}{space 4}-.0653362{col 67}{space 3}-.0045429
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0014803{col 26}{space 2} .0001835{col 37}{space 1}   -8.07{col 46}{space 3}0.000{col 54}{space 4}-.0018399{col 67}{space 3}-.0011207
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .1991497{col 26}{space 2} .0481151{col 37}{space 1}    4.14{col 46}{space 3}0.000{col 54}{space 4} .1048459{col 67}{space 3} .2934535
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0500026{col 26}{space 2} .0021291{col 37}{space 1}   23.48{col 46}{space 3}0.000{col 54}{space 4} .0458296{col 67}{space 3} .0541756
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1274884{col 26}{space 2} .0300069{col 37}{space 1}   -4.25{col 46}{space 3}0.000{col 54}{space 4} -.186301{col 67}{space 3}-.0686759
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0733275{col 26}{space 2} .0230488{col 37}{space 1}   -3.18{col 46}{space 3}0.001{col 54}{space 4}-.1185024{col 67}{space 3}-.0281525
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0307497{col 26}{space 2} .0136896{col 37}{space 1}   -2.25{col 46}{space 3}0.025{col 54}{space 4}-.0575809{col 67}{space 3}-.0039185
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0013028{col 26}{space 2} .0001634{col 37}{space 1}   -7.97{col 46}{space 3}0.000{col 54}{space 4} -.001623{col 67}{space 3}-.0009826
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0175128{col 26}{space 2} .0063409{col 37}{space 1}   -2.76{col 46}{space 3}0.006{col 54}{space 4}-.0299406{col 67}{space 3}-.0050849
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2}-.0053224{col 26}{space 2} .0012184{col 37}{space 1}   -4.37{col 46}{space 3}0.000{col 54}{space 4}-.0077104{col 67}{space 3}-.0029344
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0126799{col 26}{space 2}  .004183{col 37}{space 1}    3.03{col 46}{space 3}0.002{col 54}{space 4} .0044814{col 67}{space 3} .0208783
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0109336{col 26}{space 2} .0032299{col 37}{space 1}    3.39{col 46}{space 3}0.001{col 54}{space 4} .0046032{col 67}{space 3}  .017264
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0020351{col 26}{space 2}  .001538{col 37}{space 1}    1.32{col 46}{space 3}0.186{col 54}{space 4}-.0009794{col 67}{space 3} .0050496
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2} .0001422{col 26}{space 2} .0000351{col 37}{space 1}    4.05{col 46}{space 3}0.000{col 54}{space 4} .0000733{col 67}{space 3}  .000211
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+
+Total effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .1067039{col 26}{space 2} .0434047{col 37}{space 1}    2.46{col 46}{space 3}0.014{col 54}{space 4} .0216323{col 67}{space 3} .1917756
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}  .075868{col 26}{space 2} .0201859{col 37}{space 1}    3.76{col 46}{space 3}0.000{col 54}{space 4} .0363043{col 67}{space 3} .1154317
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0567871{col 26}{space 2} .0018534{col 37}{space 1}   30.64{col 46}{space 3}0.000{col 54}{space 4} .0531544{col 67}{space 3} .0604197
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0905803{col 26}{space 2} .0270308{col 37}{space 1}   -3.35{col 46}{space 3}0.001{col 54}{space 4}-.1435597{col 67}{space 3}-.0376008
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0167329{col 26}{space 2} .0207805{col 37}{space 1}    0.81{col 46}{space 3}0.421{col 54}{space 4} -.023996{col 67}{space 3} .0574619
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0225351{col 26}{space 2} .0122886{col 37}{space 1}   -1.83{col 46}{space 3}0.067{col 54}{space 4}-.0466204{col 67}{space 3} .0015502
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0000681{col 26}{space 2} .0001453{col 37}{space 1}   -0.47{col 46}{space 3}0.639{col 54}{space 4}-.0003528{col 67}{space 3} .0002166
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .1075267{col 26}{space 2} .0437033{col 37}{space 1}    2.46{col 46}{space 3}0.014{col 54}{space 4} .0218698{col 67}{space 3} .1931835
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0892067{col 26}{space 2} .0202221{col 37}{space 1}    4.41{col 46}{space 3}0.000{col 54}{space 4} .0495721{col 67}{space 3} .1288414
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0546976{col 26}{space 2} .0018662{col 37}{space 1}   29.31{col 46}{space 3}0.000{col 54}{space 4}   .05104{col 67}{space 3} .0583552
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0788326{col 26}{space 2} .0272168{col 37}{space 1}   -2.90{col 46}{space 3}0.004{col 54}{space 4}-.1321766{col 67}{space 3}-.0254886
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0370304{col 26}{space 2} .0209234{col 37}{space 1}    1.77{col 46}{space 3}0.077{col 54}{space 4}-.0039788{col 67}{space 3} .0780395
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0248571{col 26}{space 2} .0123732{col 37}{space 1}   -2.01{col 46}{space 3}0.045{col 54}{space 4}-.0491081{col 67}{space 3}-.0006061
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0003274{col 26}{space 2} .0001463{col 37}{space 1}   -2.24{col 46}{space 3}0.025{col 54}{space 4}-.0006141{col 67}{space 3}-.0000407
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0762557{col 26}{space 2}  .045645{col 37}{space 1}   -1.67{col 46}{space 3}0.095{col 54}{space 4}-.1657183{col 67}{space 3} .0132068
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0412117{col 26}{space 2} .0212649{col 37}{space 1}   -1.94{col 46}{space 3}0.053{col 54}{space 4}-.0828901{col 67}{space 3} .0004667
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0370759{col 26}{space 2} .0019484{col 37}{space 1}  -19.03{col 46}{space 3}0.000{col 54}{space 4}-.0408947{col 67}{space 3}-.0332572
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0240892{col 26}{space 2} .0284161{col 37}{space 1}   -0.85{col 46}{space 3}0.397{col 54}{space 4}-.0797838{col 67}{space 3} .0316053
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0058063{col 26}{space 2} .0218454{col 37}{space 1}    0.27{col 46}{space 3}0.790{col 54}{space 4}  -.03701{col 67}{space 3} .0486225
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0211351{col 26}{space 2} .0129184{col 37}{space 1}    1.64{col 46}{space 3}0.102{col 54}{space 4}-.0041845{col 67}{space 3} .0464547
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0000869{col 26}{space 2} .0001527{col 37}{space 1}   -0.57{col 46}{space 3}0.569{col 54}{space 4}-.0003862{col 67}{space 3} .0002124
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0690992{col 26}{space 2} .0479684{col 37}{space 1}    1.44{col 46}{space 3}0.150{col 54}{space 4}-.0249171{col 67}{space 3} .1631154
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0729906{col 26}{space 2} .0221999{col 37}{space 1}    3.29{col 46}{space 3}0.001{col 54}{space 4} .0294795{col 67}{space 3} .1165017
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0218922{col 26}{space 2} .0020474{col 37}{space 1}   10.69{col 46}{space 3}0.000{col 54}{space 4} .0178793{col 67}{space 3} .0259051
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0365456{col 26}{space 2} .0298602{col 37}{space 1}    1.22{col 46}{space 3}0.221{col 54}{space 4}-.0219794{col 67}{space 3} .0950705
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0556722{col 26}{space 2} .0229556{col 37}{space 1}   -2.43{col 46}{space 3}0.015{col 54}{space 4}-.1006644{col 67}{space 3}-.0106801
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} -.005689{col 26}{space 2} .0135749{col 37}{space 1}   -0.42{col 46}{space 3}0.675{col 54}{space 4}-.0322954{col 67}{space 3} .0209173
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0009395{col 26}{space 2} .0001605{col 37}{space 1}   -5.85{col 46}{space 3}0.000{col 54}{space 4} -.001254{col 67}{space 3}-.0006249
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD        {col 14}{c |}
+{space 9}AGE {c |}{col 14}{res}{space 2} .0080136{col 26}{space 2} .0006249{col 37}{space 1}   12.82{col 46}{space 3}0.000{col 54}{space 4} .0067888{col 67}{space 3} .0092384
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0127209{col 26}{space 2}  .009114{col 37}{space 1}   -1.40{col 46}{space 3}0.163{col 54}{space 4} -.030584{col 67}{space 3} .0051422
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0388461{col 26}{space 2} .0070066{col 37}{space 1}   -5.54{col 46}{space 3}0.000{col 54}{space 4}-.0525786{col 67}{space 3}-.0251135
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0057936{col 26}{space 2} .0041434{col 37}{space 1}    1.40{col 46}{space 3}0.162{col 54}{space 4}-.0023272{col 67}{space 3} .0139145
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0002391{col 26}{space 2}  .000049{col 37}{space 1}   -4.88{col 46}{space 3}0.000{col 54}{space 4}-.0003351{col 67}{space 3}-.0001431
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2262851{col 26}{space 2} .0547159{col 37}{space 1}    4.14{col 46}{space 3}0.000{col 54}{space 4}  .119044{col 67}{space 3} .3335263
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0568157{col 26}{space 2} .0024319{col 37}{space 1}   23.36{col 46}{space 3}0.000{col 54}{space 4} .0520493{col 67}{space 3} .0615822
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1448595{col 26}{space 2} .0341113{col 37}{space 1}   -4.25{col 46}{space 3}0.000{col 54}{space 4}-.2117163{col 67}{space 3}-.0780027
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0833188{col 26}{space 2} .0262629{col 37}{space 1}   -3.17{col 46}{space 3}0.002{col 54}{space 4}-.1347931{col 67}{space 3}-.0318444
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0349395{col 26}{space 2} .0155088{col 37}{space 1}   -2.25{col 46}{space 3}0.024{col 54}{space 4}-.0653362{col 67}{space 3}-.0045429
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0014803{col 26}{space 2} .0001835{col 37}{space 1}   -8.07{col 46}{space 3}0.000{col 54}{space 4}-.0018399{col 67}{space 3}-.0011207
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2262851{col 26}{space 2} .0547159{col 37}{space 1}    4.14{col 46}{space 3}0.000{col 54}{space 4}  .119044{col 67}{space 3} .3335263
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        1{col 26}{txt}  (constrained)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0568157{col 26}{space 2} .0024319{col 37}{space 1}   23.36{col 46}{space 3}0.000{col 54}{space 4} .0520493{col 67}{space 3} .0615822
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1448595{col 26}{space 2} .0341113{col 37}{space 1}   -4.25{col 46}{space 3}0.000{col 54}{space 4}-.2117163{col 67}{space 3}-.0780027
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0833188{col 26}{space 2} .0262629{col 37}{space 1}   -3.17{col 46}{space 3}0.002{col 54}{space 4}-.1347931{col 67}{space 3}-.0318444
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0349395{col 26}{space 2} .0155088{col 37}{space 1}   -2.25{col 46}{space 3}0.024{col 54}{space 4}-.0653362{col 67}{space 3}-.0045429
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0014803{col 26}{space 2} .0001835{col 37}{space 1}   -8.07{col 46}{space 3}0.000{col 54}{space 4}-.0018399{col 67}{space 3}-.0011207
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .1991497{col 26}{space 2} .0481151{col 37}{space 1}    4.14{col 46}{space 3}0.000{col 54}{space 4} .1048459{col 67}{space 3} .2934535
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .8800832{col 26}{space 2} .0196591{col 37}{space 1}   44.77{col 46}{space 3}0.000{col 54}{space 4} .8415521{col 67}{space 3} .9186142
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0500026{col 26}{space 2} .0021291{col 37}{space 1}   23.48{col 46}{space 3}0.000{col 54}{space 4} .0458296{col 67}{space 3} .0541756
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1274884{col 26}{space 2} .0300069{col 37}{space 1}   -4.25{col 46}{space 3}0.000{col 54}{space 4} -.186301{col 67}{space 3}-.0686759
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0733275{col 26}{space 2} .0230488{col 37}{space 1}   -3.18{col 46}{space 3}0.001{col 54}{space 4}-.1185024{col 67}{space 3}-.0281525
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0307497{col 26}{space 2} .0136896{col 37}{space 1}   -2.25{col 46}{space 3}0.025{col 54}{space 4}-.0575809{col 67}{space 3}-.0039185
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2}-.0013028{col 26}{space 2} .0001634{col 37}{space 1}   -7.97{col 46}{space 3}0.000{col 54}{space 4} -.001623{col 67}{space 3}-.0009826
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.1329784{col 26}{space 2} .0447962{col 37}{space 1}   -2.97{col 46}{space 3}0.003{col 54}{space 4}-.2207774{col 67}{space 3}-.0451794
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0773925{col 26}{space 2} .0208015{col 37}{space 1}   -3.72{col 46}{space 3}0.000{col 54}{space 4}-.1181627{col 67}{space 3}-.0366223
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0454326{col 26}{space 2} .0019134{col 37}{space 1}  -23.74{col 46}{space 3}0.000{col 54}{space 4}-.0491828{col 67}{space 3}-.0416824
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0823065{col 26}{space 2} .0279057{col 37}{space 1}   -2.95{col 46}{space 3}0.003{col 54}{space 4}-.1370006{col 67}{space 3}-.0276123
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0527738{col 26}{space 2}  .021453{col 37}{space 1}    2.46{col 46}{space 3}0.014{col 54}{space 4} .0107266{col 67}{space 3} .0948209
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0239547{col 26}{space 2} .0126864{col 37}{space 1}    1.89{col 46}{space 3}0.059{col 54}{space 4}-.0009101{col 67}{space 3} .0488195
+{txt}{space 9}LE8 {c |}{col 14}{res}{space 2} .0007593{col 26}{space 2}   .00015{col 37}{space 1}    5.06{col 46}{space 3}0.000{col 54}{space 4} .0004654{col 67}{space 3} .0010533
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. 
+. **ADJUSTED FOR SOCIO-DEMOGRAPHICS ONLY**
+. sem (AGE -> FA, ) (AGE -> MD, ) (AGE -> ISOVF, ) (AGE -> ICVF, ) (AGE -> OD, ) (AGE -> PROT, ) (AGE -> PD, ) (PROT <- _cons@0, ) (PROT -> FA, ) (PROT -> MD, ) (PROT -> ISOVF, ) (PROT -> ICVF, ) (PROT -> OD, ) (PROT@1 -> M1, ) (PROT -> M2, ) (SEX -> FA, ) (SEX -> MD, ) (SEX -> ISOVF, ) (SEX -> ICVF, ) (SEX -> OD, ) (SEX -> PROT, ) (SEX -> PD, ) (PD -> FA, ) (PD -> MD, ) (PD -> ISOVF, ) (PD -> ICVF, ) (PD -> OD, ) (PD -> PROT, ) (SES -> FA, ) (SES -> MD, ) (SES -> ISOVF, ) (SES -> ICVF, ) (SES -> OD, ) (SES -> PROT, ) (SES -> PD, ) (HS -> FA, ) (HS -> MD, ) (HS -> ISOVF, ) (HS -> ICVF, ) (HS -> OD, ) (HS -> PROT, ) (HS -> PD, ) if sample_final==1, latent(PROT ) cov(e.FA*e.MD e.FA*e.ICVF e.FA*e.ISOVF e.FA*e.OD e.MD*e.ICVF e.MD*e.ISOVF e.MD*e.OD e.ICVF*e.ISOVF e.ICVF*e.OD e.ISOVF*e.OD e.PROT@1 e.M1@1) nocapslatent
+{res}{txt}(426 observations with missing values excluded)
+
+Endogenous variables
+{p 2 15 2}Observed:{space 4}{res}FA MD ISOVF ICVF OD PD{p_end}
+{txt}{p 2 15 2}Measurement:{space 1}{res}M1 M2{p_end}
+{txt}{p 2 15 2}Latent:{space 6}{res}PROT{p_end}
+{txt}
+Exogenous variables
+{p 2 12 2}Observed:{space 1}{res}AGE SEX SES HS{p_end}
+{txt}
+Fitting target model:
+Iteration 0:{space 2}Log likelihood = {res:-85354.356}  (not concave)
+Iteration 1:{space 2}Log likelihood = {res:-82798.321}  (not concave)
+Iteration 2:{space 2}Log likelihood = {res:-69122.604}  (not concave)
+Iteration 3:{space 2}Log likelihood = {res:-67272.592}  (not concave)
+Iteration 4:{space 2}Log likelihood = {res:-66478.832}  (not concave)
+Iteration 5:{space 2}Log likelihood = {res:-65844.841}  (not concave)
+Iteration 6:{space 2}Log likelihood = {res:-65146.154}  (not concave)
+Iteration 7:{space 2}Log likelihood = {res:-64760.052}  
+Iteration 8:{space 2}Log likelihood = {res:-64730.945}  (not concave)
+Iteration 9:{space 2}Log likelihood = {res:-64634.808}  (not concave)
+Iteration 10:{space 1}Log likelihood = {res:-64603.578}  (not concave)
+Iteration 11:{space 1}Log likelihood = {res:-64580.151}  (not concave)
+Iteration 12:{space 1}Log likelihood = {res:-64568.463}  (not concave)
+Iteration 13:{space 1}Log likelihood = {res:-64556.552}  
+Iteration 14:{space 1}Log likelihood = {res:-64464.229}  (not concave)
+Iteration 15:{space 1}Log likelihood = {res:-64439.117}  (not concave)
+Iteration 16:{space 1}Log likelihood = {res:-64419.787}  
+Iteration 17:{space 1}Log likelihood = {res:-64398.487}  (backed up)
+Iteration 18:{space 1}Log likelihood = {res:-64266.582}  (not concave)
+Iteration 19:{space 1}Log likelihood = {res: -64255.36}  
+Iteration 20:{space 1}Log likelihood = {res:-64073.987}  (not concave)
+Iteration 21:{space 1}Log likelihood = {res:-64070.618}  
+Iteration 22:{space 1}Log likelihood = {res:-64063.615}  (not concave)
+Iteration 23:{space 1}Log likelihood = {res:-64049.613}  
+Iteration 24:{space 1}Log likelihood = {res:-64032.232}  
+Iteration 25:{space 1}Log likelihood = {res:-64016.268}  (not concave)
+Iteration 26:{space 1}Log likelihood = {res:-64011.843}  
+Iteration 27:{space 1}Log likelihood = {res:-64008.505}  
+Iteration 28:{space 1}Log likelihood = {res:-64008.494}  
+Iteration 29:{space 1}Log likelihood = {res:-64008.494}  
+
+{col 1}Structural equation model{col 58}{lalign 13:Number of obs}{col 71} = {res}{ralign 5:4,663}
+{txt}{col 1}Estimation method: {res:ml}
+
+{col 1}{lalign 14:Log likelihood}{col 15} = {res}{ralign 10:-64008.494}
+
+{p 0 7}{space 1}{text:( 1)}{space 1} [M1]PROT = 1{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [/]var(e.M1) = 1{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [/]var(e.PROT) = 1{p_end}
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 20}{c |}{col 32}      OIM
+{col 20}{c |} Coefficient{col 32}  std. err.{col 44}      z{col 52}   P>|z|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural        {col 20}{txt}{c |}
+{space 2}{col 3}FA              {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2}-.1247645{col 32}{space 2}   .04498{col 43}{space 1}   -2.77{col 52}{space 3}0.006{col 60}{space 4}-.2129238{col 73}{space 3}-.0366052
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2}-.0921595{col 32}{space 2} .0208127{col 43}{space 1}   -4.43{col 52}{space 3}0.000{col 60}{space 4}-.1329516{col 73}{space 3}-.0513674
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0398771{col 32}{space 2} .0022689{col 43}{space 1}  -17.58{col 52}{space 3}0.000{col 60}{space 4} -.044324{col 73}{space 3}-.0354302
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0788382{col 32}{space 2} .0277605{col 43}{space 1}   -2.84{col 52}{space 3}0.005{col 60}{space 4}-.1332478{col 73}{space 3}-.0244285
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}  .048976{col 32}{space 2} .0214831{col 43}{space 1}    2.28{col 52}{space 3}0.023{col 60}{space 4} .0068698{col 73}{space 3} .0910822
+{txt}{space 16}HS {c |}{col 20}{res}{space 2} .0230628{col 32}{space 2} .0126901{col 43}{space 1}    1.82{col 52}{space 3}0.069{col 60}{space 4}-.0018094{col 73}{space 3} .0479349
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} 2.501668{col 32}{space 2} .1342357{col 43}{space 1}   18.64{col 52}{space 3}0.000{col 60}{space 4} 2.238571{col 73}{space 3} 2.764766
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}MD              {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .0879665{col 32}{space 2} .0434938{col 43}{space 1}    2.02{col 52}{space 3}0.043{col 60}{space 4} .0027203{col 73}{space 3} .1732127
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2} .0764338{col 32}{space 2} .0201501{col 43}{space 1}    3.79{col 52}{space 3}0.000{col 60}{space 4} .0369404{col 73}{space 3} .1159272
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0516585{col 32}{space 2} .0021945{col 43}{space 1}   23.54{col 52}{space 3}0.000{col 60}{space 4} .0473573{col 73}{space 3} .0559597
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0763371{col 32}{space 2} .0268434{col 43}{space 1}   -2.84{col 52}{space 3}0.004{col 60}{space 4}-.1289492{col 73}{space 3}-.0237249
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0275499{col 32}{space 2}  .020773{col 43}{space 1}    1.33{col 52}{space 3}0.185{col 60}{space 4}-.0131644{col 73}{space 3} .0682642
+{txt}{space 16}HS {c |}{col 20}{res}{space 2}-.0202492{col 32}{space 2} .0122706{col 43}{space 1}   -1.65{col 52}{space 3}0.099{col 60}{space 4}-.0442992{col 73}{space 3} .0038008
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-2.864312{col 32}{space 2} .1296776{col 43}{space 1}  -22.09{col 52}{space 3}0.000{col 60}{space 4}-3.118476{col 73}{space 3}-2.610149
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF           {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .0897013{col 32}{space 2} .0437596{col 43}{space 1}    2.05{col 52}{space 3}0.040{col 60}{space 4}  .003934{col 73}{space 3} .1754687
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2} .0943217{col 32}{space 2} .0201936{col 43}{space 1}    4.67{col 52}{space 3}0.000{col 60}{space 4}  .054743{col 73}{space 3} .1339004
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0488065{col 32}{space 2}  .002205{col 43}{space 1}   22.13{col 52}{space 3}0.000{col 60}{space 4} .0444847{col 73}{space 3} .0531283
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0691882{col 32}{space 2} .0270069{col 43}{space 1}   -2.56{col 52}{space 3}0.010{col 60}{space 4}-.1221208{col 73}{space 3}-.0162556
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0459731{col 32}{space 2} .0209005{col 43}{space 1}    2.20{col 52}{space 3}0.028{col 60}{space 4} .0050088{col 73}{space 3} .0869373
+{txt}{space 16}HS {c |}{col 20}{res}{space 2}-.0225739{col 32}{space 2} .0123466{col 43}{space 1}   -1.83{col 52}{space 3}0.067{col 60}{space 4}-.0467728{col 73}{space 3} .0016249
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-2.760292{col 32}{space 2} .1306501{col 43}{space 1}  -21.13{col 52}{space 3}0.000{col 60}{space 4}-3.016361{col 73}{space 3}-2.504223
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF            {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2}-.0638844{col 32}{space 2} .0458282{col 43}{space 1}   -1.39{col 52}{space 3}0.163{col 60}{space 4}-.1537061{col 73}{space 3} .0259373
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2}-.0394393{col 32}{space 2} .0212293{col 43}{space 1}   -1.86{col 52}{space 3}0.063{col 60}{space 4}-.0810479{col 73}{space 3} .0021693
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0341352{col 32}{space 2} .0023112{col 43}{space 1}  -14.77{col 52}{space 3}0.000{col 60}{space 4} -.038665{col 73}{space 3}-.0296053
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2} -.035599{col 32}{space 2} .0282843{col 43}{space 1}   -1.26{col 52}{space 3}0.208{col 60}{space 4}-.0910351{col 73}{space 3} .0198372
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0023681{col 32}{space 2} .0218876{col 43}{space 1}   -0.11{col 52}{space 3}0.914{col 60}{space 4} -.045267{col 73}{space 3} .0405309
+{txt}{space 16}HS {c |}{col 20}{res}{space 2} .0197327{col 32}{space 2} .0129297{col 43}{space 1}    1.53{col 52}{space 3}0.127{col 60}{space 4}-.0056092{col 73}{space 3} .0450745
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} 1.979869{col 32}{space 2} .1363732{col 43}{space 1}   14.52{col 52}{space 3}0.000{col 60}{space 4} 1.712582{col 73}{space 3} 2.247156
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD              {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .0653697{col 32}{space 2} .0482356{col 43}{space 1}    1.36{col 52}{space 3}0.175{col 60}{space 4}-.0291703{col 73}{space 3} .1599096
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2} .0908777{col 32}{space 2} .0222304{col 43}{space 1}    4.09{col 52}{space 3}0.000{col 60}{space 4} .0473069{col 73}{space 3} .1344486
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0171125{col 32}{space 2} .0024286{col 43}{space 1}    7.05{col 52}{space 3}0.000{col 60}{space 4} .0123526{col 73}{space 3} .0218725
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}  .026046{col 32}{space 2} .0297691{col 43}{space 1}    0.87{col 52}{space 3}0.382{col 60}{space 4}-.0323005{col 73}{space 3} .0843924
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0571977{col 32}{space 2} .0230382{col 43}{space 1}   -2.48{col 52}{space 3}0.013{col 60}{space 4}-.1023518{col 73}{space 3}-.0120436
+{txt}{space 16}HS {c |}{col 20}{res}{space 2}-.0050092{col 32}{space 2} .0136103{col 43}{space 1}   -0.37{col 52}{space 3}0.713{col 60}{space 4}-.0316848{col 73}{space 3} .0216665
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-1.213555{col 32}{space 2} .1438887{col 43}{space 1}   -8.43{col 52}{space 3}0.000{col 60}{space 4}-1.495572{col 73}{space 3}-.9315388
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD              {col 20}{c |}
+{space 15}AGE {c |}{col 20}{res}{space 2} .0082901{col 32}{space 2} .0006239{col 43}{space 1}   13.29{col 52}{space 3}0.000{col 60}{space 4} .0070673{col 73}{space 3}  .009513
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0201414{col 32}{space 2} .0090093{col 43}{space 1}   -2.24{col 52}{space 3}0.025{col 60}{space 4}-.0377992{col 73}{space 3}-.0024836
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0423897{col 32}{space 2} .0069866{col 43}{space 1}   -6.07{col 52}{space 3}0.000{col 60}{space 4}-.0560832{col 73}{space 3}-.0286962
+{txt}{space 16}HS {c |}{col 20}{res}{space 2} .0051696{col 32}{space 2}  .004152{col 43}{space 1}    1.25{col 52}{space 3}0.213{col 60}{space 4}-.0029681{col 73}{space 3} .0133073
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-.3264455{col 32}{space 2} .0436022{col 43}{space 1}   -7.49{col 52}{space 3}0.000{col 60}{space 4}-.4119044{col 73}{space 3}-.2409867
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT            {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .2570031{col 32}{space 2} .0548417{col 43}{space 1}    4.69{col 52}{space 3}0.000{col 60}{space 4} .1495153{col 73}{space 3}  .364491
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0564577{col 32}{space 2} .0024657{col 43}{space 1}   22.90{col 52}{space 3}0.000{col 60}{space 4}  .051625{col 73}{space 3} .0612903
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.1856576{col 32}{space 2} .0337591{col 43}{space 1}   -5.50{col 52}{space 3}0.000{col 60}{space 4}-.2518244{col 73}{space 3}-.1194909
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} -.095053{col 32}{space 2} .0262945{col 43}{space 1}   -3.61{col 52}{space 3}0.000{col 60}{space 4}-.1465892{col 73}{space 3}-.0435168
+{txt}{space 16}HS {c |}{col 20}{res}{space 2}-.0395119{col 32}{space 2} .0155499{col 43}{space 1}   -2.54{col 52}{space 3}0.011{col 60}{space 4}-.0699892{col 73}{space 3}-.0090346
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement       {col 20}{txt}{c |}
+{space 2}{col 3}M1              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{space 13}_cons {c |}{col 20}{res}{space 2}-2.723617{col 32}{space 2} .1679705{col 43}{space 1}  -16.21{col 52}{space 3}0.000{col 60}{space 4}-3.052833{col 73}{space 3}-2.394401
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2} .8747113{col 32}{space 2} .0199286{col 43}{space 1}   43.89{col 52}{space 3}0.000{col 60}{space 4}  .835652{col 73}{space 3} .9137706
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-2.379741{col 32}{space 2} .1457744{col 43}{space 1}  -16.32{col 52}{space 3}0.000{col 60}{space 4}-2.665454{col 73}{space 3}-2.094029
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}var(e.FA){c |}{col 20}{res}{space 2} .8540341{col 32}{space 2} .0177487{col 60}{space 4} .8199463{col 73}{space 3} .8895391
+{txt}{space 10}var(e.MD){c |}{col 20}{res}{space 2} .7991045{col 32}{space 2} .0165922{col 60}{space 4} .7672372{col 73}{space 3} .8322953
+{txt}{space 7}var(e.ISOVF){c |}{col 20}{res}{space 2} .8081677{col 32}{space 2} .0168005{col 60}{space 4} .7759011{col 73}{space 3} .8417762
+{txt}{space 8}var(e.ICVF){c |}{col 20}{res}{space 2} .8886605{col 32}{space 2} .0184156{col 60}{space 4} .8532898{col 73}{space 3} .9254973
+{txt}{space 10}var(e.OD){c |}{col 20}{res}{space 2} .9827789{col 32}{space 2} .0204116{col 60}{space 4} .9435763{col 73}{space 3}  1.02361
+{txt}{space 10}var(e.PD){c |}{col 20}{res}{space 2} .0920968{col 32}{space 2} .0019073{col 60}{space 4} .0884333{col 73}{space 3}  .095912
+{txt}{space 10}var(e.M1){c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{space 10}var(e.M2){c |}{col 20}{res}{space 2} .3085103{col 32}{space 2} .0221955{col 60}{space 4} .2679358{col 73}{space 3} .3552292
+{txt}{space 8}var(e.PROT){c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}cov(e.FA,e.MD){c |}{col 20}{res}{space 2}-.6468407{col 32}{space 2} .0154165{col 43}{space 1}  -41.96{col 52}{space 3}0.000{col 60}{space 4}-.6770565{col 73}{space 3} -.616625
+{txt}{space 2}cov(e.FA,e.ISOVF){c |}{col 20}{res}{space 2}-.3602725{col 32}{space 2} .0133194{col 43}{space 1}  -27.05{col 52}{space 3}0.000{col 60}{space 4}-.3863781{col 73}{space 3}-.3341668
+{txt}{space 3}cov(e.FA,e.ICVF){c |}{col 20}{res}{space 2} .6377099{col 32}{space 2} .0158428{col 43}{space 1}   40.25{col 52}{space 3}0.000{col 60}{space 4} .6066587{col 73}{space 3} .6687612
+{txt}{space 5}cov(e.FA,e.OD){c |}{col 20}{res}{space 2}-.4761108{col 32}{space 2} .0151768{col 43}{space 1}  -31.37{col 52}{space 3}0.000{col 60}{space 4}-.5058568{col 73}{space 3}-.4463647
+{txt}{space 2}cov(e.MD,e.ISOVF){c |}{col 20}{res}{space 2} .5544161{col 32}{space 2} .0143493{col 43}{space 1}   38.64{col 52}{space 3}0.000{col 60}{space 4}  .526292{col 73}{space 3} .5825403
+{txt}{space 3}cov(e.MD,e.ICVF){c |}{col 20}{res}{space 2}-.6470412{col 32}{space 2} .0155839{col 43}{space 1}  -41.52{col 52}{space 3}0.000{col 60}{space 4}-.6775851{col 73}{space 3}-.6164974
+{txt}{space 5}cov(e.MD,e.OD){c |}{col 20}{res}{space 2} .1293267{col 32}{space 2} .0131553{col 43}{space 1}    9.83{col 52}{space 3}0.000{col 60}{space 4} .1035429{col 73}{space 3} .1551106
+{txt}cov(e.ISOVF,e.ICVF){c |}{col 20}{res}{space 2}-.1052082{col 32}{space 2} .0125358{col 43}{space 1}   -8.39{col 52}{space 3}0.000{col 60}{space 4}-.1297779{col 73}{space 3}-.0806384
+{txt}{space 2}cov(e.ISOVF,e.OD){c |}{col 20}{res}{space 2} .2363309{col 32}{space 2}  .013555{col 43}{space 1}   17.43{col 52}{space 3}0.000{col 60}{space 4} .2097635{col 73}{space 3} .2628982
+{txt}{space 3}cov(e.ICVF,e.OD){c |}{col 20}{res}{space 2} .0443362{col 32}{space 2} .0137244{col 43}{space 1}    3.23{col 52}{space 3}0.001{col 60}{space 4} .0174369{col 73}{space 3} .0712356
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+LR test of model vs. saturated: chi2({res:11}) = {ralign 7:{res:{ralign 7:1513.89}}}{col 65}Prob > chi2 = {res}{ralign 6:{ralign 6:0.0000}}
+{txt}
+{com}. 
+. estat teffects
+{res}
+
+{txt}Direct effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0879665{col 26}{space 2} .0434938{col 37}{space 1}    2.02{col 46}{space 3}0.043{col 54}{space 4} .0027203{col 67}{space 3} .1732127
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0764338{col 26}{space 2} .0201501{col 37}{space 1}    3.79{col 46}{space 3}0.000{col 54}{space 4} .0369404{col 67}{space 3} .1159272
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0516585{col 26}{space 2} .0021945{col 37}{space 1}   23.54{col 46}{space 3}0.000{col 54}{space 4} .0473573{col 67}{space 3} .0559597
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0763371{col 26}{space 2} .0268434{col 37}{space 1}   -2.84{col 46}{space 3}0.004{col 54}{space 4}-.1289492{col 67}{space 3}-.0237249
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0275499{col 26}{space 2}  .020773{col 37}{space 1}    1.33{col 46}{space 3}0.185{col 54}{space 4}-.0131644{col 67}{space 3} .0682642
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0202492{col 26}{space 2} .0122706{col 37}{space 1}   -1.65{col 46}{space 3}0.099{col 54}{space 4}-.0442992{col 67}{space 3} .0038008
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0897013{col 26}{space 2} .0437596{col 37}{space 1}    2.05{col 46}{space 3}0.040{col 54}{space 4}  .003934{col 67}{space 3} .1754687
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0943217{col 26}{space 2} .0201936{col 37}{space 1}    4.67{col 46}{space 3}0.000{col 54}{space 4}  .054743{col 67}{space 3} .1339004
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0488065{col 26}{space 2}  .002205{col 37}{space 1}   22.13{col 46}{space 3}0.000{col 54}{space 4} .0444847{col 67}{space 3} .0531283
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0691882{col 26}{space 2} .0270069{col 37}{space 1}   -2.56{col 46}{space 3}0.010{col 54}{space 4}-.1221208{col 67}{space 3}-.0162556
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0459731{col 26}{space 2} .0209005{col 37}{space 1}    2.20{col 46}{space 3}0.028{col 54}{space 4} .0050088{col 67}{space 3} .0869373
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0225739{col 26}{space 2} .0123466{col 37}{space 1}   -1.83{col 46}{space 3}0.067{col 54}{space 4}-.0467728{col 67}{space 3} .0016249
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0638844{col 26}{space 2} .0458282{col 37}{space 1}   -1.39{col 46}{space 3}0.163{col 54}{space 4}-.1537061{col 67}{space 3} .0259373
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0394393{col 26}{space 2} .0212293{col 37}{space 1}   -1.86{col 46}{space 3}0.063{col 54}{space 4}-.0810479{col 67}{space 3} .0021693
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0341352{col 26}{space 2} .0023112{col 37}{space 1}  -14.77{col 46}{space 3}0.000{col 54}{space 4} -.038665{col 67}{space 3}-.0296053
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} -.035599{col 26}{space 2} .0282843{col 37}{space 1}   -1.26{col 46}{space 3}0.208{col 54}{space 4}-.0910351{col 67}{space 3} .0198372
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0023681{col 26}{space 2} .0218876{col 37}{space 1}   -0.11{col 46}{space 3}0.914{col 54}{space 4} -.045267{col 67}{space 3} .0405309
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0197327{col 26}{space 2} .0129297{col 37}{space 1}    1.53{col 46}{space 3}0.127{col 54}{space 4}-.0056092{col 67}{space 3} .0450745
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0653697{col 26}{space 2} .0482356{col 37}{space 1}    1.36{col 46}{space 3}0.175{col 54}{space 4}-.0291703{col 67}{space 3} .1599096
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0908777{col 26}{space 2} .0222304{col 37}{space 1}    4.09{col 46}{space 3}0.000{col 54}{space 4} .0473069{col 67}{space 3} .1344486
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0171125{col 26}{space 2} .0024286{col 37}{space 1}    7.05{col 46}{space 3}0.000{col 54}{space 4} .0123526{col 67}{space 3} .0218725
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}  .026046{col 26}{space 2} .0297691{col 37}{space 1}    0.87{col 46}{space 3}0.382{col 54}{space 4}-.0323005{col 67}{space 3} .0843924
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0571977{col 26}{space 2} .0230382{col 37}{space 1}   -2.48{col 46}{space 3}0.013{col 54}{space 4}-.1023518{col 67}{space 3}-.0120436
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0050092{col 26}{space 2} .0136103{col 37}{space 1}   -0.37{col 46}{space 3}0.713{col 54}{space 4}-.0316848{col 67}{space 3} .0216665
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD        {col 14}{c |}
+{space 9}AGE {c |}{col 14}{res}{space 2} .0082901{col 26}{space 2} .0006239{col 37}{space 1}   13.29{col 46}{space 3}0.000{col 54}{space 4} .0070673{col 67}{space 3}  .009513
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0201414{col 26}{space 2} .0090093{col 37}{space 1}   -2.24{col 46}{space 3}0.025{col 54}{space 4}-.0377992{col 67}{space 3}-.0024836
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0423897{col 26}{space 2} .0069866{col 37}{space 1}   -6.07{col 46}{space 3}0.000{col 54}{space 4}-.0560832{col 67}{space 3}-.0286962
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0051696{col 26}{space 2}  .004152{col 37}{space 1}    1.25{col 46}{space 3}0.213{col 54}{space 4}-.0029681{col 67}{space 3} .0133073
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2570031{col 26}{space 2} .0548417{col 37}{space 1}    4.69{col 46}{space 3}0.000{col 54}{space 4} .1495153{col 67}{space 3}  .364491
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0564577{col 26}{space 2} .0024657{col 37}{space 1}   22.90{col 46}{space 3}0.000{col 54}{space 4}  .051625{col 67}{space 3} .0612903
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1856576{col 26}{space 2} .0337591{col 37}{space 1}   -5.50{col 46}{space 3}0.000{col 54}{space 4}-.2518244{col 67}{space 3}-.1194909
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} -.095053{col 26}{space 2} .0262945{col 37}{space 1}   -3.61{col 46}{space 3}0.000{col 54}{space 4}-.1465892{col 67}{space 3}-.0435168
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0395119{col 26}{space 2} .0155499{col 37}{space 1}   -2.54{col 46}{space 3}0.011{col 54}{space 4}-.0699892{col 67}{space 3}-.0090346
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 8}PROT {c |}{col 14}{res}{space 2}        1{col 26}{txt}  (constrained)
+{space 9}AGE {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SEX {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SES {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}HS {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 2}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 8}PROT {c |}{col 14}{res}{space 2} .8747113{col 26}{space 2} .0199286{col 37}{space 1}   43.89{col 46}{space 3}0.000{col 54}{space 4}  .835652{col 67}{space 3} .9137706
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SEX {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SES {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}HS {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.1247645{col 26}{space 2}   .04498{col 37}{space 1}   -2.77{col 46}{space 3}0.006{col 54}{space 4}-.2129238{col 67}{space 3}-.0366052
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0921595{col 26}{space 2} .0208127{col 37}{space 1}   -4.43{col 46}{space 3}0.000{col 54}{space 4}-.1329516{col 67}{space 3}-.0513674
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0398771{col 26}{space 2} .0022689{col 37}{space 1}  -17.58{col 46}{space 3}0.000{col 54}{space 4} -.044324{col 67}{space 3}-.0354302
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0788382{col 26}{space 2} .0277605{col 37}{space 1}   -2.84{col 46}{space 3}0.005{col 54}{space 4}-.1332478{col 67}{space 3}-.0244285
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}  .048976{col 26}{space 2} .0214831{col 37}{space 1}    2.28{col 46}{space 3}0.023{col 54}{space 4} .0068698{col 67}{space 3} .0910822
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0230628{col 26}{space 2} .0126901{col 37}{space 1}    1.82{col 46}{space 3}0.069{col 54}{space 4}-.0018094{col 67}{space 3} .0479349
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+
+Indirect effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0196437{col 26}{space 2} .0066735{col 37}{space 1}    2.94{col 46}{space 3}0.003{col 54}{space 4} .0065639{col 67}{space 3} .0327235
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0052074{col 26}{space 2} .0012113{col 37}{space 1}    4.30{col 46}{space 3}0.000{col 54}{space 4} .0028332{col 67}{space 3} .0075816
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0163579{col 26}{space 2} .0047321{col 37}{space 1}   -3.46{col 46}{space 3}0.001{col 54}{space 4}-.0256327{col 67}{space 3}-.0070832
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0118268{col 26}{space 2} .0034116{col 37}{space 1}   -3.47{col 46}{space 3}0.001{col 54}{space 4}-.0185135{col 67}{space 3}-.0051401
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0024637{col 26}{space 2} .0015114{col 37}{space 1}   -1.63{col 46}{space 3}0.103{col 54}{space 4}-.0054261{col 67}{space 3} .0004986
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}  .024241{col 26}{space 2}  .007331{col 37}{space 1}    3.31{col 46}{space 3}0.001{col 54}{space 4} .0098725{col 67}{space 3} .0386094
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0062698{col 26}{space 2} .0012202{col 37}{space 1}    5.14{col 46}{space 3}0.000{col 54}{space 4} .0038783{col 67}{space 3} .0086613
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0198065{col 26}{space 2} .0051005{col 37}{space 1}   -3.88{col 46}{space 3}0.000{col 54}{space 4}-.0298032{col 67}{space 3}-.0098098
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0137955{col 26}{space 2} .0037198{col 37}{space 1}   -3.71{col 46}{space 3}0.000{col 54}{space 4}-.0210863{col 67}{space 3}-.0065048
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0031378{col 26}{space 2} .0017475{col 37}{space 1}   -1.80{col 46}{space 3}0.073{col 54}{space 4}-.0065628{col 67}{space 3} .0002872
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} -.010136{col 26}{space 2} .0058768{col 37}{space 1}   -1.72{col 46}{space 3}0.085{col 54}{space 4}-.0216543{col 67}{space 3} .0013822
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2}-.0028403{col 26}{space 2} .0012625{col 37}{space 1}   -2.25{col 46}{space 3}0.024{col 54}{space 4}-.0053148{col 67}{space 3}-.0003658
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0088131{col 26}{space 2} .0043154{col 37}{space 1}    2.04{col 46}{space 3}0.041{col 54}{space 4}  .000355{col 67}{space 3} .0172712
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0068865{col 26}{space 2} .0030255{col 37}{space 1}    2.28{col 46}{space 3}0.023{col 54}{space 4} .0009567{col 67}{space 3} .0128164
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0011757{col 26}{space 2} .0011062{col 37}{space 1}    1.06{col 46}{space 3}0.288{col 54}{space 4}-.0009924{col 67}{space 3} .0033438
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0233559{col 26}{space 2}  .007578{col 37}{space 1}    3.08{col 46}{space 3}0.002{col 54}{space 4} .0085032{col 67}{space 3} .0382086
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0058663{col 26}{space 2} .0013348{col 37}{space 1}    4.39{col 46}{space 3}0.000{col 54}{space 4}   .00325{col 67}{space 3} .0084825
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0186592{col 26}{space 2} .0052893{col 37}{space 1}   -3.53{col 46}{space 3}0.000{col 54}{space 4}-.0290261{col 67}{space 3}-.0082923
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0123993{col 26}{space 2}  .003825{col 37}{space 1}   -3.24{col 46}{space 3}0.001{col 54}{space 4} -.019896{col 67}{space 3}-.0049025
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0031321{col 26}{space 2} .0017214{col 37}{space 1}   -1.82{col 46}{space 3}0.069{col 54}{space 4}-.0065059{col 67}{space 3} .0002418
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD        {col 14}{c |}
+{space 9}AGE {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SEX {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SES {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}HS {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 2}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0021306{col 26}{space 2} .0004821{col 37}{space 1}    4.42{col 46}{space 3}0.000{col 54}{space 4} .0011857{col 67}{space 3} .0030755
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0051764{col 26}{space 2} .0025654{col 37}{space 1}   -2.02{col 46}{space 3}0.044{col 54}{space 4}-.0102045{col 67}{space 3}-.0001483
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0108943{col 26}{space 2} .0029374{col 37}{space 1}   -3.71{col 46}{space 3}0.000{col 54}{space 4}-.0166515{col 67}{space 3} -.005137
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0013286{col 26}{space 2} .0011041{col 37}{space 1}    1.20{col 46}{space 3}0.229{col 54}{space 4}-.0008354{col 67}{space 3} .0034926
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2570031{col 26}{space 2} .0548417{col 37}{space 1}    4.69{col 46}{space 3}0.000{col 54}{space 4} .1495153{col 67}{space 3}  .364491
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0585883{col 26}{space 2}  .002436{col 37}{space 1}   24.05{col 46}{space 3}0.000{col 54}{space 4} .0538138{col 67}{space 3} .0633628
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1908341{col 26}{space 2} .0338242{col 37}{space 1}   -5.64{col 46}{space 3}0.000{col 54}{space 4}-.2571283{col 67}{space 3}-.1245398
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.1059473{col 26}{space 2} .0262629{col 37}{space 1}   -4.03{col 46}{space 3}0.000{col 54}{space 4}-.1574217{col 67}{space 3} -.054473
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0381833{col 26}{space 2} .0155843{col 37}{space 1}   -2.45{col 46}{space 3}0.014{col 54}{space 4} -.068728{col 67}{space 3}-.0076386
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2248036{col 26}{space 2} .0479564{col 37}{space 1}    4.69{col 46}{space 3}0.000{col 54}{space 4} .1308107{col 67}{space 3} .3187964
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0512478{col 26}{space 2} .0021341{col 37}{space 1}   24.01{col 46}{space 3}0.000{col 54}{space 4} .0470652{col 67}{space 3} .0554305
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1669247{col 26}{space 2} .0296165{col 37}{space 1}   -5.64{col 46}{space 3}0.000{col 54}{space 4}-.2249719{col 67}{space 3}-.1088775
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0926733{col 26}{space 2} .0229054{col 37}{space 1}   -4.05{col 46}{space 3}0.000{col 54}{space 4}-.1375671{col 67}{space 3}-.0477795
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0333994{col 26}{space 2}  .013679{col 37}{space 1}   -2.44{col 46}{space 3}0.015{col 54}{space 4}-.0602097{col 67}{space 3}-.0065891
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0236853{col 26}{space 2} .0073688{col 37}{space 1}   -3.21{col 46}{space 3}0.001{col 54}{space 4}-.0381279{col 67}{space 3}-.0092427
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2}-.0064338{col 26}{space 2} .0012579{col 37}{space 1}   -5.11{col 46}{space 3}0.000{col 54}{space 4}-.0088992{col 67}{space 3}-.0039684
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0201001{col 26}{space 2} .0052196{col 37}{space 1}    3.85{col 46}{space 3}0.000{col 54}{space 4} .0098699{col 67}{space 3} .0303304
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0150528{col 26}{space 2} .0038012{col 37}{space 1}    3.96{col 46}{space 3}0.000{col 54}{space 4} .0076027{col 67}{space 3} .0225029
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}  .002874{col 26}{space 2} .0017748{col 37}{space 1}    1.62{col 46}{space 3}0.105{col 54}{space 4}-.0006047{col 67}{space 3} .0063526
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+
+Total effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .1076102{col 26}{space 2} .0432941{col 37}{space 1}    2.49{col 46}{space 3}0.013{col 54}{space 4} .0227554{col 67}{space 3} .1924651
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0764338{col 26}{space 2} .0201501{col 37}{space 1}    3.79{col 46}{space 3}0.000{col 54}{space 4} .0369404{col 67}{space 3} .1159272
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0568659{col 26}{space 2} .0018458{col 37}{space 1}   30.81{col 46}{space 3}0.000{col 54}{space 4} .0532481{col 67}{space 3} .0604836
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} -.092695{col 26}{space 2} .0266525{col 37}{space 1}   -3.48{col 46}{space 3}0.001{col 54}{space 4}-.1449329{col 67}{space 3}-.0404571
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0157231{col 26}{space 2} .0206689{col 37}{space 1}    0.76{col 46}{space 3}0.447{col 54}{space 4}-.0247871{col 67}{space 3} .0562333
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0227129{col 26}{space 2} .0122829{col 37}{space 1}   -1.85{col 46}{space 3}0.064{col 54}{space 4} -.046787{col 67}{space 3} .0013612
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .1139423{col 26}{space 2} .0436188{col 37}{space 1}    2.61{col 46}{space 3}0.009{col 54}{space 4} .0284511{col 67}{space 3} .1994335
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0943217{col 26}{space 2} .0201936{col 37}{space 1}    4.67{col 46}{space 3}0.000{col 54}{space 4}  .054743{col 67}{space 3} .1339004
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0550763{col 26}{space 2} .0018598{col 37}{space 1}   29.61{col 46}{space 3}0.000{col 54}{space 4} .0514312{col 67}{space 3} .0587214
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0889947{col 26}{space 2} .0268542{col 37}{space 1}   -3.31{col 46}{space 3}0.001{col 54}{space 4}-.1416279{col 67}{space 3}-.0363614
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0321775{col 26}{space 2} .0208253{col 37}{space 1}    1.55{col 46}{space 3}0.122{col 54}{space 4}-.0086393{col 67}{space 3} .0729943
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0257117{col 26}{space 2} .0123759{col 37}{space 1}   -2.08{col 46}{space 3}0.038{col 54}{space 4} -.049968{col 67}{space 3}-.0014554
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0740204{col 26}{space 2} .0455295{col 37}{space 1}   -1.63{col 46}{space 3}0.104{col 54}{space 4}-.1632566{col 67}{space 3} .0152157
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0394393{col 26}{space 2} .0212293{col 37}{space 1}   -1.86{col 46}{space 3}0.063{col 54}{space 4}-.0810479{col 67}{space 3} .0021693
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0369754{col 26}{space 2} .0019404{col 37}{space 1}  -19.06{col 46}{space 3}0.000{col 54}{space 4}-.0407785{col 67}{space 3}-.0331724
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0267859{col 26}{space 2}  .028018{col 37}{space 1}   -0.96{col 46}{space 3}0.339{col 54}{space 4}-.0817002{col 67}{space 3} .0281284
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0045185{col 26}{space 2} .0217278{col 37}{space 1}    0.21{col 46}{space 3}0.835{col 54}{space 4}-.0380673{col 67}{space 3} .0471042
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0209083{col 26}{space 2} .0129122{col 37}{space 1}    1.62{col 46}{space 3}0.105{col 54}{space 4}-.0043992{col 67}{space 3} .0462159
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0887255{col 26}{space 2} .0480386{col 37}{space 1}    1.85{col 46}{space 3}0.065{col 54}{space 4}-.0054284{col 67}{space 3} .1828794
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0908777{col 26}{space 2} .0222304{col 37}{space 1}    4.09{col 46}{space 3}0.000{col 54}{space 4} .0473069{col 67}{space 3} .1344486
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0229788{col 26}{space 2} .0020475{col 37}{space 1}   11.22{col 46}{space 3}0.000{col 54}{space 4} .0189658{col 67}{space 3} .0269918
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0073868{col 26}{space 2} .0295645{col 37}{space 1}    0.25{col 46}{space 3}0.803{col 54}{space 4}-.0505586{col 67}{space 3} .0653321
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0695969{col 26}{space 2} .0229271{col 37}{space 1}   -3.04{col 46}{space 3}0.002{col 54}{space 4}-.1145332{col 67}{space 3}-.0246606
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0081412{col 26}{space 2} .0136249{col 37}{space 1}   -0.60{col 46}{space 3}0.550{col 54}{space 4}-.0348456{col 67}{space 3} .0185632
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD        {col 14}{c |}
+{space 9}AGE {c |}{col 14}{res}{space 2} .0082901{col 26}{space 2} .0006239{col 37}{space 1}   13.29{col 46}{space 3}0.000{col 54}{space 4} .0070673{col 67}{space 3}  .009513
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0201414{col 26}{space 2} .0090093{col 37}{space 1}   -2.24{col 46}{space 3}0.025{col 54}{space 4}-.0377992{col 67}{space 3}-.0024836
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0423897{col 26}{space 2} .0069866{col 37}{space 1}   -6.07{col 46}{space 3}0.000{col 54}{space 4}-.0560832{col 67}{space 3}-.0286962
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0051696{col 26}{space 2}  .004152{col 37}{space 1}    1.25{col 46}{space 3}0.213{col 54}{space 4}-.0029681{col 67}{space 3} .0133073
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2570031{col 26}{space 2} .0548417{col 37}{space 1}    4.69{col 46}{space 3}0.000{col 54}{space 4} .1495153{col 67}{space 3}  .364491
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0585883{col 26}{space 2}  .002436{col 37}{space 1}   24.05{col 46}{space 3}0.000{col 54}{space 4} .0538138{col 67}{space 3} .0633628
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1908341{col 26}{space 2} .0338242{col 37}{space 1}   -5.64{col 46}{space 3}0.000{col 54}{space 4}-.2571283{col 67}{space 3}-.1245398
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.1059473{col 26}{space 2} .0262629{col 37}{space 1}   -4.03{col 46}{space 3}0.000{col 54}{space 4}-.1574217{col 67}{space 3} -.054473
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0381833{col 26}{space 2} .0155843{col 37}{space 1}   -2.45{col 46}{space 3}0.014{col 54}{space 4} -.068728{col 67}{space 3}-.0076386
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2570031{col 26}{space 2} .0548417{col 37}{space 1}    4.69{col 46}{space 3}0.000{col 54}{space 4} .1495153{col 67}{space 3}  .364491
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        1{col 26}{txt}  (constrained)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0585883{col 26}{space 2}  .002436{col 37}{space 1}   24.05{col 46}{space 3}0.000{col 54}{space 4} .0538138{col 67}{space 3} .0633628
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1908341{col 26}{space 2} .0338242{col 37}{space 1}   -5.64{col 46}{space 3}0.000{col 54}{space 4}-.2571283{col 67}{space 3}-.1245398
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.1059473{col 26}{space 2} .0262629{col 37}{space 1}   -4.03{col 46}{space 3}0.000{col 54}{space 4}-.1574217{col 67}{space 3} -.054473
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0381833{col 26}{space 2} .0155843{col 37}{space 1}   -2.45{col 46}{space 3}0.014{col 54}{space 4} -.068728{col 67}{space 3}-.0076386
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2248036{col 26}{space 2} .0479564{col 37}{space 1}    4.69{col 46}{space 3}0.000{col 54}{space 4} .1308107{col 67}{space 3} .3187964
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .8747113{col 26}{space 2} .0199286{col 37}{space 1}   43.89{col 46}{space 3}0.000{col 54}{space 4}  .835652{col 67}{space 3} .9137706
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0512478{col 26}{space 2} .0021341{col 37}{space 1}   24.01{col 46}{space 3}0.000{col 54}{space 4} .0470652{col 67}{space 3} .0554305
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1669247{col 26}{space 2} .0296165{col 37}{space 1}   -5.64{col 46}{space 3}0.000{col 54}{space 4}-.2249719{col 67}{space 3}-.1088775
+{txt}{space 9}SES {c |}{col 14}{res}{space 2}-.0926733{col 26}{space 2} .0229054{col 37}{space 1}   -4.05{col 46}{space 3}0.000{col 54}{space 4}-.1375671{col 67}{space 3}-.0477795
+{txt}{space 10}HS {c |}{col 14}{res}{space 2}-.0333994{col 26}{space 2}  .013679{col 37}{space 1}   -2.44{col 46}{space 3}0.015{col 54}{space 4}-.0602097{col 67}{space 3}-.0065891
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.1484498{col 26}{space 2} .0448158{col 37}{space 1}   -3.31{col 46}{space 3}0.001{col 54}{space 4}-.2362872{col 67}{space 3}-.0606123
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0921595{col 26}{space 2} .0208127{col 37}{space 1}   -4.43{col 46}{space 3}0.000{col 54}{space 4}-.1329516{col 67}{space 3}-.0513674
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0463109{col 26}{space 2} .0019117{col 37}{space 1}  -24.23{col 46}{space 3}0.000{col 54}{space 4}-.0500576{col 67}{space 3}-.0425641
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} -.058738{col 26}{space 2} .0276035{col 37}{space 1}   -2.13{col 46}{space 3}0.033{col 54}{space 4}-.1128398{col 67}{space 3}-.0046363
+{txt}{space 9}SES {c |}{col 14}{res}{space 2} .0640288{col 26}{space 2} .0214063{col 37}{space 1}    2.99{col 46}{space 3}0.003{col 54}{space 4} .0220731{col 67}{space 3} .1059844
+{txt}{space 10}HS {c |}{col 14}{res}{space 2} .0259367{col 26}{space 2} .0127212{col 37}{space 1}    2.04{col 46}{space 3}0.041{col 54}{space 4} .0010037{col 67}{space 3} .0508698
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. **ADJUSTED FOR AGE AND SEX ONLY**
+. sem (AGE -> FA, ) (AGE -> MD, ) (AGE -> ISOVF, ) (AGE -> ICVF, ) (AGE -> OD, ) (AGE -> PROT, ) (AGE -> PD, ) (PROT <- _cons@0, ) (PROT -> FA, ) (PROT -> MD, ) (PROT -> ISOVF, ) (PROT -> ICVF, ) (PROT -> OD, ) (PROT@1 -> M1, ) (PROT -> M2, )  (SEX -> FA, ) (SEX -> MD, ) (SEX -> ISOVF, ) (SEX -> ICVF, ) (SEX -> OD, ) (SEX -> PROT, ) (SEX -> PD, ) (PD -> FA, ) (PD -> MD, ) (PD -> ISOVF, ) (PD -> ICVF, ) (PD -> OD, ) (PD -> PROT, )  if sample_final==1, latent(PROT ) cov(e.FA*e.MD e.FA*e.ICVF e.FA*e.ISOVF e.FA*e.OD e.MD*e.ICVF e.MD*e.ISOVF e.MD*e.OD e.ICVF*e.ISOVF e.ICVF*e.OD e.ISOVF*e.OD e.PROT@1 e.M1@1) nocapslatent
+{res}{txt}(426 observations with missing values excluded)
+
+Endogenous variables
+{p 2 15 2}Observed:{space 4}{res}FA MD ISOVF ICVF OD PD{p_end}
+{txt}{p 2 15 2}Measurement:{space 1}{res}M1 M2{p_end}
+{txt}{p 2 15 2}Latent:{space 6}{res}PROT{p_end}
+{txt}
+Exogenous variables
+{p 2 12 2}Observed:{space 1}{res}AGE SEX{p_end}
+{txt}
+Fitting target model:
+Iteration 0:{space 2}Log likelihood = {res:  -75246.3}  (not concave)
+Iteration 1:{space 2}Log likelihood = {res: -72376.43}  (not concave)
+Iteration 2:{space 2}Log likelihood = {res:-60864.725}  (not concave)
+Iteration 3:{space 2}Log likelihood = {res:-59657.078}  (not concave)
+Iteration 4:{space 2}Log likelihood = {res:-58645.363}  (not concave)
+Iteration 5:{space 2}Log likelihood = {res:-57751.359}  (not concave)
+Iteration 6:{space 2}Log likelihood = {res:-56177.609}  (not concave)
+Iteration 7:{space 2}Log likelihood = {res:-55176.165}  (not concave)
+Iteration 8:{space 2}Log likelihood = {res:-53758.581}  (not concave)
+Iteration 9:{space 2}Log likelihood = {res:-53451.497}  (not concave)
+Iteration 10:{space 1}Log likelihood = {res:-53320.102}  (not concave)
+Iteration 11:{space 1}Log likelihood = {res:-53258.128}  (not concave)
+Iteration 12:{space 1}Log likelihood = {res:-53209.986}  (not concave)
+Iteration 13:{space 1}Log likelihood = {res:-53183.885}  (not concave)
+Iteration 14:{space 1}Log likelihood = {res:-53155.974}  
+Iteration 15:{space 1}Log likelihood = {res:-53042.027}  (not concave)
+Iteration 16:{space 1}Log likelihood = {res:-52981.499}  (not concave)
+Iteration 17:{space 1}Log likelihood = {res:-52936.873}  
+Iteration 18:{space 1}Log likelihood = {res:-52849.767}  (not concave)
+Iteration 19:{space 1}Log likelihood = {res:-52839.137}  
+Iteration 20:{space 1}Log likelihood = {res:-52790.049}  (not concave)
+Iteration 21:{space 1}Log likelihood = {res:-52744.682}  (not concave)
+Iteration 22:{space 1}Log likelihood = {res:-52733.575}  
+Iteration 23:{space 1}Log likelihood = {res:-52682.235}  (not concave)
+Iteration 24:{space 1}Log likelihood = {res:-52665.724}  
+Iteration 25:{space 1}Log likelihood = {res:-52629.369}  (not concave)
+Iteration 26:{space 1}Log likelihood = {res: -52602.21}  
+Iteration 27:{space 1}Log likelihood = {res:-52490.942}  
+Iteration 28:{space 1}Log likelihood = {res:-52483.729}  
+Iteration 29:{space 1}Log likelihood = {res:-52483.247}  
+Iteration 30:{space 1}Log likelihood = {res:-52483.246}  
+
+{col 1}Structural equation model{col 58}{lalign 13:Number of obs}{col 71} = {res}{ralign 5:4,663}
+{txt}{col 1}Estimation method: {res:ml}
+
+{col 1}{lalign 14:Log likelihood}{col 15} = {res}{ralign 10:-52483.246}
+
+{p 0 7}{space 1}{text:( 1)}{space 1} [M1]PROT = 1{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [/]var(e.M1) = 1{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [/]var(e.PROT) = 1{p_end}
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 20}{c |}{col 32}      OIM
+{col 20}{c |} Coefficient{col 32}  std. err.{col 44}      z{col 52}   P>|z|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural        {col 20}{txt}{c |}
+{space 2}{col 3}FA              {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2}-.1321562{col 32}{space 2} .0449115{col 43}{space 1}   -2.94{col 52}{space 3}0.003{col 60}{space 4}-.2201812{col 73}{space 3}-.0441313
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2}-.0995892{col 32}{space 2} .0207925{col 43}{space 1}   -4.79{col 52}{space 3}0.000{col 60}{space 4}-.1403417{col 73}{space 3}-.0588367
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0412108{col 32}{space 2} .0021877{col 43}{space 1}  -18.84{col 52}{space 3}0.000{col 60}{space 4}-.0454985{col 73}{space 3}-.0369231
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0898123{col 32}{space 2} .0275871{col 43}{space 1}   -3.26{col 52}{space 3}0.001{col 60}{space 4}-.1438821{col 73}{space 3}-.0357426
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} 2.702062{col 32}{space 2} .1109611{col 43}{space 1}   24.35{col 52}{space 3}0.000{col 60}{space 4} 2.484582{col 73}{space 3} 2.919541
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}MD              {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .0829513{col 32}{space 2} .0433857{col 43}{space 1}    1.91{col 52}{space 3}0.056{col 60}{space 4}-.0020832{col 73}{space 3} .1679857
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2} .0769371{col 32}{space 2} .0200993{col 43}{space 1}    3.83{col 52}{space 3}0.000{col 60}{space 4} .0375432{col 73}{space 3}  .116331
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0525915{col 32}{space 2} .0021134{col 43}{space 1}   24.88{col 52}{space 3}0.000{col 60}{space 4} .0484492{col 73}{space 3} .0567338
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0748528{col 32}{space 2}   .02665{col 43}{space 1}   -2.81{col 52}{space 3}0.005{col 60}{space 4}-.1270858{col 73}{space 3}-.0226197
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-2.994304{col 32}{space 2} .1070341{col 43}{space 1}  -27.98{col 52}{space 3}0.000{col 60}{space 4}-3.204088{col 73}{space 3}-2.784521
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF           {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .0816472{col 32}{space 2} .0436635{col 43}{space 1}    1.87{col 52}{space 3}0.061{col 60}{space 4}-.0039317{col 73}{space 3} .1672262
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2} .0934951{col 32}{space 2} .0201505{col 43}{space 1}    4.64{col 52}{space 3}0.000{col 60}{space 4} .0540008{col 73}{space 3} .1329893
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0498008{col 32}{space 2} .0021237{col 43}{space 1}   23.45{col 52}{space 3}0.000{col 60}{space 4} .0456385{col 73}{space 3} .0539632
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0693125{col 32}{space 2} .0268208{col 43}{space 1}   -2.58{col 52}{space 3}0.010{col 60}{space 4}-.1218803{col 73}{space 3}-.0167447
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-2.898319{col 32}{space 2} .1078576{col 43}{space 1}  -26.87{col 52}{space 3}0.000{col 60}{space 4}-3.109716{col 73}{space 3}-2.686922
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF            {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2}-.0630155{col 32}{space 2} .0457089{col 43}{space 1}   -1.38{col 52}{space 3}0.168{col 60}{space 4}-.1526033{col 73}{space 3} .0265722
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2}-.0418965{col 32}{space 2} .0211779{col 43}{space 1}   -1.98{col 52}{space 3}0.048{col 60}{space 4}-.0834045{col 73}{space 3}-.0003886
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0351322{col 32}{space 2} .0022258{col 43}{space 1}  -15.78{col 52}{space 3}0.000{col 60}{space 4}-.0394946{col 73}{space 3}-.0307698
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0398587{col 32}{space 2} .0280773{col 43}{space 1}   -1.42{col 52}{space 3}0.156{col 60}{space 4}-.0948893{col 73}{space 3} .0151718
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} 2.111415{col 32}{space 2} .1125529{col 43}{space 1}   18.76{col 52}{space 3}0.000{col 60}{space 4} 1.890815{col 73}{space 3} 2.332015
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD              {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .0745068{col 32}{space 2} .0481383{col 43}{space 1}    1.55{col 52}{space 3}0.122{col 60}{space 4}-.0198425{col 73}{space 3} .1688561
+{txt}{space 14}PROT {c |}{col 20}{res}{space 2} .0967347{col 32}{space 2} .0221925{col 43}{space 1}    4.36{col 52}{space 3}0.000{col 60}{space 4} .0532382{col 73}{space 3} .1402312
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0175469{col 32}{space 2} .0023396{col 43}{space 1}    7.50{col 52}{space 3}0.000{col 60}{space 4} .0129614{col 73}{space 3} .0221325
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2} .0338437{col 32}{space 2} .0295697{col 43}{space 1}    1.14{col 52}{space 3}0.252{col 60}{space 4}-.0241119{col 73}{space 3} .0917994
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-1.307954{col 32}{space 2} .1188629{col 43}{space 1}  -11.00{col 52}{space 3}0.000{col 60}{space 4}-1.540921{col 73}{space 3}-1.074987
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD              {col 20}{c |}
+{space 15}AGE {c |}{col 20}{res}{space 2} .0084101{col 32}{space 2} .0005792{col 43}{space 1}   14.52{col 52}{space 3}0.000{col 60}{space 4}  .007275{col 73}{space 3} .0095452
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0170563{col 32}{space 2} .0089932{col 43}{space 1}   -1.90{col 52}{space 3}0.058{col 60}{space 4}-.0346825{col 73}{space 3}   .00057
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-.3240549{col 32}{space 2} .0360207{col 43}{space 1}   -9.00{col 52}{space 3}0.000{col 60}{space 4}-.3946541{col 73}{space 3}-.2534557
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT            {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .2750223{col 32}{space 2} .0546821{col 43}{space 1}    5.03{col 52}{space 3}0.000{col 60}{space 4} .1678473{col 73}{space 3} .3821973
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}  .059531{col 32}{space 2} .0023017{col 43}{space 1}   25.86{col 52}{space 3}0.000{col 60}{space 4} .0550197{col 73}{space 3} .0640423
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.1676834{col 32}{space 2} .0335764{col 43}{space 1}   -4.99{col 52}{space 3}0.000{col 60}{space 4}-.2334919{col 73}{space 3} -.101875
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement       {col 20}{txt}{c |}
+{space 2}{col 3}M1              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{space 13}_cons {c |}{col 20}{res}{space 2}-3.023421{col 32}{space 2} .1399766{col 43}{space 1}  -21.60{col 52}{space 3}0.000{col 60}{space 4} -3.29777{col 73}{space 3}-2.749072
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2} .8750755{col 32}{space 2}  .020014{col 43}{space 1}   43.72{col 52}{space 3}0.000{col 60}{space 4} .8358487{col 73}{space 3} .9143022
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-2.643085{col 32}{space 2} .1233653{col 43}{space 1}  -21.42{col 52}{space 3}0.000{col 60}{space 4}-2.884876{col 73}{space 3}-2.401293
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}var(e.FA){c |}{col 20}{res}{space 2} .8559046{col 32}{space 2} .0177982{col 60}{space 4} .8217221{col 73}{space 3}  .891509
+{txt}{space 10}var(e.MD){c |}{col 20}{res}{space 2} .7997045{col 32}{space 2} .0166053{col 60}{space 4} .7678122{col 73}{space 3} .8329216
+{txt}{space 7}var(e.ISOVF){c |}{col 20}{res}{space 2} .8093262{col 32}{space 2} .0168236{col 60}{space 4} .7770152{col 73}{space 3} .8429807
+{txt}{space 8}var(e.ICVF){c |}{col 20}{res}{space 2} .8890876{col 32}{space 2} .0184259{col 60}{space 4} .8536971{col 73}{space 3} .9259452
+{txt}{space 10}var(e.OD){c |}{col 20}{res}{space 2} .9841708{col 32}{space 2} .0204484{col 60}{space 4} .9448977{col 73}{space 3} 1.025076
+{txt}{space 10}var(e.PD){c |}{col 20}{res}{space 2} .0928249{col 32}{space 2} .0019224{col 60}{space 4} .0891325{col 73}{space 3} .0966702
+{txt}{space 10}var(e.M1){c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{space 10}var(e.M2){c |}{col 20}{res}{space 2} .3112293{col 32}{space 2} .0222599{col 60}{space 4} .2705207{col 73}{space 3} .3580639
+{txt}{space 8}var(e.PROT){c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}cov(e.FA,e.MD){c |}{col 20}{res}{space 2}-.6468108{col 32}{space 2} .0154354{col 43}{space 1}  -41.90{col 52}{space 3}0.000{col 60}{space 4}-.6770636{col 73}{space 3}-.6165581
+{txt}{space 2}cov(e.FA,e.ISOVF){c |}{col 20}{res}{space 2}-.3598761{col 32}{space 2} .0133417{col 43}{space 1}  -26.97{col 52}{space 3}0.000{col 60}{space 4}-.3860253{col 73}{space 3}-.3337269
+{txt}{space 3}cov(e.FA,e.ICVF){c |}{col 20}{res}{space 2} .6382941{col 32}{space 2} .0158668{col 43}{space 1}   40.23{col 52}{space 3}0.000{col 60}{space 4} .6071957{col 73}{space 3} .6693924
+{txt}{space 5}cov(e.FA,e.OD){c |}{col 20}{res}{space 2}-.4775563{col 32}{space 2} .0152171{col 43}{space 1}  -31.38{col 52}{space 3}0.000{col 60}{space 4}-.5073812{col 73}{space 3}-.4477314
+{txt}{space 2}cov(e.MD,e.ISOVF){c |}{col 20}{res}{space 2} .5552246{col 32}{space 2} .0143665{col 43}{space 1}   38.65{col 52}{space 3}0.000{col 60}{space 4} .5270668{col 73}{space 3} .5833824
+{txt}{space 3}cov(e.MD,e.ICVF){c |}{col 20}{res}{space 2} -.647416{col 32}{space 2} .0155946{col 43}{space 1}  -41.52{col 52}{space 3}0.000{col 60}{space 4}-.6779807{col 73}{space 3}-.6168512
+{txt}{space 5}cov(e.MD,e.OD){c |}{col 20}{res}{space 2} .1288911{col 32}{space 2} .0131715{col 43}{space 1}    9.79{col 52}{space 3}0.000{col 60}{space 4} .1030753{col 73}{space 3} .1547069
+{txt}cov(e.ISOVF,e.ICVF){c |}{col 20}{res}{space 2}-.1055955{col 32}{space 2} .0125486{col 43}{space 1}   -8.41{col 52}{space 3}0.000{col 60}{space 4}-.1301902{col 73}{space 3}-.0810007
+{txt}{space 2}cov(e.ISOVF,e.OD){c |}{col 20}{res}{space 2} .2354775{col 32}{space 2} .0135726{col 43}{space 1}   17.35{col 52}{space 3}0.000{col 60}{space 4} .2088756{col 73}{space 3} .2620793
+{txt}{space 3}cov(e.ICVF,e.OD){c |}{col 20}{res}{space 2} .0441454{col 32}{space 2} .0137405{col 43}{space 1}    3.21{col 52}{space 3}0.001{col 60}{space 4} .0172145{col 73}{space 3} .0710762
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+LR test of model vs. saturated: chi2({res:9}) = {ralign 7:{res:{ralign 7:1473.93}}}{col 65}Prob > chi2 = {res}{ralign 6:{ralign 6:0.0000}}
+{txt}
+{com}. 
+. estat teffects
+{res}
+
+{txt}Direct effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0829513{col 26}{space 2} .0433857{col 37}{space 1}    1.91{col 46}{space 3}0.056{col 54}{space 4}-.0020832{col 67}{space 3} .1679857
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0769371{col 26}{space 2} .0200993{col 37}{space 1}    3.83{col 46}{space 3}0.000{col 54}{space 4} .0375432{col 67}{space 3}  .116331
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0525915{col 26}{space 2} .0021134{col 37}{space 1}   24.88{col 46}{space 3}0.000{col 54}{space 4} .0484492{col 67}{space 3} .0567338
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0748528{col 26}{space 2}   .02665{col 37}{space 1}   -2.81{col 46}{space 3}0.005{col 54}{space 4}-.1270858{col 67}{space 3}-.0226197
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0816472{col 26}{space 2} .0436635{col 37}{space 1}    1.87{col 46}{space 3}0.061{col 54}{space 4}-.0039317{col 67}{space 3} .1672262
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0934951{col 26}{space 2} .0201505{col 37}{space 1}    4.64{col 46}{space 3}0.000{col 54}{space 4} .0540008{col 67}{space 3} .1329893
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0498008{col 26}{space 2} .0021237{col 37}{space 1}   23.45{col 46}{space 3}0.000{col 54}{space 4} .0456385{col 67}{space 3} .0539632
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0693125{col 26}{space 2} .0268208{col 37}{space 1}   -2.58{col 46}{space 3}0.010{col 54}{space 4}-.1218803{col 67}{space 3}-.0167447
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0630155{col 26}{space 2} .0457089{col 37}{space 1}   -1.38{col 46}{space 3}0.168{col 54}{space 4}-.1526033{col 67}{space 3} .0265722
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0418965{col 26}{space 2} .0211779{col 37}{space 1}   -1.98{col 46}{space 3}0.048{col 54}{space 4}-.0834045{col 67}{space 3}-.0003886
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0351322{col 26}{space 2} .0022258{col 37}{space 1}  -15.78{col 46}{space 3}0.000{col 54}{space 4}-.0394946{col 67}{space 3}-.0307698
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0398587{col 26}{space 2} .0280773{col 37}{space 1}   -1.42{col 46}{space 3}0.156{col 54}{space 4}-.0948893{col 67}{space 3} .0151718
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0745068{col 26}{space 2} .0481383{col 37}{space 1}    1.55{col 46}{space 3}0.122{col 54}{space 4}-.0198425{col 67}{space 3} .1688561
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0967347{col 26}{space 2} .0221925{col 37}{space 1}    4.36{col 46}{space 3}0.000{col 54}{space 4} .0532382{col 67}{space 3} .1402312
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0175469{col 26}{space 2} .0023396{col 37}{space 1}    7.50{col 46}{space 3}0.000{col 54}{space 4} .0129614{col 67}{space 3} .0221325
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0338437{col 26}{space 2} .0295697{col 37}{space 1}    1.14{col 46}{space 3}0.252{col 54}{space 4}-.0241119{col 67}{space 3} .0917994
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD        {col 14}{c |}
+{space 9}AGE {c |}{col 14}{res}{space 2} .0084101{col 26}{space 2} .0005792{col 37}{space 1}   14.52{col 46}{space 3}0.000{col 54}{space 4}  .007275{col 67}{space 3} .0095452
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0170563{col 26}{space 2} .0089932{col 37}{space 1}   -1.90{col 46}{space 3}0.058{col 54}{space 4}-.0346825{col 67}{space 3}   .00057
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2750223{col 26}{space 2} .0546821{col 37}{space 1}    5.03{col 46}{space 3}0.000{col 54}{space 4} .1678473{col 67}{space 3} .3821973
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}  .059531{col 26}{space 2} .0023017{col 37}{space 1}   25.86{col 46}{space 3}0.000{col 54}{space 4} .0550197{col 67}{space 3} .0640423
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1676834{col 26}{space 2} .0335764{col 37}{space 1}   -4.99{col 46}{space 3}0.000{col 54}{space 4}-.2334919{col 67}{space 3} -.101875
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 8}PROT {c |}{col 14}{res}{space 2}        1{col 26}{txt}  (constrained)
+{space 9}AGE {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SEX {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 2}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 8}PROT {c |}{col 14}{res}{space 2} .8750755{col 26}{space 2}  .020014{col 37}{space 1}   43.72{col 46}{space 3}0.000{col 54}{space 4} .8358487{col 67}{space 3} .9143022
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SEX {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.1321562{col 26}{space 2} .0449115{col 37}{space 1}   -2.94{col 46}{space 3}0.003{col 54}{space 4}-.2201812{col 67}{space 3}-.0441313
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0995892{col 26}{space 2} .0207925{col 37}{space 1}   -4.79{col 46}{space 3}0.000{col 54}{space 4}-.1403417{col 67}{space 3}-.0588367
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0412108{col 26}{space 2} .0021877{col 37}{space 1}  -18.84{col 46}{space 3}0.000{col 54}{space 4}-.0454985{col 67}{space 3}-.0369231
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0898123{col 26}{space 2} .0275871{col 37}{space 1}   -3.26{col 46}{space 3}0.001{col 54}{space 4}-.1438821{col 67}{space 3}-.0357426
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+
+Indirect effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0211594{col 26}{space 2} .0069593{col 37}{space 1}    3.04{col 46}{space 3}0.002{col 54}{space 4} .0075195{col 67}{space 3} .0347993
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0054557{col 26}{space 2} .0012657{col 37}{space 1}    4.31{col 46}{space 3}0.000{col 54}{space 4}  .002975{col 67}{space 3} .0079365
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0146768{col 26}{space 2} .0044145{col 37}{space 1}   -3.32{col 46}{space 3}0.001{col 54}{space 4} -.023329{col 67}{space 3}-.0060246
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0257132{col 26}{space 2} .0075436{col 37}{space 1}    3.41{col 46}{space 3}0.001{col 54}{space 4} .0109281{col 67}{space 3} .0404984
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0064688{col 26}{space 2} .0012732{col 37}{space 1}    5.08{col 46}{space 3}0.000{col 54}{space 4} .0039733{col 67}{space 3} .0089642
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0175087{col 26}{space 2} .0047698{col 37}{space 1}   -3.67{col 46}{space 3}0.000{col 54}{space 4}-.0268574{col 67}{space 3}-.0081601
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0115225{col 26}{space 2}  .006268{col 37}{space 1}   -1.84{col 46}{space 3}0.066{col 54}{space 4}-.0238076{col 67}{space 3} .0007626
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} -.003121{col 26}{space 2} .0013227{col 37}{space 1}   -2.36{col 46}{space 3}0.018{col 54}{space 4}-.0057135{col 67}{space 3}-.0005286
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0082967{col 26}{space 2} .0039581{col 37}{space 1}    2.10{col 46}{space 3}0.036{col 54}{space 4} .0005389{col 67}{space 3} .0160545
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .0266042{col 26}{space 2} .0080731{col 37}{space 1}    3.30{col 46}{space 3}0.001{col 54}{space 4} .0107812{col 67}{space 3} .0424272
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0066091{col 26}{space 2} .0013981{col 37}{space 1}    4.73{col 46}{space 3}0.000{col 54}{space 4} .0038688{col 67}{space 3} .0093494
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0179454{col 26}{space 2}  .005085{col 37}{space 1}   -3.53{col 46}{space 3}0.000{col 54}{space 4}-.0279117{col 67}{space 3}-.0079791
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD        {col 14}{c |}
+{space 9}AGE {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}SEX {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 2}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2}  .002313{col 26}{space 2} .0004867{col 37}{space 1}    4.75{col 46}{space 3}0.000{col 54}{space 4} .0013591{col 67}{space 3} .0032668
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0046909{col 26}{space 2} .0026433{col 37}{space 1}   -1.77{col 46}{space 3}0.076{col 54}{space 4}-.0098717{col 67}{space 3}   .00049
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2750223{col 26}{space 2} .0546821{col 37}{space 1}    5.03{col 46}{space 3}0.000{col 54}{space 4} .1678473{col 67}{space 3} .3821973
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2}  .061844{col 26}{space 2} .0022697{col 37}{space 1}   27.25{col 46}{space 3}0.000{col 54}{space 4} .0573954{col 67}{space 3} .0662925
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1723743{col 26}{space 2} .0336578{col 37}{space 1}   -5.12{col 46}{space 3}0.000{col 54}{space 4}-.2383423{col 67}{space 3}-.1064063
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2406653{col 26}{space 2} .0478218{col 37}{space 1}    5.03{col 46}{space 3}0.000{col 54}{space 4} .1469364{col 67}{space 3} .3343942
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2} .0541181{col 26}{space 2} .0020168{col 37}{space 1}   26.83{col 46}{space 3}0.000{col 54}{space 4} .0501653{col 67}{space 3}  .058071
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1508405{col 26}{space 2} .0294686{col 37}{space 1}   -5.12{col 46}{space 3}0.000{col 54}{space 4}-.2085979{col 67}{space 3}-.0930831
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.0273892{col 26}{space 2} .0079091{col 37}{space 1}   -3.46{col 46}{space 3}0.001{col 54}{space 4}-.0428908{col 67}{space 3}-.0118877
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 9}AGE {c |}{col 14}{res}{space 2}-.0072704{col 26}{space 2} .0013181{col 37}{space 1}   -5.52{col 46}{space 3}0.000{col 54}{space 4}-.0098539{col 67}{space 3} -.004687
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0194207{col 26}{space 2} .0051003{col 37}{space 1}    3.81{col 46}{space 3}0.000{col 54}{space 4} .0094243{col 67}{space 3} .0294171
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+
+Total effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .1041107{col 26}{space 2} .0431421{col 37}{space 1}    2.41{col 46}{space 3}0.016{col 54}{space 4} .0195537{col 67}{space 3} .1886677
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0769371{col 26}{space 2} .0200993{col 37}{space 1}    3.83{col 46}{space 3}0.000{col 54}{space 4} .0375432{col 67}{space 3}  .116331
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0580472{col 26}{space 2} .0017073{col 37}{space 1}   34.00{col 46}{space 3}0.000{col 54}{space 4} .0547011{col 67}{space 3} .0613934
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0895296{col 26}{space 2} .0265104{col 37}{space 1}   -3.38{col 46}{space 3}0.001{col 54}{space 4}-.1414891{col 67}{space 3}-.0375701
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .1073605{col 26}{space 2}  .043474{col 37}{space 1}    2.47{col 46}{space 3}0.014{col 54}{space 4}  .022153{col 67}{space 3}  .192568
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0934951{col 26}{space 2} .0201505{col 37}{space 1}    4.64{col 46}{space 3}0.000{col 54}{space 4} .0540008{col 67}{space 3} .1329893
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0562696{col 26}{space 2} .0017204{col 37}{space 1}   32.71{col 46}{space 3}0.000{col 54}{space 4} .0528976{col 67}{space 3} .0596416
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0868212{col 26}{space 2} .0267152{col 37}{space 1}   -3.25{col 46}{space 3}0.001{col 54}{space 4} -.139182{col 67}{space 3}-.0344604
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} -.074538{col 26}{space 2} .0453665{col 37}{space 1}   -1.64{col 46}{space 3}0.100{col 54}{space 4}-.1634548{col 67}{space 3} .0143788
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0418965{col 26}{space 2} .0211779{col 37}{space 1}   -1.98{col 46}{space 3}0.048{col 54}{space 4}-.0834045{col 67}{space 3}-.0003886
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0382532{col 26}{space 2} .0017947{col 37}{space 1}  -21.31{col 46}{space 3}0.000{col 54}{space 4}-.0417707{col 67}{space 3}-.0347357
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0315621{col 26}{space 2}  .027868{col 37}{space 1}   -1.13{col 46}{space 3}0.257{col 54}{space 4}-.0861824{col 67}{space 3} .0230583
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}  .101111{col 26}{space 2} .0479099{col 37}{space 1}    2.11{col 46}{space 3}0.035{col 54}{space 4} .0072093{col 67}{space 3} .1950127
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .0967347{col 26}{space 2} .0221925{col 37}{space 1}    4.36{col 46}{space 3}0.000{col 54}{space 4} .0532382{col 67}{space 3} .1402312
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}  .024156{col 26}{space 2} .0018956{col 37}{space 1}   12.74{col 46}{space 3}0.000{col 54}{space 4} .0204406{col 67}{space 3} .0278714
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2} .0158984{col 26}{space 2} .0294359{col 37}{space 1}    0.54{col 46}{space 3}0.589{col 54}{space 4} -.041795{col 67}{space 3} .0735917
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PD        {col 14}{c |}
+{space 9}AGE {c |}{col 14}{res}{space 2} .0084101{col 26}{space 2} .0005792{col 37}{space 1}   14.52{col 46}{space 3}0.000{col 54}{space 4}  .007275{col 67}{space 3} .0095452
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0170563{col 26}{space 2} .0089932{col 37}{space 1}   -1.90{col 46}{space 3}0.058{col 54}{space 4}-.0346825{col 67}{space 3}   .00057
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2750223{col 26}{space 2} .0546821{col 37}{space 1}    5.03{col 46}{space 3}0.000{col 54}{space 4} .1678473{col 67}{space 3} .3821973
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}  .061844{col 26}{space 2} .0022697{col 37}{space 1}   27.25{col 46}{space 3}0.000{col 54}{space 4} .0573954{col 67}{space 3} .0662925
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1723743{col 26}{space 2} .0336578{col 37}{space 1}   -5.12{col 46}{space 3}0.000{col 54}{space 4}-.2383423{col 67}{space 3}-.1064063
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2750223{col 26}{space 2} .0546821{col 37}{space 1}    5.03{col 46}{space 3}0.000{col 54}{space 4} .1678473{col 67}{space 3} .3821973
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}        1{col 26}{txt}  (constrained)
+{space 9}AGE {c |}{col 14}{res}{space 2}  .061844{col 26}{space 2} .0022697{col 37}{space 1}   27.25{col 46}{space 3}0.000{col 54}{space 4} .0573954{col 67}{space 3} .0662925
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1723743{col 26}{space 2} .0336578{col 37}{space 1}   -5.12{col 46}{space 3}0.000{col 54}{space 4}-.2383423{col 67}{space 3}-.1064063
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .2406653{col 26}{space 2} .0478218{col 37}{space 1}    5.03{col 46}{space 3}0.000{col 54}{space 4} .1469364{col 67}{space 3} .3343942
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2} .8750755{col 26}{space 2}  .020014{col 37}{space 1}   43.72{col 46}{space 3}0.000{col 54}{space 4} .8358487{col 67}{space 3} .9143022
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2} .0541181{col 26}{space 2} .0020168{col 37}{space 1}   26.83{col 46}{space 3}0.000{col 54}{space 4} .0501653{col 67}{space 3}  .058071
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.1508405{col 26}{space 2} .0294686{col 37}{space 1}   -5.12{col 46}{space 3}0.000{col 54}{space 4}-.2085979{col 67}{space 3}-.0930831
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}-.1595455{col 26}{space 2} .0447249{col 37}{space 1}   -3.57{col 46}{space 3}0.000{col 54}{space 4}-.2472047{col 67}{space 3}-.0718863
+{txt}{space 8}PROT {c |}{col 14}{res}{space 2}-.0995892{col 26}{space 2} .0207925{col 37}{space 1}   -4.79{col 46}{space 3}0.000{col 54}{space 4}-.1403417{col 67}{space 3}-.0588367
+{txt}{space 9}AGE {c |}{col 14}{res}{space 2}-.0484813{col 26}{space 2} .0017712{col 37}{space 1}  -27.37{col 46}{space 3}0.000{col 54}{space 4}-.0519527{col 67}{space 3}-.0450098
+{txt}{space 9}SEX {c |}{col 14}{res}{space 2}-.0703916{col 26}{space 2} .0275034{col 37}{space 1}   -2.56{col 46}{space 3}0.010{col 54}{space 4}-.1242973{col 67}{space 3} -.016486
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. **Unadjusted model**
+. sem (PROT <- _cons@0, ) (PROT -> FA, ) (PROT -> MD, ) (PROT -> ISOVF, ) (PROT -> ICVF, ) (PROT -> OD, ) (PROT@1 -> M1, ) (PROT -> M2, ) (PD -> FA, ) (PD -> MD, ) (PD -> ISOVF,  ) (PD -> ICVF, ) (PD -> OD, ) (PD -> PROT, ) if sample_final==1, latent(PROT) cov(e.FA*e.MD e.FA*e.ICVF e.FA*e.ISOVF e.FA*e.OD e.MD*e.ICVF e.MD*e.ISOVF e.MD*e.OD e.ICVF*e.ISOVF e.ICVF*e.OD e.ISOVF*e.OD e.PROT@1 e.M1@1) nocapslatent
+{res}{txt}(426 observations with missing values excluded)
+
+Endogenous variables
+{p 2 15 2}Observed:{space 4}{res}FA MD ISOVF ICVF OD{p_end}
+{txt}{p 2 15 2}Measurement:{space 1}{res}M1 M2{p_end}
+{txt}{p 2 15 2}Latent:{space 6}{res}PROT{p_end}
+{txt}
+Exogenous variables
+{p 2 12 2}Observed:{space 1}{res}PD{p_end}
+{txt}
+Fitting target model:
+Iteration 0:{space 2}Log likelihood = {res:-46416.009}  (not concave)
+Iteration 1:{space 2}Log likelihood = {res:-41408.629}  (not concave)
+Iteration 2:{space 2}Log likelihood = {res: -40805.95}  (not concave)
+Iteration 3:{space 2}Log likelihood = {res:-39757.522}  (not concave)
+Iteration 4:{space 2}Log likelihood = {res:-38936.207}  (not concave)
+Iteration 5:{space 2}Log likelihood = {res:-38243.135}  (not concave)
+Iteration 6:{space 2}Log likelihood = {res:-37729.865}  (not concave)
+Iteration 7:{space 2}Log likelihood = {res:-37012.361}  (not concave)
+Iteration 8:{space 2}Log likelihood = {res:-35656.196}  (not concave)
+Iteration 9:{space 2}Log likelihood = {res:-35233.051}  (not concave)
+Iteration 10:{space 1}Log likelihood = {res:-34848.833}  (not concave)
+Iteration 11:{space 1}Log likelihood = {res:-34701.841}  (not concave)
+Iteration 12:{space 1}Log likelihood = {res:-34629.999}  (not concave)
+Iteration 13:{space 1}Log likelihood = {res:-34559.569}  (not concave)
+Iteration 14:{space 1}Log likelihood = {res:-34529.893}  (not concave)
+Iteration 15:{space 1}Log likelihood = {res:-34505.223}  (not concave)
+Iteration 16:{space 1}Log likelihood = {res:-34490.348}  (not concave)
+Iteration 17:{space 1}Log likelihood = {res:-34482.333}  (not concave)
+Iteration 18:{space 1}Log likelihood = {res:-34455.337}  (not concave)
+Iteration 19:{space 1}Log likelihood = {res:-34445.292}  (not concave)
+Iteration 20:{space 1}Log likelihood = {res:-34442.012}  (not concave)
+Iteration 21:{space 1}Log likelihood = {res:-34438.679}  (not concave)
+Iteration 22:{space 1}Log likelihood = {res:-34406.326}  
+Iteration 23:{space 1}Log likelihood = {res:-33991.634}  
+Iteration 24:{space 1}Log likelihood = {res:-33949.719}  
+Iteration 25:{space 1}Log likelihood = {res:-33948.335}  
+Iteration 26:{space 1}Log likelihood = {res:-33948.332}  
+
+{col 1}Structural equation model{col 58}{lalign 13:Number of obs}{col 71} = {res}{ralign 5:4,663}
+{txt}{col 1}Estimation method: {res:ml}
+
+{col 1}{lalign 14:Log likelihood}{col 15} = {res}{ralign 10:-33948.332}
+
+{p 0 7}{space 1}{text:( 1)}{space 1} [M1]PROT = 1{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [/]var(e.M1) = 1{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [/]var(e.PROT) = 1{p_end}
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 20}{c |}{col 32}      OIM
+{col 20}{c |} Coefficient{col 32}  std. err.{col 44}      z{col 52}   P>|z|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural        {col 20}{txt}{c |}
+{space 2}{col 3}FA              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2}-.3125401{col 32}{space 2} .0204261{col 43}{space 1}  -15.30{col 52}{space 3}0.000{col 60}{space 4}-.3525745{col 73}{space 3}-.2725057
+{txt}{space 16}PD {c |}{col 20}{res}{space 2}  -.22028{col 32}{space 2} .0472979{col 43}{space 1}   -4.66{col 52}{space 3}0.000{col 60}{space 4}-.3129822{col 73}{space 3}-.1275778
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0405763{col 32}{space 2} .0156235{col 43}{space 1}    2.60{col 52}{space 3}0.009{col 60}{space 4} .0099548{col 73}{space 3} .0711978
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}MD              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2} .3597494{col 32}{space 2} .0205554{col 43}{space 1}   17.50{col 52}{space 3}0.000{col 60}{space 4} .3194616{col 73}{space 3} .4000371
+{txt}{space 16}PD {c |}{col 20}{res}{space 2} .2023473{col 32}{space 2} .0472091{col 43}{space 1}    4.29{col 52}{space 3}0.000{col 60}{space 4} .1098191{col 73}{space 3} .2948755
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-.0394112{col 32}{space 2} .0157431{col 43}{space 1}   -2.50{col 52}{space 3}0.012{col 60}{space 4}-.0702671{col 73}{space 3}-.0085553
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF           {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2} .3623896{col 32}{space 2} .0203104{col 43}{space 1}   17.84{col 52}{space 3}0.000{col 60}{space 4}  .322582{col 73}{space 3} .4021973
+{txt}{space 16}PD {c |}{col 20}{res}{space 2} .1943869{col 32}{space 2} .0471149{col 43}{space 1}    4.13{col 52}{space 3}0.000{col 60}{space 4} .1020434{col 73}{space 3} .2867305
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} -.036725{col 32}{space 2} .0157432{col 43}{space 1}   -2.33{col 52}{space 3}0.020{col 60}{space 4} -.067581{col 73}{space 3}-.0058689
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF            {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2}-.2225734{col 32}{space 2} .0204209{col 43}{space 1}  -10.90{col 52}{space 3}0.000{col 60}{space 4}-.2625976{col 73}{space 3}-.1825493
+{txt}{space 16}PD {c |}{col 20}{res}{space 2}-.1405334{col 32}{space 2} .0473299{col 43}{space 1}   -2.97{col 52}{space 3}0.003{col 60}{space 4}-.2332982{col 73}{space 3}-.0477686
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}  .026536{col 32}{space 2} .0153876{col 43}{space 1}    1.72{col 52}{space 3}0.085{col 60}{space 4}-.0036231{col 73}{space 3} .0566951
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2} .1929965{col 32}{space 2} .0206612{col 43}{space 1}    9.34{col 52}{space 3}0.000{col 60}{space 4} .1525014{col 73}{space 3} .2334916
+{txt}{space 16}PD {c |}{col 20}{res}{space 2} .1102535{col 32}{space 2} .0485989{col 43}{space 1}    2.27{col 52}{space 3}0.023{col 60}{space 4} .0150013{col 73}{space 3} .2055056
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-.0207871{col 32}{space 2} .0157531{col 43}{space 1}   -1.32{col 52}{space 3}0.187{col 60}{space 4}-.0516626{col 73}{space 3} .0100884
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT            {col 20}{c |}
+{space 16}PD {c |}{col 20}{res}{space 2} .5793182{col 32}{space 2} .0541832{col 43}{space 1}   10.69{col 52}{space 3}0.000{col 60}{space 4} .4731211{col 73}{space 3} .6855153
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement       {col 20}{txt}{c |}
+{space 2}{col 3}M1              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{space 13}_cons {c |}{col 20}{res}{space 2}-.0623954{col 32}{space 2} .0215381{col 43}{space 1}   -2.90{col 52}{space 3}0.004{col 60}{space 4}-.1046092{col 73}{space 3}-.0201815
+{space 2}{txt}{hline 17}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2              {col 20}{c |}
+{space 14}PROT {c |}{col 20}{res}{space 2}  .911099{col 32}{space 2} .0231649{col 43}{space 1}   39.33{col 52}{space 3}0.000{col 60}{space 4} .8656967{col 73}{space 3} .9565013
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}-.0542419{col 32}{space 2} .0168783{col 43}{space 1}   -3.21{col 52}{space 3}0.001{col 60}{space 4}-.0873227{col 73}{space 3}-.0211611
+{txt}{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 10}var(e.FA){c |}{col 20}{res}{space 2} .9162861{col 32}{space 2}  .019788{col 60}{space 4} .8783116{col 73}{space 3} .9559024
+{txt}{space 10}var(e.MD){c |}{col 20}{res}{space 2} .9001289{col 32}{space 2} .0197922{col 60}{space 4} .8621609{col 73}{space 3} .9397689
+{txt}{space 7}var(e.ISOVF){c |}{col 20}{res}{space 2} .8982328{col 32}{space 2} .0196869{col 60}{space 4} .8604642{col 73}{space 3} .9376591
+{txt}{space 8}var(e.ICVF){c |}{col 20}{res}{space 2} .9340348{col 32}{space 2} .0197469{col 60}{space 4} .8961224{col 73}{space 3} .9735511
+{txt}{space 10}var(e.OD){c |}{col 20}{res}{space 2} .9936099{col 32}{space 2} .0208455{col 60}{space 4}  .953582{col 73}{space 3} 1.035318
+{txt}{space 10}var(e.M1){c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{space 10}var(e.M2){c |}{col 20}{res}{space 2} .3631367{col 32}{space 2} .0253914{col 60}{space 4}   .31663{col 73}{space 3} .4164742
+{txt}{space 8}var(e.PROT){c |}{col 20}{res}{space 2}        1{col 32}{txt}  (constrained)
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}cov(e.FA,e.MD){c |}{col 20}{res}{space 2}-.7212422{col 32}{space 2} .0179644{col 43}{space 1}  -40.15{col 52}{space 3}0.000{col 60}{space 4}-.7564517{col 73}{space 3}-.6860326
+{txt}{space 2}cov(e.FA,e.ISOVF){c |}{col 20}{res}{space 2}-.4299568{col 32}{space 2} .0156401{col 43}{space 1}  -27.49{col 52}{space 3}0.000{col 60}{space 4}-.4606108{col 73}{space 3}-.3993027
+{txt}{space 3}cov(e.FA,e.ICVF){c |}{col 20}{res}{space 2}  .690203{col 32}{space 2} .0174982{col 43}{space 1}   39.44{col 52}{space 3}0.000{col 60}{space 4} .6559071{col 73}{space 3} .7244989
+{txt}{space 5}cov(e.FA,e.OD){c |}{col 20}{res}{space 2}-.5015587{col 32}{space 2} .0162627{col 43}{space 1}  -30.84{col 52}{space 3}0.000{col 60}{space 4}-.5334329{col 73}{space 3}-.4696845
+{txt}{space 2}cov(e.MD,e.ISOVF){c |}{col 20}{res}{space 2} .6497075{col 32}{space 2} .0173771{col 43}{space 1}   37.39{col 52}{space 3}0.000{col 60}{space 4}  .615649{col 73}{space 3}  .683766
+{txt}{space 3}cov(e.MD,e.ICVF){c |}{col 20}{res}{space 2}-.7131398{col 32}{space 2} .0177372{col 43}{space 1}  -40.21{col 52}{space 3}0.000{col 60}{space 4}-.7479042{col 73}{space 3}-.6783755
+{txt}{space 5}cov(e.MD,e.OD){c |}{col 20}{res}{space 2} .1585925{col 32}{space 2} .0145751{col 43}{space 1}   10.88{col 52}{space 3}0.000{col 60}{space 4} .1300259{col 73}{space 3} .1871592
+{txt}cov(e.ISOVF,e.ICVF){c |}{col 20}{res}{space 2}-.1674596{col 32}{space 2} .0142911{col 43}{space 1}  -11.72{col 52}{space 3}0.000{col 60}{space 4}-.1954697{col 73}{space 3}-.1394496
+{txt}{space 2}cov(e.ISOVF,e.OD){c |}{col 20}{res}{space 2} .2634429{col 32}{space 2} .0149124{col 43}{space 1}   17.67{col 52}{space 3}0.000{col 60}{space 4} .2342152{col 73}{space 3} .2926707
+{txt}{space 3}cov(e.ICVF,e.OD){c |}{col 20}{res}{space 2} .0234357{col 32}{space 2} .0143535{col 43}{space 1}    1.63{col 52}{space 3}0.103{col 60}{space 4}-.0046966{col 73}{space 3}  .051568
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+LR test of model vs. saturated: chi2({res:7}) = {ralign 6:{res:{ralign 6:984.46}}}{col 65}Prob > chi2 = {res}{ralign 6:{ralign 6:0.0000}}
+{txt}
+{com}. 
+. estat teffects
+{res}
+
+{txt}Direct effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2} .3597494{col 26}{space 2} .0205554{col 37}{space 1}   17.50{col 46}{space 3}0.000{col 54}{space 4} .3194616{col 67}{space 3} .4000371
+{txt}{space 10}PD {c |}{col 14}{res}{space 2} .2023473{col 26}{space 2} .0472091{col 37}{space 1}    4.29{col 46}{space 3}0.000{col 54}{space 4} .1098191{col 67}{space 3} .2948755
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2} .3623896{col 26}{space 2} .0203104{col 37}{space 1}   17.84{col 46}{space 3}0.000{col 54}{space 4}  .322582{col 67}{space 3} .4021973
+{txt}{space 10}PD {c |}{col 14}{res}{space 2} .1943869{col 26}{space 2} .0471149{col 37}{space 1}    4.13{col 46}{space 3}0.000{col 54}{space 4} .1020434{col 67}{space 3} .2867305
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}-.2225734{col 26}{space 2} .0204209{col 37}{space 1}  -10.90{col 46}{space 3}0.000{col 54}{space 4}-.2625976{col 67}{space 3}-.1825493
+{txt}{space 10}PD {c |}{col 14}{res}{space 2}-.1405334{col 26}{space 2} .0473299{col 37}{space 1}   -2.97{col 46}{space 3}0.003{col 54}{space 4}-.2332982{col 67}{space 3}-.0477686
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2} .1929965{col 26}{space 2} .0206612{col 37}{space 1}    9.34{col 46}{space 3}0.000{col 54}{space 4} .1525014{col 67}{space 3} .2334916
+{txt}{space 10}PD {c |}{col 14}{res}{space 2} .1102535{col 26}{space 2} .0485989{col 37}{space 1}    2.27{col 46}{space 3}0.023{col 54}{space 4} .0150013{col 67}{space 3} .2055056
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .5793182{col 26}{space 2} .0541832{col 37}{space 1}   10.69{col 46}{space 3}0.000{col 54}{space 4} .4731211{col 67}{space 3} .6855153
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}        1{col 26}{txt}  (constrained)
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 2}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}  .911099{col 26}{space 2} .0231649{col 37}{space 1}   39.33{col 46}{space 3}0.000{col 54}{space 4} .8656967{col 67}{space 3} .9565013
+{txt}{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}-.3125401{col 26}{space 2} .0204261{col 37}{space 1}  -15.30{col 46}{space 3}0.000{col 54}{space 4}-.3525745{col 67}{space 3}-.2725057
+{txt}{space 10}PD {c |}{col 14}{res}{space 2}  -.22028{col 26}{space 2} .0472979{col 37}{space 1}   -4.66{col 46}{space 3}0.000{col 54}{space 4}-.3129822{col 67}{space 3}-.1275778
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+
+Indirect effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}PD {c |}{col 14}{res}{space 2} .2084094{col 26}{space 2} .0230001{col 37}{space 1}    9.06{col 46}{space 3}0.000{col 54}{space 4}   .16333{col 67}{space 3} .2534888
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}PD {c |}{col 14}{res}{space 2} .2099389{col 26}{space 2} .0229892{col 37}{space 1}    9.13{col 46}{space 3}0.000{col 54}{space 4} .1648808{col 67}{space 3}  .254997
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}PD {c |}{col 14}{res}{space 2}-.1289408{col 26}{space 2}  .017014{col 37}{space 1}   -7.58{col 46}{space 3}0.000{col 54}{space 4}-.1622877{col 67}{space 3} -.095594
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}PD {c |}{col 14}{res}{space 2} .1118064{col 26}{space 2} .0158974{col 37}{space 1}    7.03{col 46}{space 3}0.000{col 54}{space 4} .0806481{col 67}{space 3} .1429647
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}PD {c |}{col 14}{res}{space 2} .5793182{col 26}{space 2} .0541832{col 37}{space 1}   10.69{col 46}{space 3}0.000{col 54}{space 4} .4731211{col 67}{space 3} .6855153
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}PD {c |}{col 14}{res}{space 2} .5278163{col 26}{space 2} .0493177{col 37}{space 1}   10.70{col 46}{space 3}0.000{col 54}{space 4} .4311553{col 67}{space 3} .6244772
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (no path)
+{space 10}PD {c |}{col 14}{res}{space 2}-.1810602{col 26}{space 2}  .020779{col 37}{space 1}   -8.71{col 46}{space 3}0.000{col 54}{space 4}-.2217863{col 67}{space 3}-.1403341
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+
+Total effects
+{res}{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 14}{c |}{col 26}      OIM
+{col 14}{c |} Coefficient{col 26}  std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}MD        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2} .3597494{col 26}{space 2} .0205554{col 37}{space 1}   17.50{col 46}{space 3}0.000{col 54}{space 4} .3194616{col 67}{space 3} .4000371
+{txt}{space 10}PD {c |}{col 14}{res}{space 2} .4107567{col 26}{space 2} .0476501{col 37}{space 1}    8.62{col 46}{space 3}0.000{col 54}{space 4} .3173642{col 67}{space 3} .5041492
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ISOVF     {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2} .3623896{col 26}{space 2} .0203104{col 37}{space 1}   17.84{col 46}{space 3}0.000{col 54}{space 4}  .322582{col 67}{space 3} .4021973
+{txt}{space 10}PD {c |}{col 14}{res}{space 2} .4043258{col 26}{space 2} .0476504{col 37}{space 1}    8.49{col 46}{space 3}0.000{col 54}{space 4} .3109329{col 67}{space 3} .4977188
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}ICVF      {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}-.2225734{col 26}{space 2} .0204209{col 37}{space 1}  -10.90{col 46}{space 3}0.000{col 54}{space 4}-.2625976{col 67}{space 3}-.1825493
+{txt}{space 10}PD {c |}{col 14}{res}{space 2}-.2694743{col 26}{space 2} .0465741{col 37}{space 1}   -5.79{col 46}{space 3}0.000{col 54}{space 4}-.3607577{col 67}{space 3}-.1781908
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}OD        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2} .1929965{col 26}{space 2} .0206612{col 37}{space 1}    9.34{col 46}{space 3}0.000{col 54}{space 4} .1525014{col 67}{space 3} .2334916
+{txt}{space 10}PD {c |}{col 14}{res}{space 2} .2220598{col 26}{space 2} .0476804{col 37}{space 1}    4.66{col 46}{space 3}0.000{col 54}{space 4}  .128608{col 67}{space 3} .3155117
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}PROT      {col 14}{c |}
+{space 10}PD {c |}{col 14}{res}{space 2} .5793182{col 26}{space 2} .0541832{col 37}{space 1}   10.69{col 46}{space 3}0.000{col 54}{space 4} .4731211{col 67}{space 3} .6855153
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Measurement {col 14}{txt}{c |}
+{space 2}{col 3}M1        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}        1{col 26}{txt}  (constrained)
+{space 10}PD {c |}{col 14}{res}{space 2} .5793182{col 26}{space 2} .0541832{col 37}{space 1}   10.69{col 46}{space 3}0.000{col 54}{space 4} .4731211{col 67}{space 3} .6855153
+{space 2}{txt}{hline 11}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}{col 3}M2        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}  .911099{col 26}{space 2} .0231649{col 37}{space 1}   39.33{col 46}{space 3}0.000{col 54}{space 4} .8656967{col 67}{space 3} .9565013
+{txt}{space 10}PD {c |}{col 14}{res}{space 2} .5278163{col 26}{space 2} .0493177{col 37}{space 1}   10.70{col 46}{space 3}0.000{col 54}{space 4} .4311553{col 67}{space 3} .6244772
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}{res}Structural  {col 14}{txt}{c |}
+{space 2}{col 3}FA        {col 14}{c |}
+{space 8}PROT {c |}{col 14}{res}{space 2}-.3125401{col 26}{space 2} .0204261{col 37}{space 1}  -15.30{col 46}{space 3}0.000{col 54}{space 4}-.3525745{col 67}{space 3}-.2725057
+{txt}{space 10}PD {c |}{col 14}{res}{space 2}-.4013402{col 26}{space 2} .0472882{col 37}{space 1}   -8.49{col 46}{space 3}0.000{col 54}{space 4}-.4940233{col 67}{space 3}-.3086571
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. capture log close
+{smcl}
+{com}{sf}{ul off}

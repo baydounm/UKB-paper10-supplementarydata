@@ -1,0 +1,1782 @@
+{smcl}
+{com}{sf}{ul off}{txt}
+{com}. 
+. use "E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\UK_BIOBANK_PROJECT\UKB_PAPER8C_PERIODONTALDISEASE_DMRI_PROTEOMICS\DATA\finaldata_unimputedfin",clear
+{txt}
+{com}. 
+. capture drop AD_PGStert
+{txt}
+{com}. xtile AD_PGStert=AD_PGS if sample_final==1, nq(3)
+{txt}
+{com}. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\UK_BIOBANK_PROJECT\UKB_PAPER8C_PERIODONTALDISEASE_DMRI_PROTEOMICS\DATA\finaldata_unimputedfin.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. ***************************************************************OVERALL*******************
+. 
+. **Model 1**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1
+{txt}  3{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(7, 5081)      = {res}   126.98
+{txt}       Model {c |} {res} .328995902         7  .046999415   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  1.8806704     5,081  .000370138   {txt}R-squared       ={res}    0.1489
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1477
+{txt}       Total {c |} {res} 2.20966631     5,088   .00043429   {txt}Root MSE        =   {res} .01924
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0027212{col 32}{space 2} .0008908{col 43}{space 1}   -3.05{col 52}{space 3}0.002{col 60}{space 4}-.0044676{col 73}{space 3}-.0009748
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0009187{col 32}{space 2} .0000387{col 43}{space 1}  -23.72{col 52}{space 3}0.000{col 60}{space 4}-.0009946{col 73}{space 3}-.0008427
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0017621{col 32}{space 2} .0005541{col 43}{space 1}   -3.18{col 52}{space 3}0.001{col 60}{space 4}-.0028484{col 73}{space 3}-.0006758
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2} .0011947{col 32}{space 2} .0015489{col 43}{space 1}    0.77{col 52}{space 3}0.441{col 60}{space 4}-.0018418{col 73}{space 3} .0042313
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0005176{col 32}{space 2} .0002517{col 43}{space 1}    2.06{col 52}{space 3}0.040{col 60}{space 4} .0000242{col 73}{space 3}  .001011
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0010983{col 32}{space 2} .0004262{col 43}{space 1}    2.58{col 52}{space 3}0.010{col 60}{space 4} .0002627{col 73}{space 3} .0019338
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000154{col 32}{space 2} 2.97e-06{col 43}{space 1}    5.20{col 52}{space 3}0.000{col 60}{space 4} 9.61e-06{col 73}{space 3} .0000213
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6051716{col 32}{space 2} .0031005{col 43}{space 1}  195.18{col 52}{space 3}0.000{col 60}{space 4} .5990932{col 73}{space 3} .6112499
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(7, 5081)      = {res}   189.15
+{txt}       Model {c |} {res} 1.1650e-06         7  1.6643e-07   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 4.4706e-06     5,081  8.7987e-10   {txt}R-squared       ={res}    0.2067
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2056
+{txt}       Total {c |} {res} 5.6356e-06     5,088  1.1076e-09   {txt}Root MSE        =   {res} 3.0e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 3.20e-06{col 32}{space 2} 1.37e-06{col 43}{space 1}    2.33{col 52}{space 3}0.020{col 60}{space 4} 5.07e-07{col 73}{space 3} 5.89e-06
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.84e-06{col 32}{space 2} 5.97e-08{col 43}{space 1}   30.79{col 52}{space 3}0.000{col 60}{space 4} 1.72e-06{col 73}{space 3} 1.96e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-2.93e-06{col 32}{space 2} 8.54e-07{col 43}{space 1}   -3.43{col 52}{space 3}0.001{col 60}{space 4}-4.61e-06{col 73}{space 3}-1.26e-06
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-6.80e-06{col 32}{space 2} 2.39e-06{col 43}{space 1}   -2.85{col 52}{space 3}0.004{col 60}{space 4}-.0000115{col 73}{space 3}-2.12e-06
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-7.62e-07{col 32}{space 2} 3.88e-07{col 43}{space 1}   -1.96{col 52}{space 3}0.050{col 60}{space 4}-1.52e-06{col 73}{space 3}-1.23e-09
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} 5.73e-07{col 32}{space 2} 6.57e-07{col 43}{space 1}    0.87{col 52}{space 3}0.383{col 60}{space 4}-7.15e-07{col 73}{space 3} 1.86e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-1.40e-09{col 32}{space 2} 4.58e-09{col 43}{space 1}   -0.31{col 52}{space 3}0.759{col 60}{space 4}-1.04e-08{col 73}{space 3} 7.57e-09
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0006988{col 32}{space 2} 4.78e-06{col 43}{space 1}  146.19{col 52}{space 3}0.000{col 60}{space 4} .0006895{col 73}{space 3} .0007082
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(7, 5081)      = {res}   176.47
+{txt}       Model {c |} {res} .176380987         7  .025197284   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .725477041     5,081  .000142782   {txt}R-squared       ={res}    0.1956
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1945
+{txt}       Total {c |} {res} .901858028     5,088  .000177252   {txt}Root MSE        =   {res} .01195
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0013022{col 32}{space 2} .0005533{col 43}{space 1}    2.35{col 52}{space 3}0.019{col 60}{space 4} .0002175{col 73}{space 3} .0023868
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0007137{col 32}{space 2} .0000241{col 43}{space 1}   29.67{col 52}{space 3}0.000{col 60}{space 4} .0006665{col 73}{space 3} .0007608
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0010912{col 32}{space 2} .0003442{col 43}{space 1}   -3.17{col 52}{space 3}0.002{col 60}{space 4}-.0017659{col 73}{space 3}-.0004164
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0013435{col 32}{space 2}  .000962{col 43}{space 1}   -1.40{col 52}{space 3}0.163{col 60}{space 4}-.0032294{col 73}{space 3} .0005425
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0003465{col 32}{space 2} .0001563{col 43}{space 1}   -2.22{col 52}{space 3}0.027{col 60}{space 4} -.000653{col 73}{space 3}  -.00004
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}  .000545{col 32}{space 2} .0002647{col 43}{space 1}    2.06{col 52}{space 3}0.040{col 60}{space 4} .0000261{col 73}{space 3}  .001064
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-2.63e-06{col 32}{space 2} 1.84e-06{col 43}{space 1}   -1.43{col 52}{space 3}0.154{col 60}{space 4}-6.25e-06{col 73}{space 3} 9.85e-07
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0589735{col 32}{space 2} .0019257{col 43}{space 1}   30.62{col 52}{space 3}0.000{col 60}{space 4} .0551983{col 73}{space 3} .0627488
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(7, 5081)      = {res}    68.85
+{txt}       Model {c |} {res} .363395692         7   .05191367   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 3.83130326     5,081  .000754045   {txt}R-squared       ={res}    0.0866
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0854
+{txt}       Total {c |} {res} 4.19469895     5,088   .00082443   {txt}Root MSE        =   {res} .02746
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} -.002143{col 32}{space 2} .0012715{col 43}{space 1}   -1.69{col 52}{space 3}0.092{col 60}{space 4}-.0046357{col 73}{space 3} .0003496
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0010331{col 32}{space 2} .0000553{col 43}{space 1}  -18.69{col 52}{space 3}0.000{col 60}{space 4}-.0011414{col 73}{space 3}-.0009247
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0006465{col 32}{space 2} .0007909{col 43}{space 1}   -0.82{col 52}{space 3}0.414{col 60}{space 4} -.002197{col 73}{space 3}  .000904
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2} .0041482{col 32}{space 2} .0022108{col 43}{space 1}    1.88{col 52}{space 3}0.061{col 60}{space 4}-.0001859{col 73}{space 3} .0084823
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0004844{col 32}{space 2} .0003592{col 43}{space 1}    1.35{col 52}{space 3}0.178{col 60}{space 4}-.0002198{col 73}{space 3} .0011887
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0002544{col 32}{space 2} .0006083{col 43}{space 1}    0.42{col 52}{space 3}0.676{col 60}{space 4}-.0009381{col 73}{space 3}  .001447
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-1.83e-06{col 32}{space 2} 4.24e-06{col 43}{space 1}   -0.43{col 52}{space 3}0.666{col 60}{space 4}-.0000101{col 73}{space 3} 6.48e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6692579{col 32}{space 2} .0044254{col 43}{space 1}  151.23{col 52}{space 3}0.000{col 60}{space 4} .6605822{col 73}{space 3} .6779336
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(7, 5081)      = {res}    34.26
+{txt}       Model {c |} {res} .019676355         7  .002810908   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .416928064     5,081  .000082056   {txt}R-squared       ={res}    0.0451
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0438
+{txt}       Total {c |} {res} .436604419     5,088  .000085811   {txt}Root MSE        =   {res} .00906
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0006249{col 32}{space 2} .0004194{col 43}{space 1}    1.49{col 52}{space 3}0.136{col 60}{space 4}-.0001974{col 73}{space 3} .0014472
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0001981{col 32}{space 2} .0000182{col 43}{space 1}   10.87{col 52}{space 3}0.000{col 60}{space 4} .0001624{col 73}{space 3} .0002339
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2} .0003501{col 32}{space 2} .0002609{col 43}{space 1}    1.34{col 52}{space 3}0.180{col 60}{space 4}-.0001614{col 73}{space 3} .0008616
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2} .0009753{col 32}{space 2} .0007293{col 43}{space 1}    1.34{col 52}{space 3}0.181{col 60}{space 4}-.0004544{col 73}{space 3} .0024051
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0000957{col 32}{space 2} .0001185{col 43}{space 1}   -0.81{col 52}{space 3}0.420{col 60}{space 4} -.000328{col 73}{space 3} .0001367
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0005143{col 32}{space 2} .0002007{col 43}{space 1}   -2.56{col 52}{space 3}0.010{col 60}{space 4}-.0009077{col 73}{space 3}-.0001209
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-8.04e-06{col 32}{space 2} 1.40e-06{col 43}{space 1}   -5.75{col 52}{space 3}0.000{col 60}{space 4}-.0000108{col 73}{space 3}-5.30e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1206927{col 32}{space 2} .0014599{col 43}{space 1}   82.67{col 52}{space 3}0.000{col 60}{space 4} .1178307{col 73}{space 3} .1235546
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. 
+. **Model 2: Interaction with AD PGS tertile**
+.  
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' c.poororalhealth_sev##c.AD_PGStert AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1
+{txt}  3{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(9, 5079)      = {res}    98.97
+{txt}       Model {c |} {res} .329710599         9  .036634511   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.87995571     5,079  .000370143   {txt}R-squared       ={res}    0.1492
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1477
+{txt}       Total {c |} {res} 2.20966631     5,088   .00043429   {txt}Root MSE        =   {res} .01924
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          FA_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2}-.0004618{col 47}{space 2} .0022778{col 58}{space 1}   -0.20{col 67}{space 3}0.839{col 75}{space 4}-.0049273{col 88}{space 3} .0040036
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2}-.0001649{col 47}{space 2} .0003503{col 58}{space 1}   -0.47{col 67}{space 3}0.638{col 75}{space 4}-.0008516{col 88}{space 3} .0005218
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2}-.0011537{col 47}{space 2} .0010662{col 58}{space 1}   -1.08{col 67}{space 3}0.279{col 75}{space 4}-.0032439{col 88}{space 3} .0009364
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2}-.0009203{col 47}{space 2} .0000388{col 58}{space 1}  -23.74{col 67}{space 3}0.000{col 75}{space 4}-.0009963{col 88}{space 3}-.0008443
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}-.0017525{col 47}{space 2} .0005542{col 58}{space 1}   -3.16{col 67}{space 3}0.002{col 75}{space 4}-.0028389{col 88}{space 3}-.0006661
+{txt}{space 25}NonWhite {c |}{col 35}{res}{space 2} .0011469{col 47}{space 2} .0015494{col 58}{space 1}    0.74{col 67}{space 3}0.459{col 75}{space 4}-.0018907{col 88}{space 3} .0041844
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2} .0005206{col 47}{space 2} .0002517{col 58}{space 1}    2.07{col 67}{space 3}0.039{col 75}{space 4} .0000272{col 88}{space 3} .0010141
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} .0011026{col 47}{space 2} .0004263{col 58}{space 1}    2.59{col 67}{space 3}0.010{col 75}{space 4}  .000267{col 88}{space 3} .0019383
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2} .0000153{col 47}{space 2} 2.97e-06{col 58}{space 1}    5.13{col 67}{space 3}0.000{col 75}{space 4} 9.42e-06{col 88}{space 3} .0000211
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .6056671{col 47}{space 2} .0032095{col 58}{space 1}  188.71{col 67}{space 3}0.000{col 75}{space 4} .5993751{col 88}{space 3} .6119592
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(9, 5079)      = {res}   147.33
+{txt}       Model {c |} {res} 1.1667e-06         9  1.2963e-07   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 4.4689e-06     5,079  8.7988e-10   {txt}R-squared       ={res}    0.2070
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2056
+{txt}       Total {c |} {res} 5.6356e-06     5,088  1.1076e-09   {txt}Root MSE        =   {res} 3.0e-05
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          MD_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2}-1.17e-06{col 47}{space 2} 3.51e-06{col 58}{space 1}   -0.33{col 67}{space 3}0.740{col 75}{space 4}-8.05e-06{col 88}{space 3} 5.72e-06
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2}-9.65e-08{col 47}{space 2} 5.40e-07{col 58}{space 1}   -0.18{col 67}{space 3}0.858{col 75}{space 4}-1.16e-06{col 88}{space 3} 9.62e-07
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2} 2.22e-06{col 47}{space 2} 1.64e-06{col 58}{space 1}    1.35{col 67}{space 3}0.176{col 75}{space 4}-9.99e-07{col 88}{space 3} 5.45e-06
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2} 1.84e-06{col 47}{space 2} 5.98e-08{col 58}{space 1}   30.79{col 67}{space 3}0.000{col 75}{space 4} 1.72e-06{col 88}{space 3} 1.96e-06
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}-2.94e-06{col 47}{space 2} 8.54e-07{col 58}{space 1}   -3.44{col 67}{space 3}0.001{col 75}{space 4}-4.62e-06{col 88}{space 3}-1.27e-06
+{txt}{space 25}NonWhite {c |}{col 35}{res}{space 2}-6.76e-06{col 47}{space 2} 2.39e-06{col 58}{space 1}   -2.83{col 67}{space 3}0.005{col 75}{space 4}-.0000114{col 88}{space 3}-2.07e-06
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2}-7.63e-07{col 47}{space 2} 3.88e-07{col 58}{space 1}   -1.97{col 67}{space 3}0.049{col 75}{space 4}-1.52e-06{col 88}{space 3}-2.60e-09
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} 5.62e-07{col 47}{space 2} 6.57e-07{col 58}{space 1}    0.86{col 67}{space 3}0.393{col 75}{space 4}-7.26e-07{col 88}{space 3} 1.85e-06
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-1.23e-09{col 47}{space 2} 4.58e-09{col 58}{space 1}   -0.27{col 67}{space 3}0.789{col 75}{space 4}-1.02e-08{col 88}{space 3} 7.76e-09
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .0006989{col 47}{space 2} 4.95e-06{col 58}{space 1}  141.24{col 67}{space 3}0.000{col 75}{space 4} .0006892{col 88}{space 3} .0007086
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(9, 5079)      = {res}   137.40
+{txt}       Model {c |} {res} .176585107         9  .019620567   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .725272921     5,079  .000142798   {txt}R-squared       ={res}    0.1958
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1944
+{txt}       Total {c |} {res} .901858028     5,088  .000177252   {txt}Root MSE        =   {res} .01195
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                       ISOVF_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2} .0011864{col 47}{space 2} .0014148{col 58}{space 1}    0.84{col 67}{space 3}0.402{col 75}{space 4}-.0015872{col 88}{space 3}   .00396
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2}-.0002512{col 47}{space 2} .0002176{col 58}{space 1}   -1.15{col 67}{space 3}0.248{col 75}{space 4}-.0006777{col 88}{space 3} .0001754
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2} .0000549{col 47}{space 2} .0006622{col 58}{space 1}    0.08{col 67}{space 3}0.934{col 75}{space 4}-.0012434{col 88}{space 3} .0013532
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2} .0007126{col 47}{space 2} .0000241{col 58}{space 1}   29.60{col 67}{space 3}0.000{col 75}{space 4} .0006654{col 88}{space 3} .0007598
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}-.0010876{col 47}{space 2} .0003442{col 58}{space 1}   -3.16{col 67}{space 3}0.002{col 75}{space 4}-.0017624{col 88}{space 3}-.0004128
+{txt}{space 25}NonWhite {c |}{col 35}{res}{space 2}-.0013696{col 47}{space 2} .0009624{col 58}{space 1}   -1.42{col 67}{space 3}0.155{col 75}{space 4}-.0032563{col 88}{space 3} .0005171
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2}-.0003439{col 47}{space 2} .0001563{col 58}{space 1}   -2.20{col 67}{space 3}0.028{col 75}{space 4}-.0006504{col 88}{space 3}-.0000374
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} .0005429{col 47}{space 2} .0002648{col 58}{space 1}    2.05{col 67}{space 3}0.040{col 75}{space 4} .0000239{col 88}{space 3}  .001062
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-2.73e-06{col 47}{space 2} 1.85e-06{col 58}{space 1}   -1.48{col 67}{space 3}0.139{col 75}{space 4}-6.35e-06{col 88}{space 3} 8.87e-07
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .0595811{col 47}{space 2} .0019935{col 58}{space 1}   29.89{col 67}{space 3}0.000{col 75}{space 4} .0556729{col 88}{space 3} .0634892
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(9, 5079)      = {res}    54.01
+{txt}       Model {c |} {res} .366368447         9  .040707605   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  3.8283305     5,079  .000753757   {txt}R-squared       ={res}    0.0873
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0857
+{txt}       Total {c |} {res} 4.19469895     5,088   .00082443   {txt}Root MSE        =   {res} .02745
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                        ICVF_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2} .0032124{col 47}{space 2} .0032505{col 58}{space 1}    0.99{col 67}{space 3}0.323{col 75}{space 4}  -.00316{col 88}{space 3} .0095847
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2}-.0001092{col 47}{space 2} .0004999{col 58}{space 1}   -0.22{col 67}{space 3}0.827{col 75}{space 4}-.0010891{col 88}{space 3} .0008708
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2}-.0027302{col 47}{space 2} .0015215{col 58}{space 1}   -1.79{col 67}{space 3}0.073{col 75}{space 4} -.005713{col 88}{space 3} .0002525
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2}-.0010356{col 47}{space 2} .0000553{col 58}{space 1}  -18.72{col 67}{space 3}0.000{col 75}{space 4} -.001144{col 88}{space 3}-.0009272
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}-.0006281{col 47}{space 2} .0007908{col 58}{space 1}   -0.79{col 67}{space 3}0.427{col 75}{space 4}-.0021785{col 88}{space 3} .0009222
+{txt}{space 25}NonWhite {c |}{col 35}{res}{space 2} .0040658{col 47}{space 2} .0022111{col 58}{space 1}    1.84{col 67}{space 3}0.066{col 75}{space 4}-.0002688{col 88}{space 3} .0084005
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2} .0004886{col 47}{space 2} .0003592{col 58}{space 1}    1.36{col 67}{space 3}0.174{col 75}{space 4}-.0002156{col 88}{space 3} .0011928
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} .0002668{col 47}{space 2} .0006083{col 58}{space 1}    0.44{col 67}{space 3}0.661{col 75}{space 4}-.0009257{col 88}{space 3} .0014593
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-2.14e-06{col 47}{space 2} 4.24e-06{col 58}{space 1}   -0.50{col 67}{space 3}0.614{col 75}{space 4}-.0000105{col 88}{space 3} 6.18e-06
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .6697459{col 47}{space 2} .0045801{col 58}{space 1}  146.23{col 67}{space 3}0.000{col 75}{space 4}  .660767{col 88}{space 3} .6787248
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,089
+{txt}{hline 13}{c +}{hline 34}   F(9, 5079)      = {res}    26.66
+{txt}       Model {c |} {res} .019696219         9  .002188469   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}   .4169082     5,079  .000082085   {txt}R-squared       ={res}    0.0451
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0434
+{txt}       Total {c |} {res} .436604419     5,088  .000085811   {txt}Root MSE        =   {res} .00906
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          OD_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2} .0006049{col 47}{space 2} .0010727{col 58}{space 1}    0.56{col 67}{space 3}0.573{col 75}{space 4}-.0014979{col 88}{space 3} .0027078
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2} .0000754{col 47}{space 2}  .000165{col 58}{space 1}    0.46{col 67}{space 3}0.648{col 75}{space 4} -.000248{col 88}{space 3} .0003988
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2} .0000114{col 47}{space 2} .0005021{col 58}{space 1}    0.02{col 67}{space 3}0.982{col 75}{space 4}-.0009729{col 88}{space 3} .0009957
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2} .0001985{col 47}{space 2} .0000183{col 58}{space 1}   10.88{col 67}{space 3}0.000{col 75}{space 4} .0001627{col 88}{space 3} .0002343
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2} .0003488{col 47}{space 2}  .000261{col 58}{space 1}    1.34{col 67}{space 3}0.181{col 75}{space 4}-.0001628{col 88}{space 3} .0008604
+{txt}{space 25}NonWhite {c |}{col 35}{res}{space 2} .0009839{col 47}{space 2} .0007297{col 58}{space 1}    1.35{col 67}{space 3}0.178{col 75}{space 4}-.0004465{col 88}{space 3} .0024144
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2}-.0000965{col 47}{space 2} .0001185{col 58}{space 1}   -0.81{col 67}{space 3}0.416{col 75}{space 4}-.0003289{col 88}{space 3} .0001359
+{txt}{space 30}SES {c |}{col 35}{res}{space 2}-.0005138{col 47}{space 2} .0002007{col 58}{space 1}   -2.56{col 67}{space 3}0.011{col 75}{space 4}-.0009073{col 88}{space 3}-.0001203
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-8.01e-06{col 47}{space 2} 1.40e-06{col 58}{space 1}   -5.72{col 67}{space 3}0.000{col 75}{space 4}-.0000108{col 88}{space 3}-5.26e-06
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2}  .120508{col 47}{space 2} .0015114{col 58}{space 1}   79.73{col 67}{space 3}0.000{col 75}{space 4}  .117545{col 88}{space 3} .1234711
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. **Stratified analysis by AD PGS TERTILES**
+. 
+. **LOWEST TERTILE**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & AD_PGStert==1
+{txt}  3{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,697
+{txt}{hline 13}{c +}{hline 34}   F(7, 1689)      = {res}    38.79
+{txt}       Model {c |} {res} .107981487         7  .015425927   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .671671548     1,689  .000397674   {txt}R-squared       ={res}    0.1385
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1349
+{txt}       Total {c |} {res} .779653035     1,696  .000459701   {txt}Root MSE        =   {res} .01994
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0000619{col 32}{space 2} .0015776{col 43}{space 1}   -0.04{col 52}{space 3}0.969{col 60}{space 4}-.0031561{col 73}{space 3} .0030323
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0008886{col 32}{space 2} .0000701{col 43}{space 1}  -12.68{col 52}{space 3}0.000{col 60}{space 4} -.001026{col 73}{space 3}-.0007511
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0027301{col 32}{space 2}  .000995{col 43}{space 1}   -2.74{col 52}{space 3}0.006{col 60}{space 4}-.0046816{col 73}{space 3}-.0007787
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0013138{col 32}{space 2} .0026141{col 43}{space 1}   -0.50{col 52}{space 3}0.615{col 60}{space 4} -.006441{col 73}{space 3} .0038134
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}  .001043{col 32}{space 2} .0004604{col 43}{space 1}    2.27{col 52}{space 3}0.024{col 60}{space 4} .0001401{col 73}{space 3}  .001946
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0017291{col 32}{space 2} .0007711{col 43}{space 1}    2.24{col 52}{space 3}0.025{col 60}{space 4} .0002167{col 73}{space 3} .0032414
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000174{col 32}{space 2} 5.36e-06{col 43}{space 1}    3.25{col 52}{space 3}0.001{col 60}{space 4} 6.91e-06{col 73}{space 3} .0000279
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6029696{col 32}{space 2} .0055338{col 43}{space 1}  108.96{col 52}{space 3}0.000{col 60}{space 4} .5921159{col 73}{space 3} .6138233
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,697
+{txt}{hline 13}{c +}{hline 34}   F(7, 1689)      = {res}    53.79
+{txt}       Model {c |} {res} 3.4633e-07         7  4.9476e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.5535e-06     1,689  9.1980e-10   {txt}R-squared       ={res}    0.1823
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1789
+{txt}       Total {c |} {res} 1.8999e-06     1,696  1.1202e-09   {txt}Root MSE        =   {res} 3.0e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-1.00e-06{col 32}{space 2} 2.40e-06{col 43}{space 1}   -0.42{col 52}{space 3}0.676{col 60}{space 4}-5.71e-06{col 73}{space 3} 3.70e-06
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.77e-06{col 32}{space 2} 1.07e-07{col 43}{space 1}   16.64{col 52}{space 3}0.000{col 60}{space 4} 1.56e-06{col 73}{space 3} 1.98e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-9.82e-07{col 32}{space 2} 1.51e-06{col 43}{space 1}   -0.65{col 52}{space 3}0.516{col 60}{space 4}-3.95e-06{col 73}{space 3} 1.99e-06
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-1.85e-06{col 32}{space 2} 3.98e-06{col 43}{space 1}   -0.47{col 52}{space 3}0.641{col 60}{space 4}-9.65e-06{col 73}{space 3} 5.94e-06
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-1.25e-06{col 32}{space 2} 7.00e-07{col 43}{space 1}   -1.78{col 52}{space 3}0.075{col 60}{space 4}-2.62e-06{col 73}{space 3} 1.24e-07
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-4.77e-07{col 32}{space 2} 1.17e-06{col 43}{space 1}   -0.41{col 52}{space 3}0.684{col 60}{space 4}-2.78e-06{col 73}{space 3} 1.82e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-2.01e-09{col 32}{space 2} 8.15e-09{col 43}{space 1}   -0.25{col 52}{space 3}0.805{col 60}{space 4}-1.80e-08{col 73}{space 3} 1.40e-08
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0007013{col 32}{space 2} 8.42e-06{col 43}{space 1}   83.34{col 52}{space 3}0.000{col 60}{space 4} .0006848{col 73}{space 3} .0007178
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,697
+{txt}{hline 13}{c +}{hline 34}   F(7, 1689)      = {res}    55.97
+{txt}       Model {c |} {res} .058443949         7  .008349136   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .251935382     1,689  .000149162   {txt}R-squared       ={res}    0.1883
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1849
+{txt}       Total {c |} {res}  .31037933     1,696  .000183007   {txt}Root MSE        =   {res} .01221
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0007279{col 32}{space 2} .0009662{col 43}{space 1}    0.75{col 52}{space 3}0.451{col 60}{space 4}-.0011671{col 73}{space 3} .0026229
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0007312{col 32}{space 2} .0000429{col 43}{space 1}   17.04{col 52}{space 3}0.000{col 60}{space 4} .0006471{col 73}{space 3} .0008154
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0001917{col 32}{space 2} .0006094{col 43}{space 1}   -0.31{col 52}{space 3}0.753{col 60}{space 4}-.0013869{col 73}{space 3} .0010035
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0008797{col 32}{space 2}  .001601{col 43}{space 1}   -0.55{col 52}{space 3}0.583{col 60}{space 4}-.0040198{col 73}{space 3} .0022604
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0003218{col 32}{space 2} .0002819{col 43}{space 1}   -1.14{col 52}{space 3}0.254{col 60}{space 4}-.0008748{col 73}{space 3} .0002313
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0000812{col 32}{space 2} .0004722{col 43}{space 1}    0.17{col 52}{space 3}0.863{col 60}{space 4} -.000845{col 73}{space 3} .0010075
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-1.99e-06{col 32}{space 2} 3.28e-06{col 43}{space 1}   -0.61{col 52}{space 3}0.545{col 60}{space 4}-8.43e-06{col 73}{space 3} 4.45e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0566101{col 32}{space 2} .0033891{col 43}{space 1}   16.70{col 52}{space 3}0.000{col 60}{space 4} .0499628{col 73}{space 3} .0632574
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,697
+{txt}{hline 13}{c +}{hline 34}   F(7, 1689)      = {res}    19.97
+{txt}       Model {c |} {res}  .09725233         7   .01389319   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.17522167     1,689  .000695809   {txt}R-squared       ={res}    0.0764
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0726
+{txt}       Total {c |} {res}   1.272474     1,696  .000750279   {txt}Root MSE        =   {res} .02638
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0022593{col 32}{space 2} .0020868{col 43}{space 1}    1.08{col 52}{space 3}0.279{col 60}{space 4}-.0018336{col 73}{space 3} .0063522
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0009186{col 32}{space 2} .0000927{col 43}{space 1}   -9.91{col 52}{space 3}0.000{col 60}{space 4}-.0011004{col 73}{space 3}-.0007368
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0015825{col 32}{space 2} .0013161{col 43}{space 1}   -1.20{col 52}{space 3}0.229{col 60}{space 4}-.0041639{col 73}{space 3} .0009988
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0007737{col 32}{space 2} .0034578{col 43}{space 1}   -0.22{col 52}{space 3}0.823{col 60}{space 4}-.0075557{col 73}{space 3} .0060083
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0011338{col 32}{space 2}  .000609{col 43}{space 1}    1.86{col 52}{space 3}0.063{col 60}{space 4}-.0000606{col 73}{space 3} .0023282
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0007262{col 32}{space 2} .0010199{col 43}{space 1}    0.71{col 52}{space 3}0.477{col 60}{space 4}-.0012743{col 73}{space 3} .0027266
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-3.09e-08{col 32}{space 2} 7.09e-06{col 43}{space 1}   -0.00{col 52}{space 3}0.997{col 60}{space 4}-.0000139{col 73}{space 3} .0000139
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6620204{col 32}{space 2} .0073198{col 43}{space 1}   90.44{col 52}{space 3}0.000{col 60}{space 4} .6476635{col 73}{space 3} .6763773
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,697
+{txt}{hline 13}{c +}{hline 34}   F(7, 1689)      = {res}    15.37
+{txt}       Model {c |} {res}  .00791356         7  .001130509   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .124269821     1,689  .000073576   {txt}R-squared       ={res}    0.0599
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0560
+{txt}       Total {c |} {res} .132183381     1,696  .000077938   {txt}Root MSE        =   {res} .00858
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}  .000652{col 32}{space 2} .0006786{col 43}{space 1}    0.96{col 52}{space 3}0.337{col 60}{space 4}-.0006789{col 73}{space 3}  .001983
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0002144{col 32}{space 2} .0000301{col 43}{space 1}    7.11{col 52}{space 3}0.000{col 60}{space 4} .0001553{col 73}{space 3} .0002735
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2} .0002124{col 32}{space 2}  .000428{col 43}{space 1}    0.50{col 52}{space 3}0.620{col 60}{space 4} -.000627{col 73}{space 3} .0010518
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}   .00135{col 32}{space 2} .0011244{col 43}{space 1}    1.20{col 52}{space 3}0.230{col 60}{space 4}-.0008554{col 73}{space 3} .0035553
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0001563{col 32}{space 2}  .000198{col 43}{space 1}   -0.79{col 52}{space 3}0.430{col 60}{space 4}-.0005447{col 73}{space 3} .0002321
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0007988{col 32}{space 2} .0003317{col 43}{space 1}   -2.41{col 52}{space 3}0.016{col 60}{space 4}-.0014493{col 73}{space 3}-.0001483
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-7.95e-06{col 32}{space 2} 2.31e-06{col 43}{space 1}   -3.45{col 52}{space 3}0.001{col 60}{space 4}-.0000125{col 73}{space 3}-3.43e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1198113{col 32}{space 2} .0023803{col 43}{space 1}   50.34{col 52}{space 3}0.000{col 60}{space 4} .1151428{col 73}{space 3} .1244799
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. **MIDDLE TERTILE**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & AD_PGStert==2
+{txt}  3{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}    54.82
+{txt}       Model {c |} {res} .130397075         7  .018628154   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .573572892     1,688  .000339794   {txt}R-squared       ={res}    0.1852
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1819
+{txt}       Total {c |} {res} .703969967     1,695  .000415322   {txt}Root MSE        =   {res} .01843
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0055382{col 32}{space 2}  .001461{col 43}{space 1}   -3.79{col 52}{space 3}0.000{col 60}{space 4}-.0084038{col 73}{space 3}-.0026726
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0009934{col 32}{space 2} .0000638{col 43}{space 1}  -15.57{col 52}{space 3}0.000{col 60}{space 4}-.0011185{col 73}{space 3}-.0008683
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0011594{col 32}{space 2} .0009236{col 43}{space 1}   -1.26{col 52}{space 3}0.210{col 60}{space 4}-.0029709{col 73}{space 3} .0006521
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2} .0017457{col 32}{space 2} .0026206{col 43}{space 1}    0.67{col 52}{space 3}0.505{col 60}{space 4}-.0033943{col 73}{space 3} .0068857
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0002812{col 32}{space 2} .0004199{col 43}{space 1}    0.67{col 52}{space 3}0.503{col 60}{space 4}-.0005424{col 73}{space 3} .0011049
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0014593{col 32}{space 2} .0007044{col 43}{space 1}    2.07{col 52}{space 3}0.038{col 60}{space 4} .0000777{col 73}{space 3} .0028408
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000109{col 32}{space 2} 4.98e-06{col 43}{space 1}    2.19{col 52}{space 3}0.029{col 60}{space 4} 1.14e-06{col 73}{space 3} .0000207
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6110451{col 32}{space 2} .0052729{col 43}{space 1}  115.88{col 52}{space 3}0.000{col 60}{space 4} .6007029{col 73}{space 3} .6213873
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}    75.59
+{txt}       Model {c |} {res} 4.5123e-07         7  6.4461e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.4395e-06     1,688  8.5278e-10   {txt}R-squared       ={res}    0.2387
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2355
+{txt}       Total {c |} {res} 1.8907e-06     1,695  1.1155e-09   {txt}Root MSE        =   {res} 2.9e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 7.42e-06{col 32}{space 2} 2.31e-06{col 43}{space 1}    3.20{col 52}{space 3}0.001{col 60}{space 4} 2.88e-06{col 73}{space 3}  .000012
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.93e-06{col 32}{space 2} 1.01e-07{col 43}{space 1}   19.11{col 52}{space 3}0.000{col 60}{space 4} 1.73e-06{col 73}{space 3} 2.13e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-3.14e-06{col 32}{space 2} 1.46e-06{col 43}{space 1}   -2.14{col 52}{space 3}0.032{col 60}{space 4}-6.01e-06{col 73}{space 3}-2.68e-07
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-7.91e-06{col 32}{space 2} 4.15e-06{col 43}{space 1}   -1.91{col 52}{space 3}0.057{col 60}{space 4}-.0000161{col 73}{space 3} 2.33e-07
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-6.94e-07{col 32}{space 2} 6.65e-07{col 43}{space 1}   -1.04{col 52}{space 3}0.297{col 60}{space 4}-2.00e-06{col 73}{space 3} 6.11e-07
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-3.67e-07{col 32}{space 2} 1.12e-06{col 43}{space 1}   -0.33{col 52}{space 3}0.742{col 60}{space 4}-2.56e-06{col 73}{space 3} 1.82e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} 3.53e-09{col 32}{space 2} 7.89e-09{col 43}{space 1}    0.45{col 52}{space 3}0.654{col 60}{space 4}-1.19e-08{col 73}{space 3} 1.90e-08
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0006906{col 32}{space 2} 8.35e-06{col 43}{space 1}   82.67{col 52}{space 3}0.000{col 60}{space 4} .0006742{col 73}{space 3}  .000707
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}    58.58
+{txt}       Model {c |} {res} .059375548         7  .008482221   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .244423108     1,688    .0001448   {txt}R-squared       ={res}    0.1954
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1921
+{txt}       Total {c |} {res} .303798656     1,695  .000179232   {txt}Root MSE        =   {res} .01203
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0020207{col 32}{space 2} .0009537{col 43}{space 1}    2.12{col 52}{space 3}0.034{col 60}{space 4}   .00015{col 73}{space 3} .0038914
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0006705{col 32}{space 2} .0000416{col 43}{space 1}   16.10{col 52}{space 3}0.000{col 60}{space 4} .0005888{col 73}{space 3} .0007522
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0020707{col 32}{space 2} .0006029{col 43}{space 1}   -3.43{col 52}{space 3}0.001{col 60}{space 4}-.0032533{col 73}{space 3}-.0008882
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0013025{col 32}{space 2} .0017107{col 43}{space 1}   -0.76{col 52}{space 3}0.447{col 60}{space 4}-.0046579{col 73}{space 3} .0020529
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} -.000517{col 32}{space 2} .0002741{col 43}{space 1}   -1.89{col 52}{space 3}0.059{col 60}{space 4}-.0010547{col 73}{space 3} .0000207
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0002793{col 32}{space 2} .0004598{col 43}{space 1}    0.61{col 52}{space 3}0.544{col 60}{space 4}-.0006226{col 73}{space 3} .0011811
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-3.65e-06{col 32}{space 2} 3.25e-06{col 43}{space 1}   -1.12{col 52}{space 3}0.261{col 60}{space 4}  -.00001{col 73}{space 3} 2.72e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0635591{col 32}{space 2} .0034421{col 43}{space 1}   18.46{col 52}{space 3}0.000{col 60}{space 4} .0568078{col 73}{space 3} .0703104
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}    35.25
+{txt}       Model {c |} {res} .172158944         7  .024594135   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.17778537     1,688   .00069774   {txt}R-squared       ={res}    0.1275
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1239
+{txt}       Total {c |} {res} 1.34994432     1,695  .000796427   {txt}Root MSE        =   {res} .02641
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} -.006432{col 32}{space 2} .0020936{col 43}{space 1}   -3.07{col 52}{space 3}0.002{col 60}{space 4}-.0105383{col 73}{space 3}-.0023256
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0012104{col 32}{space 2} .0000914{col 43}{space 1}  -13.24{col 52}{space 3}0.000{col 60}{space 4}-.0013897{col 73}{space 3}-.0010311
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0018039{col 32}{space 2} .0013235{col 43}{space 1}   -1.36{col 52}{space 3}0.173{col 60}{space 4}-.0043997{col 73}{space 3} .0007919
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2} .0060047{col 32}{space 2} .0037553{col 43}{space 1}    1.60{col 52}{space 3}0.110{col 60}{space 4}-.0013608{col 73}{space 3} .0133702
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0001237{col 32}{space 2} .0006018{col 43}{space 1}    0.21{col 52}{space 3}0.837{col 60}{space 4}-.0010566{col 73}{space 3}  .001304
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0012233{col 32}{space 2} .0010093{col 43}{space 1}    1.21{col 52}{space 3}0.226{col 60}{space 4}-.0007564{col 73}{space 3}  .003203
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-.0000113{col 32}{space 2} 7.13e-06{col 43}{space 1}   -1.58{col 52}{space 3}0.114{col 60}{space 4}-.0000253{col 73}{space 3} 2.72e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6868289{col 32}{space 2}  .007556{col 43}{space 1}   90.90{col 52}{space 3}0.000{col 60}{space 4} .6720088{col 73}{space 3}  .701649
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}     7.84
+{txt}       Model {c |} {res} .005934624         7  .000847803   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .182431859     1,688  .000108076   {txt}R-squared       ={res}    0.0315
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0275
+{txt}       Total {c |} {res} .188366483     1,695  .000111131   {txt}Root MSE        =   {res}  .0104
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0002206{col 32}{space 2}  .000824{col 43}{space 1}    0.27{col 52}{space 3}0.789{col 60}{space 4}-.0013956{col 73}{space 3} .0018367
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0001739{col 32}{space 2}  .000036{col 43}{space 1}    4.83{col 52}{space 3}0.000{col 60}{space 4} .0001033{col 73}{space 3} .0002444
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2} -.000146{col 32}{space 2} .0005209{col 43}{space 1}   -0.28{col 52}{space 3}0.779{col 60}{space 4}-.0011676{col 73}{space 3} .0008756
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2} .0005265{col 32}{space 2}  .001478{col 43}{space 1}    0.36{col 52}{space 3}0.722{col 60}{space 4}-.0023723{col 73}{space 3} .0034253
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-1.66e-06{col 32}{space 2} .0002368{col 43}{space 1}   -0.01{col 52}{space 3}0.994{col 60}{space 4}-.0004662{col 73}{space 3} .0004629
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0003976{col 32}{space 2} .0003972{col 43}{space 1}   -1.00{col 52}{space 3}0.317{col 60}{space 4}-.0011768{col 73}{space 3} .0003815
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-9.97e-06{col 32}{space 2} 2.81e-06{col 43}{space 1}   -3.55{col 52}{space 3}0.000{col 60}{space 4}-.0000155{col 73}{space 3}-4.47e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1240642{col 32}{space 2} .0029738{col 43}{space 1}   41.72{col 52}{space 3}0.000{col 60}{space 4} .1182315{col 73}{space 3} .1298969
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+.  
+. **HIGHEST TERTILE**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & AD_PGStert==3
+{txt}  3{com}. {c )-}
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}    37.60
+{txt}       Model {c |} {res} .097733438         7   .01396192   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  .62683994     1,688  .000371351   {txt}R-squared       ={res}    0.1349
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1313
+{txt}       Total {c |} {res} .724573378     1,695  .000427477   {txt}Root MSE        =   {res} .01927
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0025488{col 32}{space 2} .0015965{col 43}{space 1}   -1.60{col 52}{space 3}0.111{col 60}{space 4}-.0056802{col 73}{space 3} .0005825
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0008845{col 32}{space 2} .0000676{col 43}{space 1}  -13.09{col 52}{space 3}0.000{col 60}{space 4} -.001017{col 73}{space 3}-.0007519
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0015923{col 32}{space 2} .0009606{col 43}{space 1}   -1.66{col 52}{space 3}0.098{col 60}{space 4}-.0034764{col 73}{space 3} .0002918
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2} .0042539{col 32}{space 2} .0028384{col 43}{space 1}    1.50{col 52}{space 3}0.134{col 60}{space 4}-.0013132{col 73}{space 3} .0098211
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0002913{col 32}{space 2} .0004274{col 43}{space 1}    0.68{col 52}{space 3}0.496{col 60}{space 4} -.000547{col 73}{space 3} .0011296
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0000735{col 32}{space 2} .0007401{col 43}{space 1}    0.10{col 52}{space 3}0.921{col 60}{space 4}-.0013781{col 73}{space 3} .0015251
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000171{col 32}{space 2} 5.10e-06{col 43}{space 1}    3.35{col 52}{space 3}0.001{col 60}{space 4} 7.08e-06{col 73}{space 3} .0000271
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6027111{col 32}{space 2} .0053175{col 43}{space 1}  113.34{col 52}{space 3}0.000{col 60}{space 4} .5922815{col 73}{space 3} .6131407
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}    63.91
+{txt}       Model {c |} {res} 3.8625e-07         7  5.5179e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.4574e-06     1,688  8.6339e-10   {txt}R-squared       ={res}    0.2095
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2062
+{txt}       Total {c |} {res} 1.8437e-06     1,695  1.0877e-09   {txt}Root MSE        =   {res} 2.9e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 3.23e-06{col 32}{space 2} 2.43e-06{col 43}{space 1}    1.33{col 52}{space 3}0.185{col 60}{space 4}-1.55e-06{col 73}{space 3} 8.00e-06
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.83e-06{col 32}{space 2} 1.03e-07{col 43}{space 1}   17.75{col 52}{space 3}0.000{col 60}{space 4} 1.63e-06{col 73}{space 3} 2.03e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-4.38e-06{col 32}{space 2} 1.46e-06{col 43}{space 1}   -2.99{col 52}{space 3}0.003{col 60}{space 4}-7.26e-06{col 73}{space 3}-1.51e-06
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0000126{col 32}{space 2} 4.33e-06{col 43}{space 1}   -2.91{col 52}{space 3}0.004{col 60}{space 4}-.0000211{col 73}{space 3}-4.10e-06
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-3.83e-07{col 32}{space 2} 6.52e-07{col 43}{space 1}   -0.59{col 52}{space 3}0.556{col 60}{space 4}-1.66e-06{col 73}{space 3} 8.95e-07
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} 2.46e-06{col 32}{space 2} 1.13e-06{col 43}{space 1}    2.18{col 52}{space 3}0.029{col 60}{space 4} 2.46e-07{col 73}{space 3} 4.67e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-4.43e-09{col 32}{space 2} 7.78e-09{col 43}{space 1}   -0.57{col 52}{space 3}0.569{col 60}{space 4}-1.97e-08{col 73}{space 3} 1.08e-08
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0007026{col 32}{space 2} 8.11e-06{col 43}{space 1}   86.66{col 52}{space 3}0.000{col 60}{space 4} .0006867{col 73}{space 3} .0007185
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}    63.29
+{txt}       Model {c |} {res} .059593834         7  .008513405   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .227049427     1,688  .000134508   {txt}R-squared       ={res}    0.2079
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2046
+{txt}       Total {c |} {res} .286643262     1,695  .000169111   {txt}Root MSE        =   {res}  .0116
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0009377{col 32}{space 2} .0009609{col 43}{space 1}    0.98{col 52}{space 3}0.329{col 60}{space 4}-.0009469{col 73}{space 3} .0028223
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0007372{col 32}{space 2} .0000407{col 43}{space 1}   18.13{col 52}{space 3}0.000{col 60}{space 4} .0006575{col 73}{space 3}  .000817
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}-.0009559{col 32}{space 2} .0005781{col 43}{space 1}   -1.65{col 52}{space 3}0.098{col 60}{space 4}-.0020898{col 73}{space 3}  .000178
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0023684{col 32}{space 2} .0017083{col 43}{space 1}   -1.39{col 52}{space 3}0.166{col 60}{space 4} -.005719{col 73}{space 3} .0009821
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0002081{col 32}{space 2} .0002572{col 43}{space 1}   -0.81{col 52}{space 3}0.419{col 60}{space 4}-.0007126{col 73}{space 3} .0002964
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0012344{col 32}{space 2} .0004454{col 43}{space 1}    2.77{col 52}{space 3}0.006{col 60}{space 4} .0003608{col 73}{space 3}  .002108
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-2.73e-06{col 32}{space 2} 3.07e-06{col 43}{space 1}   -0.89{col 52}{space 3}0.374{col 60}{space 4}-8.76e-06{col 73}{space 3} 3.29e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0570922{col 32}{space 2} .0032003{col 43}{space 1}   17.84{col 52}{space 3}0.000{col 60}{space 4} .0508152{col 73}{space 3} .0633692
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}    19.18
+{txt}       Model {c |} {res} .115776182         7  .016539455   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.45589133     1,688  .000862495   {txt}R-squared       ={res}    0.0737
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0698
+{txt}       Total {c |} {res} 1.57166751     1,695  .000927237   {txt}Root MSE        =   {res} .02937
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0026481{col 32}{space 2} .0024331{col 43}{space 1}   -1.09{col 52}{space 3}0.277{col 60}{space 4}-.0074203{col 73}{space 3} .0021242
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0009924{col 32}{space 2}  .000103{col 43}{space 1}   -9.64{col 52}{space 3}0.000{col 60}{space 4}-.0011944{col 73}{space 3}-.0007904
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2} .0011891{col 32}{space 2}  .001464{col 43}{space 1}    0.81{col 52}{space 3}0.417{col 60}{space 4}-.0016823{col 73}{space 3} .0040604
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2} .0087601{col 32}{space 2} .0043257{col 43}{space 1}    2.03{col 52}{space 3}0.043{col 60}{space 4} .0002758{col 73}{space 3} .0172445
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0002431{col 32}{space 2} .0006514{col 43}{space 1}    0.37{col 52}{space 3}0.709{col 60}{space 4}-.0010345{col 73}{space 3} .0015208
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0011526{col 32}{space 2} .0011279{col 43}{space 1}   -1.02{col 52}{space 3}0.307{col 60}{space 4}-.0033648{col 73}{space 3} .0010596
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} 3.67e-06{col 32}{space 2} 7.78e-06{col 43}{space 1}    0.47{col 52}{space 3}0.637{col 60}{space 4}-.0000116{col 73}{space 3} .0000189
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6616671{col 32}{space 2} .0081039{col 43}{space 1}   81.65{col 52}{space 3}0.000{col 60}{space 4} .6457723{col 73}{space 3} .6775618
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,696
+{txt}{hline 13}{c +}{hline 34}   F(7, 1688)      = {res}    14.39
+{txt}       Model {c |} {res} .006504757         7  .000929251   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .109011934     1,688  .000064581   {txt}R-squared       ={res}    0.0563
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0524
+{txt}       Total {c |} {res} .115516692     1,695  .000068151   {txt}Root MSE        =   {res} .00804
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0009174{col 32}{space 2} .0006658{col 43}{space 1}    1.38{col 52}{space 3}0.168{col 60}{space 4}-.0003885{col 73}{space 3} .0022232
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}  .000204{col 32}{space 2} .0000282{col 43}{space 1}    7.24{col 52}{space 3}0.000{col 60}{space 4} .0001487{col 73}{space 3} .0002593
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2} .0009902{col 32}{space 2} .0004006{col 43}{space 1}    2.47{col 52}{space 3}0.014{col 60}{space 4} .0002045{col 73}{space 3} .0017759
+{txt}{space 10}NonWhite {c |}{col 20}{res}{space 2}  .000942{col 32}{space 2} .0011837{col 43}{space 1}    0.80{col 52}{space 3}0.426{col 60}{space 4}-.0013796{col 73}{space 3} .0032636
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0001407{col 32}{space 2} .0001782{col 43}{space 1}   -0.79{col 52}{space 3}0.430{col 60}{space 4}-.0004903{col 73}{space 3} .0002089
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0002919{col 32}{space 2} .0003086{col 43}{space 1}   -0.95{col 52}{space 3}0.344{col 60}{space 4}-.0008973{col 73}{space 3} .0003134
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-6.43e-06{col 32}{space 2} 2.13e-06{col 43}{space 1}   -3.02{col 52}{space 3}0.003{col 60}{space 4}-.0000106{col 73}{space 3}-2.26e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1184916{col 32}{space 2} .0022175{col 43}{space 1}   53.43{col 52}{space 3}0.000{col 60}{space 4} .1141423{col 73}{space 3}  .122841
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}.  
+.  
+. ***********************************************AMONG MEN***************************************
+. 
+. **Model 1**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & SEX==1
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(6, 2361)      = {res}    63.36
+{txt}       Model {c |} {res} .142856125         6  .023809354   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  .88716314     2,361  .000375757   {txt}R-squared       ={res}    0.1387
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1365
+{txt}       Total {c |} {res} 1.03001926     2,367  .000435158   {txt}Root MSE        =   {res} .01938
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0014245{col 32}{space 2} .0012475{col 43}{space 1}   -1.14{col 52}{space 3}0.254{col 60}{space 4}-.0038708{col 73}{space 3} .0010218
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0008905{col 32}{space 2}  .000055{col 43}{space 1}  -16.18{col 52}{space 3}0.000{col 60}{space 4}-.0009984{col 73}{space 3}-.0007826
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0020685{col 32}{space 2} .0022513{col 43}{space 1}    0.92{col 52}{space 3}0.358{col 60}{space 4}-.0023463{col 73}{space 3} .0064833
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0005145{col 32}{space 2} .0003666{col 43}{space 1}    1.40{col 52}{space 3}0.161{col 60}{space 4}-.0002045{col 73}{space 3} .0012334
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0014198{col 32}{space 2} .0006199{col 43}{space 1}    2.29{col 52}{space 3}0.022{col 60}{space 4} .0002043{col 73}{space 3} .0026353
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000175{col 32}{space 2} 4.51e-06{col 43}{space 1}    3.88{col 52}{space 3}0.000{col 60}{space 4} 8.64e-06{col 73}{space 3} .0000263
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6006005{col 32}{space 2} .0041998{col 43}{space 1}  143.01{col 52}{space 3}0.000{col 60}{space 4} .5923649{col 73}{space 3} .6088361
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(6, 2361)      = {res}   102.56
+{txt}       Model {c |} {res} 5.5210e-07         6  9.2017e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.1182e-06     2,361  8.9718e-10   {txt}R-squared       ={res}    0.2068
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2047
+{txt}       Total {c |} {res} 2.6703e-06     2,367  1.1282e-09   {txt}Root MSE        =   {res} 3.0e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 2.87e-06{col 32}{space 2} 1.93e-06{col 43}{space 1}    1.49{col 52}{space 3}0.137{col 60}{space 4}-9.11e-07{col 73}{space 3} 6.65e-06
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.83e-06{col 32}{space 2} 8.50e-08{col 43}{space 1}   21.47{col 52}{space 3}0.000{col 60}{space 4} 1.66e-06{col 73}{space 3} 1.99e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-8.68e-06{col 32}{space 2} 3.48e-06{col 43}{space 1}   -2.49{col 52}{space 3}0.013{col 60}{space 4}-.0000155{col 73}{space 3}-1.86e-06
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-1.01e-06{col 32}{space 2} 5.67e-07{col 43}{space 1}   -1.79{col 52}{space 3}0.074{col 60}{space 4}-2.13e-06{col 73}{space 3} 9.68e-08
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} 8.74e-07{col 32}{space 2} 9.58e-07{col 43}{space 1}    0.91{col 52}{space 3}0.361{col 60}{space 4}-1.00e-06{col 73}{space 3} 2.75e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-8.15e-09{col 32}{space 2} 6.97e-09{col 43}{space 1}   -1.17{col 52}{space 3}0.242{col 60}{space 4}-2.18e-08{col 73}{space 3} 5.51e-09
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0007009{col 32}{space 2} 6.49e-06{col 43}{space 1}  108.00{col 52}{space 3}0.000{col 60}{space 4} .0006882{col 73}{space 3} .0007136
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(6, 2361)      = {res}   100.91
+{txt}       Model {c |} {res} .085058917         6  .014176486   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .331685233     2,361  .000140485   {txt}R-squared       ={res}    0.2041
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2021
+{txt}       Total {c |} {res}  .41674415     2,367  .000176064   {txt}Root MSE        =   {res} .01185
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}  .002027{col 32}{space 2} .0007628{col 43}{space 1}    2.66{col 52}{space 3}0.008{col 60}{space 4} .0005311{col 73}{space 3} .0035228
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0007105{col 32}{space 2} .0000336{col 43}{space 1}   21.12{col 52}{space 3}0.000{col 60}{space 4} .0006445{col 73}{space 3} .0007765
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0025859{col 32}{space 2} .0013766{col 43}{space 1}   -1.88{col 52}{space 3}0.060{col 60}{space 4}-.0052854{col 73}{space 3} .0001135
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0003607{col 32}{space 2} .0002242{col 43}{space 1}   -1.61{col 52}{space 3}0.108{col 60}{space 4}-.0008003{col 73}{space 3} .0000789
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}  .000605{col 32}{space 2}  .000379{col 43}{space 1}    1.60{col 52}{space 3}0.111{col 60}{space 4}-.0001382{col 73}{space 3} .0013483
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-5.86e-06{col 32}{space 2} 2.76e-06{col 43}{space 1}   -2.13{col 52}{space 3}0.034{col 60}{space 4}-.0000113{col 73}{space 3}-4.56e-07
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0597133{col 32}{space 2}  .002568{col 43}{space 1}   23.25{col 52}{space 3}0.000{col 60}{space 4} .0546776{col 73}{space 3}  .064749
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(6, 2361)      = {res}    35.63
+{txt}       Model {c |} {res}  .16706143         6  .027843572   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.84505657     2,361  .000781472   {txt}R-squared       ={res}    0.0830
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0807
+{txt}       Total {c |} {res}   2.012118     2,367  .000850071   {txt}Root MSE        =   {res} .02795
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0002144{col 32}{space 2} .0017991{col 43}{space 1}   -0.12{col 52}{space 3}0.905{col 60}{space 4}-.0037423{col 73}{space 3} .0033135
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0009909{col 32}{space 2} .0000794{col 43}{space 1}  -12.49{col 52}{space 3}0.000{col 60}{space 4}-.0011465{col 73}{space 3}-.0008352
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0040018{col 32}{space 2} .0032467{col 43}{space 1}    1.23{col 52}{space 3}0.218{col 60}{space 4}-.0023649{col 73}{space 3} .0103685
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0009445{col 32}{space 2} .0005287{col 43}{space 1}    1.79{col 52}{space 3}0.074{col 60}{space 4}-.0000924{col 73}{space 3} .0019814
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0001697{col 32}{space 2} .0008939{col 43}{space 1}    0.19{col 52}{space 3}0.849{col 60}{space 4}-.0015833{col 73}{space 3} .0019227
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} 2.13e-06{col 32}{space 2} 6.50e-06{col 43}{space 1}    0.33{col 52}{space 3}0.743{col 60}{space 4}-.0000106{col 73}{space 3} .0000149
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6627768{col 32}{space 2} .0060566{col 43}{space 1}  109.43{col 52}{space 3}0.000{col 60}{space 4}    .6509{col 73}{space 3} .6746536
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(6, 2361)      = {res}    16.73
+{txt}       Model {c |} {res} .010335637         6  .001722606   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  .24309988     2,361  .000102965   {txt}R-squared       ={res}    0.0408
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0383
+{txt}       Total {c |} {res} .253435518     2,367   .00010707   {txt}Root MSE        =   {res} .01015
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0002994{col 32}{space 2}  .000653{col 43}{space 1}    0.46{col 52}{space 3}0.647{col 60}{space 4}-.0009811{col 73}{space 3}   .00158
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0002323{col 32}{space 2} .0000288{col 43}{space 1}    8.06{col 52}{space 3}0.000{col 60}{space 4} .0001758{col 73}{space 3} .0002888
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0007477{col 32}{space 2} .0011785{col 43}{space 1}    0.63{col 52}{space 3}0.526{col 60}{space 4}-.0015633{col 73}{space 3} .0030587
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-5.10e-06{col 32}{space 2} .0001919{col 43}{space 1}   -0.03{col 52}{space 3}0.979{col 60}{space 4}-.0003815{col 73}{space 3} .0003713
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0006055{col 32}{space 2} .0003245{col 43}{space 1}   -1.87{col 52}{space 3}0.062{col 60}{space 4}-.0012418{col 73}{space 3} .0000308
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-8.24e-06{col 32}{space 2} 2.36e-06{col 43}{space 1}   -3.49{col 52}{space 3}0.000{col 60}{space 4}-.0000129{col 73}{space 3}-3.61e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1190625{col 32}{space 2} .0021985{col 43}{space 1}   54.16{col 52}{space 3}0.000{col 60}{space 4} .1147514{col 73}{space 3} .1233736
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. 
+. **Model 2: Interaction with AD PGS tertile**
+.  
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' c.poororalhealth_sev##c.AD_PGStert AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & SEX==1 
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(8, 2359)      = {res}    47.90
+{txt}       Model {c |} {res} .143943821         8  .017992978   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .886075444     2,359  .000375615   {txt}R-squared       ={res}    0.1397
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1368
+{txt}       Total {c |} {res} 1.03001926     2,367  .000435158   {txt}Root MSE        =   {res} .01938
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          FA_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2} .0017632{col 47}{space 2} .0032119{col 58}{space 1}    0.55{col 67}{space 3}0.583{col 75}{space 4}-.0045351{col 88}{space 3} .0080616
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2} -.000448{col 47}{space 2} .0005206{col 58}{space 1}   -0.86{col 67}{space 3}0.390{col 75}{space 4}-.0014688{col 88}{space 3} .0005728
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2}-.0016465{col 47}{space 2} .0015164{col 58}{space 1}   -1.09{col 67}{space 3}0.278{col 75}{space 4}  -.00462{col 88}{space 3} .0013271
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2}-.0008927{col 47}{space 2}  .000055{col 58}{space 1}  -16.22{col 67}{space 3}0.000{col 75}{space 4}-.0010006{col 88}{space 3}-.0007847
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2} .0019211{col 47}{space 2}  .002253{col 58}{space 1}    0.85{col 67}{space 3}0.394{col 75}{space 4}-.0024969{col 88}{space 3} .0063391
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2} .0005265{col 47}{space 2} .0003667{col 58}{space 1}    1.44{col 67}{space 3}0.151{col 75}{space 4}-.0001925{col 88}{space 3} .0012456
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} .0014297{col 47}{space 2} .0006198{col 58}{space 1}    2.31{col 67}{space 3}0.021{col 75}{space 4} .0002142{col 88}{space 3} .0026451
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2} .0000173{col 47}{space 2} 4.51e-06{col 58}{space 1}    3.84{col 67}{space 3}0.000{col 75}{space 4} 8.47e-06{col 88}{space 3} .0000262
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .6016778{col 47}{space 2} .0043577{col 58}{space 1}  138.07{col 67}{space 3}0.000{col 75}{space 4} .5931326{col 88}{space 3} .6102231
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(8, 2359)      = {res}    77.45
+{txt}       Model {c |} {res} 5.5550e-07         8  6.9437e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.1148e-06     2,359  8.9650e-10   {txt}R-squared       ={res}    0.2080
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2053
+{txt}       Total {c |} {res} 2.6703e-06     2,367  1.1282e-09   {txt}Root MSE        =   {res} 3.0e-05
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          MD_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2}-2.33e-06{col 47}{space 2} 4.96e-06{col 58}{space 1}   -0.47{col 67}{space 3}0.639{col 75}{space 4}-.0000121{col 88}{space 3} 7.40e-06
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2} 8.73e-07{col 47}{space 2} 8.04e-07{col 58}{space 1}    1.09{col 67}{space 3}0.278{col 75}{space 4}-7.04e-07{col 88}{space 3} 2.45e-06
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2} 2.69e-06{col 47}{space 2} 2.34e-06{col 58}{space 1}    1.15{col 67}{space 3}0.251{col 75}{space 4}-1.91e-06{col 88}{space 3} 7.28e-06
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2} 1.83e-06{col 47}{space 2} 8.50e-08{col 58}{space 1}   21.51{col 67}{space 3}0.000{col 75}{space 4} 1.66e-06{col 88}{space 3} 2.00e-06
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2}-8.41e-06{col 47}{space 2} 3.48e-06{col 58}{space 1}   -2.42{col 67}{space 3}0.016{col 75}{space 4}-.0000152{col 88}{space 3}-1.58e-06
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2}-1.04e-06{col 47}{space 2} 5.66e-07{col 58}{space 1}   -1.83{col 67}{space 3}0.068{col 75}{space 4}-2.15e-06{col 88}{space 3} 7.48e-08
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} 8.55e-07{col 47}{space 2} 9.58e-07{col 58}{space 1}    0.89{col 67}{space 3}0.372{col 75}{space 4}-1.02e-06{col 88}{space 3} 2.73e-06
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-7.84e-09{col 47}{space 2} 6.97e-09{col 58}{space 1}   -1.12{col 67}{space 3}0.261{col 75}{space 4}-2.15e-08{col 88}{space 3} 5.83e-09
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .0006988{col 47}{space 2} 6.73e-06{col 58}{space 1}  103.80{col 67}{space 3}0.000{col 75}{space 4} .0006856{col 88}{space 3}  .000712
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(8, 2359)      = {res}    75.62
+{txt}       Model {c |} {res} .085061653         8  .010632707   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .331682498     2,359  .000140603   {txt}R-squared       ={res}    0.2041
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2014
+{txt}       Total {c |} {res}  .41674415     2,367  .000176064   {txt}Root MSE        =   {res} .01186
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                       ISOVF_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2} .0022739{col 47}{space 2} .0019651{col 58}{space 1}    1.16{col 67}{space 3}0.247{col 75}{space 4}-.0015796{col 88}{space 3} .0061274
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2} 6.33e-06{col 47}{space 2} .0003185{col 58}{space 1}    0.02{col 67}{space 3}0.984{col 75}{space 4}-.0006182{col 88}{space 3} .0006309
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2}-.0001267{col 47}{space 2} .0009277{col 58}{space 1}   -0.14{col 67}{space 3}0.891{col 75}{space 4} -.001946{col 88}{space 3} .0016926
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2} .0007105{col 47}{space 2} .0000337{col 58}{space 1}   21.10{col 67}{space 3}0.000{col 75}{space 4} .0006444{col 88}{space 3} .0007765
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2}-.0025895{col 47}{space 2} .0013784{col 58}{space 1}   -1.88{col 67}{space 3}0.060{col 75}{space 4}-.0052925{col 88}{space 3} .0001136
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2}-.0003604{col 47}{space 2} .0002243{col 58}{space 1}   -1.61{col 67}{space 3}0.108{col 75}{space 4}-.0008003{col 88}{space 3} .0000795
+{txt}{space 30}SES {c |}{col 35}{res}{space 2}  .000605{col 47}{space 2} .0003792{col 58}{space 1}    1.60{col 67}{space 3}0.111{col 75}{space 4}-.0001386{col 88}{space 3} .0013487
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-5.87e-06{col 47}{space 2} 2.76e-06{col 58}{space 1}   -2.13{col 67}{space 3}0.034{col 75}{space 4}-.0000113{col 88}{space 3}-4.55e-07
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .0597035{col 47}{space 2} .0026661{col 58}{space 1}   22.39{col 67}{space 3}0.000{col 75}{space 4} .0544753{col 88}{space 3} .0649316
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(8, 2359)      = {res}    27.53
+{txt}       Model {c |} {res} .171809963         8  .021476245   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.84030804     2,359  .000780122   {txt}R-squared       ={res}    0.0854
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0823
+{txt}       Total {c |} {res}   2.012118     2,367  .000850071   {txt}Root MSE        =   {res} .02793
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                        ICVF_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2} .0068472{col 47}{space 2} .0046288{col 58}{space 1}    1.48{col 67}{space 3}0.139{col 75}{space 4}-.0022297{col 88}{space 3} .0159241
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2}-.0008546{col 47}{space 2} .0007502{col 58}{space 1}   -1.14{col 67}{space 3}0.255{col 75}{space 4}-.0023257{col 88}{space 3} .0006165
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2}-.0036445{col 47}{space 2} .0021853{col 58}{space 1}   -1.67{col 67}{space 3}0.096{col 75}{space 4}-.0079298{col 88}{space 3} .0006409
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2}-.0009953{col 47}{space 2} .0000793{col 58}{space 1}  -12.55{col 67}{space 3}0.000{col 75}{space 4}-.0011508{col 88}{space 3}-.0008397
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2} .0037017{col 47}{space 2} .0032469{col 58}{space 1}    1.14{col 67}{space 3}0.254{col 75}{space 4}-.0026653{col 88}{space 3} .0100687
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2} .0009691{col 47}{space 2} .0005284{col 58}{space 1}    1.83{col 67}{space 3}0.067{col 75}{space 4} -.000067{col 88}{space 3} .0020053
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} .0001889{col 47}{space 2} .0008933{col 58}{space 1}    0.21{col 67}{space 3}0.833{col 75}{space 4}-.0015628{col 88}{space 3} .0019405
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2} 1.79e-06{col 47}{space 2} 6.50e-06{col 58}{space 1}    0.27{col 67}{space 3}0.783{col 75}{space 4} -.000011{col 88}{space 3} .0000145
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .6648501{col 47}{space 2} .0062801{col 58}{space 1}  105.87{col 67}{space 3}0.000{col 75}{space 4} .6525351{col 88}{space 3} .6771651
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,368
+{txt}{hline 13}{c +}{hline 34}   F(8, 2359)      = {res}    12.57
+{txt}       Model {c |} {res} .010362266         8  .001295283   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .243073251     2,359  .000103041   {txt}R-squared       ={res}    0.0409
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0376
+{txt}       Total {c |} {res} .253435518     2,367   .00010707   {txt}Root MSE        =   {res} .01015
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          OD_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2} .0002774{col 47}{space 2} .0016822{col 58}{space 1}    0.16{col 67}{space 3}0.869{col 75}{space 4}-.0030215{col 88}{space 3} .0035762
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2}-.0001312{col 47}{space 2} .0002726{col 58}{space 1}   -0.48{col 67}{space 3}0.630{col 75}{space 4}-.0006659{col 88}{space 3} .0004034
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2} 8.61e-06{col 47}{space 2} .0007942{col 58}{space 1}    0.01{col 67}{space 3}0.991{col 75}{space 4}-.0015488{col 88}{space 3}  .001566
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2} .0002319{col 47}{space 2} .0000288{col 58}{space 1}    8.04{col 67}{space 3}0.000{col 75}{space 4} .0001754{col 88}{space 3} .0002884
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2} .0007229{col 47}{space 2}   .00118{col 58}{space 1}    0.61{col 67}{space 3}0.540{col 75}{space 4}-.0015911{col 88}{space 3} .0030369
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2}-3.11e-06{col 47}{space 2}  .000192{col 58}{space 1}   -0.02{col 67}{space 3}0.987{col 75}{space 4}-.0003797{col 88}{space 3} .0003735
+{txt}{space 30}SES {c |}{col 35}{res}{space 2}-.0006029{col 47}{space 2} .0003246{col 58}{space 1}   -1.86{col 67}{space 3}0.063{col 75}{space 4}-.0012395{col 88}{space 3} .0000337
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-8.27e-06{col 47}{space 2} 2.36e-06{col 58}{space 1}   -3.50{col 67}{space 3}0.000{col 75}{space 4}-.0000129{col 88}{space 3}-3.63e-06
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .1193604{col 47}{space 2} .0022824{col 58}{space 1}   52.30{col 67}{space 3}0.000{col 75}{space 4} .1148847{col 88}{space 3} .1238361
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. **Stratified analysis by AD PGS TERTILES**
+. 
+. **LOWEST TERTILE**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & AD_PGStert==1 & SEX==1
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       794
+{txt}{hline 13}{c +}{hline 34}   F(6, 787)       = {res}    18.79
+{txt}       Model {c |} {res} .043171856         6  .007195309   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .301350084       787   .00038291   {txt}R-squared       ={res}    0.1253
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1186
+{txt}       Total {c |} {res}  .34452194       793  .000434454   {txt}Root MSE        =   {res} .01957
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0025425{col 32}{space 2}  .002159{col 43}{space 1}    1.18{col 52}{space 3}0.239{col 60}{space 4}-.0016957{col 73}{space 3} .0067806
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0007876{col 32}{space 2} .0000967{col 43}{space 1}   -8.15{col 52}{space 3}0.000{col 60}{space 4}-.0009774{col 73}{space 3}-.0005978
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0011779{col 32}{space 2} .0036298{col 43}{space 1}   -0.32{col 52}{space 3}0.746{col 60}{space 4}-.0083031{col 73}{space 3} .0059473
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0014144{col 32}{space 2} .0006358{col 43}{space 1}    2.22{col 52}{space 3}0.026{col 60}{space 4} .0001664{col 73}{space 3} .0026624
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0027915{col 32}{space 2} .0010936{col 43}{space 1}    2.55{col 52}{space 3}0.011{col 60}{space 4} .0006448{col 73}{space 3} .0049382
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000202{col 32}{space 2} 7.78e-06{col 43}{space 1}    2.59{col 52}{space 3}0.010{col 60}{space 4} 4.88e-06{col 73}{space 3} .0000354
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .5918902{col 32}{space 2} .0071061{col 43}{space 1}   83.29{col 52}{space 3}0.000{col 60}{space 4}  .577941{col 73}{space 3} .6058394
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       794
+{txt}{hline 13}{c +}{hline 34}   F(6, 787)       = {res}    28.23
+{txt}       Model {c |} {res} 1.4815e-07         6  2.4691e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 6.8829e-07       787  8.7458e-10   {txt}R-squared       ={res}    0.1771
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1708
+{txt}       Total {c |} {res} 8.3644e-07       793  1.0548e-09   {txt}Root MSE        =   {res} 3.0e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-2.64e-06{col 32}{space 2} 3.26e-06{col 43}{space 1}   -0.81{col 52}{space 3}0.420{col 60}{space 4}-9.04e-06{col 73}{space 3} 3.77e-06
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.63e-06{col 32}{space 2} 1.46e-07{col 43}{space 1}   11.14{col 52}{space 3}0.000{col 60}{space 4} 1.34e-06{col 73}{space 3} 1.91e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-4.97e-06{col 32}{space 2} 5.49e-06{col 43}{space 1}   -0.91{col 52}{space 3}0.365{col 60}{space 4}-.0000157{col 73}{space 3} 5.80e-06
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-1.86e-06{col 32}{space 2} 9.61e-07{col 43}{space 1}   -1.94{col 52}{space 3}0.053{col 60}{space 4}-3.75e-06{col 73}{space 3} 2.16e-08
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-1.46e-06{col 32}{space 2} 1.65e-06{col 43}{space 1}   -0.88{col 52}{space 3}0.377{col 60}{space 4}-4.70e-06{col 73}{space 3} 1.78e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-5.68e-09{col 32}{space 2} 1.18e-08{col 43}{space 1}   -0.48{col 52}{space 3}0.629{col 60}{space 4}-2.88e-08{col 73}{space 3} 1.74e-08
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0007123{col 32}{space 2} .0000107{col 43}{space 1}   66.32{col 52}{space 3}0.000{col 60}{space 4} .0006912{col 73}{space 3} .0007334
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       794
+{txt}{hline 13}{c +}{hline 34}   F(6, 787)       = {res}    32.18
+{txt}       Model {c |} {res} .026438835         6  .004406473   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .107753706       787  .000136917   {txt}R-squared       ={res}    0.1970
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1909
+{txt}       Total {c |} {res} .134192541       793  .000169221   {txt}Root MSE        =   {res}  .0117
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0012318{col 32}{space 2}  .001291{col 43}{space 1}    0.95{col 52}{space 3}0.340{col 60}{space 4}-.0013025{col 73}{space 3} .0037661
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0007008{col 32}{space 2} .0000578{col 43}{space 1}   12.12{col 52}{space 3}0.000{col 60}{space 4} .0005873{col 73}{space 3} .0008142
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0014585{col 32}{space 2} .0021705{col 43}{space 1}   -0.67{col 52}{space 3}0.502{col 60}{space 4}-.0057192{col 73}{space 3} .0028021
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0003657{col 32}{space 2} .0003802{col 43}{space 1}   -0.96{col 52}{space 3}0.336{col 60}{space 4} -.001112{col 73}{space 3} .0003806
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0001133{col 32}{space 2} .0006539{col 43}{space 1}   -0.17{col 52}{space 3}0.863{col 60}{space 4}-.0013969{col 73}{space 3} .0011704
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-3.15e-06{col 32}{space 2} 4.65e-06{col 43}{space 1}   -0.68{col 52}{space 3}0.498{col 60}{space 4}-.0000123{col 73}{space 3} 5.98e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0587886{col 32}{space 2} .0042493{col 43}{space 1}   13.84{col 52}{space 3}0.000{col 60}{space 4} .0504474{col 73}{space 3} .0671298
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       794
+{txt}{hline 13}{c +}{hline 34}   F(6, 787)       = {res}     9.65
+{txt}       Model {c |} {res} .040457411         6  .006742902   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  .54976658       787   .00069856   {txt}R-squared       ={res}    0.0685
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0614
+{txt}       Total {c |} {res} .590223991       793  .000744293   {txt}Root MSE        =   {res} .02643
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0057009{col 32}{space 2} .0029162{col 43}{space 1}    1.95{col 52}{space 3}0.051{col 60}{space 4}-.0000235{col 73}{space 3} .0114253
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} -.000775{col 32}{space 2} .0001306{col 43}{space 1}   -5.94{col 52}{space 3}0.000{col 60}{space 4}-.0010313{col 73}{space 3}-.0005187
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0015637{col 32}{space 2} .0049027{col 43}{space 1}    0.32{col 52}{space 3}0.750{col 60}{space 4}-.0080602{col 73}{space 3} .0111876
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0017971{col 32}{space 2} .0008587{col 43}{space 1}    2.09{col 52}{space 3}0.037{col 60}{space 4} .0001114{col 73}{space 3} .0034827
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0018678{col 32}{space 2} .0014771{col 43}{space 1}    1.26{col 52}{space 3}0.206{col 60}{space 4}-.0010317{col 73}{space 3} .0047673
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} 2.91e-06{col 32}{space 2} .0000105{col 43}{space 1}    0.28{col 52}{space 3}0.782{col 60}{space 4}-.0000177{col 73}{space 3} .0000235
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}  .648655{col 32}{space 2} .0095981{col 43}{space 1}   67.58{col 52}{space 3}0.000{col 60}{space 4} .6298141{col 73}{space 3}  .667496
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       794
+{txt}{hline 13}{c +}{hline 34}   F(6, 787)       = {res}     9.11
+{txt}       Model {c |} {res} .004148059         6  .000691343   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .059701859       787   .00007586   {txt}R-squared       ={res}    0.0650
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0578
+{txt}       Total {c |} {res} .063849917       793  .000080517   {txt}Root MSE        =   {res} .00871
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 1.25e-06{col 32}{space 2}  .000961{col 43}{space 1}    0.00{col 52}{space 3}0.999{col 60}{space 4}-.0018852{col 73}{space 3} .0018877
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0002469{col 32}{space 2}  .000043{col 43}{space 1}    5.74{col 52}{space 3}0.000{col 60}{space 4} .0001625{col 73}{space 3} .0003314
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0030331{col 32}{space 2} .0016156{col 43}{space 1}    1.88{col 52}{space 3}0.061{col 60}{space 4}-.0001384{col 73}{space 3} .0062045
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0001704{col 32}{space 2}  .000283{col 43}{space 1}   -0.60{col 52}{space 3}0.547{col 60}{space 4}-.0007259{col 73}{space 3} .0003851
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0009461{col 32}{space 2} .0004868{col 43}{space 1}   -1.94{col 52}{space 3}0.052{col 60}{space 4}-.0019016{col 73}{space 3} 9.41e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-7.86e-06{col 32}{space 2} 3.46e-06{col 43}{space 1}   -2.27{col 52}{space 3}0.023{col 60}{space 4}-.0000147{col 73}{space 3}-1.07e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1182295{col 32}{space 2} .0031629{col 43}{space 1}   37.38{col 52}{space 3}0.000{col 60}{space 4} .1120207{col 73}{space 3} .1244383
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. **MIDDLE TERTILE**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & AD_PGStert==2 & SEX==1
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       791
+{txt}{hline 13}{c +}{hline 34}   F(6, 784)       = {res}    30.34
+{txt}       Model {c |} {res} .062925931         6  .010487655   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .271012356       784  .000345679   {txt}R-squared       ={res}    0.1884
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1822
+{txt}       Total {c |} {res} .333938287       790  .000422707   {txt}Root MSE        =   {res} .01859
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0059948{col 32}{space 2} .0019898{col 43}{space 1}   -3.01{col 52}{space 3}0.003{col 60}{space 4}-.0099006{col 73}{space 3}-.0020889
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0009748{col 32}{space 2} .0000904{col 43}{space 1}  -10.79{col 52}{space 3}0.000{col 60}{space 4}-.0011522{col 73}{space 3}-.0007975
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0047621{col 32}{space 2} .0035539{col 43}{space 1}    1.34{col 52}{space 3}0.181{col 60}{space 4}-.0022142{col 73}{space 3} .0117384
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0003362{col 32}{space 2} .0006174{col 43}{space 1}    0.54{col 52}{space 3}0.586{col 60}{space 4}-.0008757{col 73}{space 3} .0015481
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0014398{col 32}{space 2} .0010293{col 43}{space 1}    1.40{col 52}{space 3}0.162{col 60}{space 4}-.0005808{col 73}{space 3} .0034604
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000115{col 32}{space 2} 7.65e-06{col 43}{space 1}    1.50{col 52}{space 3}0.133{col 60}{space 4}-3.52e-06{col 73}{space 3} .0000265
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6083476{col 32}{space 2} .0073109{col 43}{space 1}   83.21{col 52}{space 3}0.000{col 60}{space 4} .5939964{col 73}{space 3} .6226988
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       791
+{txt}{hline 13}{c +}{hline 34}   F(6, 784)       = {res}    45.42
+{txt}       Model {c |} {res} 2.2904e-07         6  3.8174e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 6.5889e-07       784  8.4042e-10   {txt}R-squared       ={res}    0.2580
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2523
+{txt}       Total {c |} {res} 8.8793e-07       790  1.1240e-09   {txt}Root MSE        =   {res} 2.9e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 9.25e-06{col 32}{space 2} 3.10e-06{col 43}{space 1}    2.98{col 52}{space 3}0.003{col 60}{space 4} 3.16e-06{col 73}{space 3} .0000153
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.95e-06{col 32}{space 2} 1.41e-07{col 43}{space 1}   13.81{col 52}{space 3}0.000{col 60}{space 4} 1.67e-06{col 73}{space 3} 2.22e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0000103{col 32}{space 2} 5.54e-06{col 43}{space 1}   -1.86{col 52}{space 3}0.063{col 60}{space 4}-.0000212{col 73}{space 3} 5.72e-07
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-8.76e-07{col 32}{space 2} 9.63e-07{col 43}{space 1}   -0.91{col 52}{space 3}0.363{col 60}{space 4}-2.77e-06{col 73}{space 3} 1.01e-06
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} 3.65e-07{col 32}{space 2} 1.60e-06{col 43}{space 1}    0.23{col 52}{space 3}0.820{col 60}{space 4}-2.79e-06{col 73}{space 3} 3.52e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-1.67e-09{col 32}{space 2} 1.19e-08{col 43}{space 1}   -0.14{col 52}{space 3}0.889{col 60}{space 4}-2.51e-08{col 73}{space 3} 2.18e-08
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0006896{col 32}{space 2} .0000114{col 43}{space 1}   60.50{col 52}{space 3}0.000{col 60}{space 4} .0006673{col 73}{space 3}  .000712
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       791
+{txt}{hline 13}{c +}{hline 34}   F(6, 784)       = {res}    33.76
+{txt}       Model {c |} {res}  .02914292         6  .004857153   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .112794773       784  .000143871   {txt}R-squared       ={res}    0.2053
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1992
+{txt}       Total {c |} {res} .141937693       790  .000179668   {txt}Root MSE        =   {res} .01199
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0037981{col 32}{space 2} .0012837{col 43}{space 1}    2.96{col 52}{space 3}0.003{col 60}{space 4} .0012783{col 73}{space 3} .0063179
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0006646{col 32}{space 2} .0000583{col 43}{space 1}   11.40{col 52}{space 3}0.000{col 60}{space 4} .0005502{col 73}{space 3} .0007791
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0029683{col 32}{space 2} .0022928{col 43}{space 1}   -1.29{col 52}{space 3}0.196{col 60}{space 4} -.007469{col 73}{space 3} .0015324
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0005307{col 32}{space 2} .0003983{col 43}{space 1}   -1.33{col 52}{space 3}0.183{col 60}{space 4}-.0013125{col 73}{space 3} .0002512
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0005645{col 32}{space 2} .0006641{col 43}{space 1}    0.85{col 52}{space 3}0.396{col 60}{space 4}-.0007391{col 73}{space 3}  .001868
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-8.76e-06{col 32}{space 2} 4.94e-06{col 43}{space 1}   -1.77{col 52}{space 3}0.076{col 60}{space 4}-.0000185{col 73}{space 3} 9.34e-07
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0643125{col 32}{space 2} .0047165{col 43}{space 1}   13.64{col 52}{space 3}0.000{col 60}{space 4}  .055054{col 73}{space 3} .0735709
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       791
+{txt}{hline 13}{c +}{hline 34}   F(6, 784)       = {res}    19.56
+{txt}       Model {c |} {res} .087398971         6  .014566495   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .583795458       784  .000744637   {txt}R-squared       ={res}    0.1302
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1236
+{txt}       Total {c |} {res} .671194429       790  .000849613   {txt}Root MSE        =   {res} .02729
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0057986{col 32}{space 2} .0029204{col 43}{space 1}   -1.99{col 52}{space 3}0.047{col 60}{space 4}-.0115313{col 73}{space 3} -.000066
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0012146{col 32}{space 2} .0001326{col 43}{space 1}   -9.16{col 52}{space 3}0.000{col 60}{space 4} -.001475{col 73}{space 3}-.0009542
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0062757{col 32}{space 2} .0052161{col 43}{space 1}    1.20{col 52}{space 3}0.229{col 60}{space 4}-.0039634{col 73}{space 3} .0165148
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0001511{col 32}{space 2} .0009061{col 43}{space 1}    0.17{col 52}{space 3}0.868{col 60}{space 4}-.0016276{col 73}{space 3} .0019298
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0012326{col 32}{space 2} .0015107{col 43}{space 1}    0.82{col 52}{space 3}0.415{col 60}{space 4} -.001733{col 73}{space 3} .0041982
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-.0000178{col 32}{space 2} .0000112{col 43}{space 1}   -1.58{col 52}{space 3}0.114{col 60}{space 4}-.0000398{col 73}{space 3} 4.30e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6884454{col 32}{space 2} .0107301{col 43}{space 1}   64.16{col 52}{space 3}0.000{col 60}{space 4} .6673822{col 73}{space 3} .7095086
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       791
+{txt}{hline 13}{c +}{hline 34}   F(6, 784)       = {res}     3.40
+{txt}       Model {c |} {res} .003371908         6  .000561985   {txt}Prob > F        ={res}    0.0025
+{txt}    Residual {c |} {res} .129431074       784  .000165091   {txt}R-squared       ={res}    0.0254
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0179
+{txt}       Total {c |} {res} .132802982       790  .000168105   {txt}Root MSE        =   {res} .01285
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0006499{col 32}{space 2} .0013751{col 43}{space 1}    0.47{col 52}{space 3}0.637{col 60}{space 4}-.0020494{col 73}{space 3} .0033491
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0001858{col 32}{space 2} .0000625{col 43}{space 1}    2.98{col 52}{space 3}0.003{col 60}{space 4} .0000632{col 73}{space 3} .0003084
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} -.001244{col 32}{space 2}  .002456{col 43}{space 1}   -0.51{col 52}{space 3}0.613{col 60}{space 4}-.0060651{col 73}{space 3} .0035772
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0000253{col 32}{space 2} .0004267{col 43}{space 1}   -0.06{col 52}{space 3}0.953{col 60}{space 4}-.0008629{col 73}{space 3} .0008122
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0003775{col 32}{space 2} .0007113{col 43}{space 1}   -0.53{col 52}{space 3}0.596{col 60}{space 4}-.0017738{col 73}{space 3} .0010189
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} -.000013{col 32}{space 2} 5.29e-06{col 43}{space 1}   -2.46{col 52}{space 3}0.014{col 60}{space 4}-.0000234{col 73}{space 3}-2.63e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1248973{col 32}{space 2} .0050524{col 43}{space 1}   24.72{col 52}{space 3}0.000{col 60}{space 4} .1149795{col 73}{space 3}  .134815
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+.  
+. **HIGHEST TERTILE**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & AD_PGStert==3 & SEX==1
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       783
+{txt}{hline 13}{c +}{hline 34}   F(6, 776)       = {res}    18.94
+{txt}       Model {c |} {res} .044613875         6  .007435646   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .304646738       776  .000392586   {txt}R-squared       ={res}    0.1277
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1210
+{txt}       Total {c |} {res} .349260613       782  .000446625   {txt}Root MSE        =   {res} .01981
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0003864{col 32}{space 2} .0023481{col 43}{space 1}   -0.16{col 52}{space 3}0.869{col 60}{space 4}-.0049957{col 73}{space 3} .0042229
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0009401{col 32}{space 2} .0000993{col 43}{space 1}   -9.47{col 52}{space 3}0.000{col 60}{space 4} -.001135{col 73}{space 3}-.0007451
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0045893{col 32}{space 2} .0047653{col 43}{space 1}    0.96{col 52}{space 3}0.336{col 60}{space 4}-.0047651{col 73}{space 3} .0139436
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0002437{col 32}{space 2} .0006508{col 43}{space 1}   -0.37{col 52}{space 3}0.708{col 60}{space 4}-.0015212{col 73}{space 3} .0010338
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}  .000058{col 32}{space 2} .0010921{col 43}{space 1}    0.05{col 52}{space 3}0.958{col 60}{space 4}-.0020858{col 73}{space 3} .0022017
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000195{col 32}{space 2} 7.99e-06{col 43}{space 1}    2.44{col 52}{space 3}0.015{col 60}{space 4} 3.80e-06{col 73}{space 3} .0000352
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6041484{col 32}{space 2} .0074178{col 43}{space 1}   81.45{col 52}{space 3}0.000{col 60}{space 4}  .589587{col 73}{space 3} .6187097
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       783
+{txt}{hline 13}{c +}{hline 34}   F(6, 776)       = {res}    33.41
+{txt}       Model {c |} {res} 1.9405e-07         6  3.2341e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 7.5118e-07       776  9.6802e-10   {txt}R-squared       ={res}    0.2053
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1991
+{txt}       Total {c |} {res} 9.4523e-07       782  1.2087e-09   {txt}Root MSE        =   {res} 3.1e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 1.60e-06{col 32}{space 2} 3.69e-06{col 43}{space 1}    0.43{col 52}{space 3}0.665{col 60}{space 4}-5.64e-06{col 73}{space 3} 8.83e-06
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.96e-06{col 32}{space 2} 1.56e-07{col 43}{space 1}   12.56{col 52}{space 3}0.000{col 60}{space 4} 1.65e-06{col 73}{space 3} 2.26e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} -.000014{col 32}{space 2} 7.48e-06{col 43}{space 1}   -1.87{col 52}{space 3}0.062{col 60}{space 4}-.0000287{col 73}{space 3} 7.18e-07
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-2.25e-07{col 32}{space 2} 1.02e-06{col 43}{space 1}   -0.22{col 52}{space 3}0.826{col 60}{space 4}-2.23e-06{col 73}{space 3} 1.78e-06
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} 3.57e-06{col 32}{space 2} 1.71e-06{col 43}{space 1}    2.08{col 52}{space 3}0.038{col 60}{space 4} 2.02e-07{col 73}{space 3} 6.93e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-1.51e-08{col 32}{space 2} 1.25e-08{col 43}{space 1}   -1.20{col 52}{space 3}0.230{col 60}{space 4}-3.97e-08{col 73}{space 3} 9.56e-09
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0006963{col 32}{space 2} .0000116{col 43}{space 1}   59.78{col 52}{space 3}0.000{col 60}{space 4} .0006735{col 73}{space 3} .0007192
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       783
+{txt}{hline 13}{c +}{hline 34}   F(6, 776)       = {res}    35.78
+{txt}       Model {c |} {res} .030365221         6   .00506087   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .109769526       776  .000141456   {txt}R-squared       ={res}    0.2167
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2106
+{txt}       Total {c |} {res} .140134747       782    .0001792   {txt}Root MSE        =   {res} .01189
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0006865{col 32}{space 2} .0014095{col 43}{space 1}    0.49{col 52}{space 3}0.626{col 60}{space 4}-.0020803{col 73}{space 3} .0034533
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0007709{col 32}{space 2} .0000596{col 43}{space 1}   12.93{col 52}{space 3}0.000{col 60}{space 4} .0006539{col 73}{space 3} .0008879
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0045336{col 32}{space 2} .0028604{col 43}{space 1}   -1.58{col 52}{space 3}0.113{col 60}{space 4}-.0101487{col 73}{space 3} .0010815
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0002032{col 32}{space 2} .0003906{col 43}{space 1}   -0.52{col 52}{space 3}0.603{col 60}{space 4}  -.00097{col 73}{space 3} .0005636
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0014018{col 32}{space 2} .0006555{col 43}{space 1}    2.14{col 52}{space 3}0.033{col 60}{space 4}  .000115{col 73}{space 3} .0026887
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-6.56e-06{col 32}{space 2} 4.80e-06{col 43}{space 1}   -1.37{col 52}{space 3}0.172{col 60}{space 4} -.000016{col 73}{space 3} 2.85e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0563097{col 32}{space 2} .0044527{col 43}{space 1}   12.65{col 52}{space 3}0.000{col 60}{space 4} .0475691{col 73}{space 3} .0650504
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       783
+{txt}{hline 13}{c +}{hline 34}   F(6, 776)       = {res}    11.19
+{txt}       Model {c |} {res}  .05969966         6  .009949943   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .689741057       776  .000888842   {txt}R-squared       ={res}    0.0797
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0725
+{txt}       Total {c |} {res} .749440717       782  .000958364   {txt}Root MSE        =   {res} .02981
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} -.000484{col 32}{space 2} .0035331{col 43}{space 1}   -0.14{col 52}{space 3}0.891{col 60}{space 4}-.0074196{col 73}{space 3} .0064515
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0010452{col 32}{space 2} .0001494{col 43}{space 1}   -7.00{col 52}{space 3}0.000{col 60}{space 4}-.0013386{col 73}{space 3}-.0007519
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}  .006065{col 32}{space 2} .0071702{col 43}{space 1}    0.85{col 52}{space 3}0.398{col 60}{space 4}-.0080104{col 73}{space 3} .0201404
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0007591{col 32}{space 2} .0009792{col 43}{space 1}    0.78{col 52}{space 3}0.438{col 60}{space 4}-.0011631{col 73}{space 3} .0026814
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0023821{col 32}{space 2} .0016432{col 43}{space 1}   -1.45{col 52}{space 3}0.148{col 60}{space 4}-.0056078{col 73}{space 3} .0008436
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000173{col 32}{space 2}  .000012{col 43}{space 1}    1.44{col 52}{space 3}0.151{col 60}{space 4}-6.34e-06{col 73}{space 3} .0000409
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6572834{col 32}{space 2} .0111615{col 43}{space 1}   58.89{col 52}{space 3}0.000{col 60}{space 4} .6353732{col 73}{space 3} .6791936
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       783
+{txt}{hline 13}{c +}{hline 34}   F(6, 776)       = {res}     8.29
+{txt}       Model {c |} {res} .003370516         6  .000561753   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  .05260213       776  .000067786   {txt}R-squared       ={res}    0.0602
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0530
+{txt}       Total {c |} {res} .055972646       782  .000071576   {txt}Root MSE        =   {res} .00823
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0000932{col 32}{space 2} .0009757{col 43}{space 1}    0.10{col 52}{space 3}0.924{col 60}{space 4}-.0018221{col 73}{space 3} .0020085
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0002608{col 32}{space 2} .0000413{col 43}{space 1}    6.32{col 52}{space 3}0.000{col 60}{space 4} .0001798{col 73}{space 3} .0003418
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0002457{col 32}{space 2} .0019801{col 43}{space 1}   -0.12{col 52}{space 3}0.901{col 60}{space 4}-.0041327{col 73}{space 3} .0036413
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0001681{col 32}{space 2} .0002704{col 43}{space 1}    0.62{col 52}{space 3}0.534{col 60}{space 4}-.0003628{col 73}{space 3} .0006989
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} -.000405{col 32}{space 2} .0004538{col 43}{space 1}   -0.89{col 52}{space 3}0.372{col 60}{space 4}-.0012958{col 73}{space 3} .0004858
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-4.67e-06{col 32}{space 2} 3.32e-06{col 43}{space 1}   -1.41{col 52}{space 3}0.160{col 60}{space 4}-.0000112{col 73}{space 3} 1.85e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1147516{col 32}{space 2} .0030823{col 43}{space 1}   37.23{col 52}{space 3}0.000{col 60}{space 4} .1087009{col 73}{space 3} .1208023
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}.  
+.  
+. 
+. 
+. ************************************************AMONG WOMEN***************************************
+. 
+. 
+. 
+. **Model 1**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & SEX==2
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(6, 2714)      = {res}    85.60
+{txt}       Model {c |} {res} .187716518         6  .031286086   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .991923623     2,714  .000365484   {txt}R-squared       ={res}    0.1591
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1573
+{txt}       Total {c |} {res} 1.17964014     2,720  .000433691   {txt}Root MSE        =   {res} .01912
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0041114{col 32}{space 2}  .001277{col 43}{space 1}   -3.22{col 52}{space 3}0.001{col 60}{space 4}-.0066154{col 73}{space 3}-.0016075
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0009519{col 32}{space 2} .0000549{col 43}{space 1}  -17.33{col 52}{space 3}0.000{col 60}{space 4}-.0010596{col 73}{space 3}-.0008442
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0003649{col 32}{space 2}  .002138{col 43}{space 1}    0.17{col 52}{space 3}0.864{col 60}{space 4}-.0038275{col 73}{space 3} .0045573
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}  .000489{col 32}{space 2} .0003476{col 43}{space 1}    1.41{col 52}{space 3}0.160{col 60}{space 4}-.0001927{col 73}{space 3} .0011706
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0008365{col 32}{space 2} .0005878{col 43}{space 1}    1.42{col 52}{space 3}0.155{col 60}{space 4}-.0003161{col 73}{space 3} .0019891
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000134{col 32}{space 2} 3.99e-06{col 43}{space 1}    3.35{col 52}{space 3}0.001{col 60}{space 4} 5.55e-06{col 73}{space 3} .0000212
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6047817{col 32}{space 2} .0042713{col 43}{space 1}  141.59{col 52}{space 3}0.000{col 60}{space 4} .5964063{col 73}{space 3} .6131571
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(6, 2714)      = {res}   110.98
+{txt}       Model {c |} {res} 5.7654e-07         6  9.6090e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.3499e-06     2,714  8.6584e-10   {txt}R-squared       ={res}    0.1970
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1952
+{txt}       Total {c |} {res} 2.9264e-06     2,720  1.0759e-09   {txt}Root MSE        =   {res} 2.9e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 3.60e-06{col 32}{space 2} 1.97e-06{col 43}{space 1}    1.83{col 52}{space 3}0.067{col 60}{space 4}-2.50e-07{col 73}{space 3} 7.46e-06
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.86e-06{col 32}{space 2} 8.45e-08{col 43}{space 1}   22.04{col 52}{space 3}0.000{col 60}{space 4} 1.70e-06{col 73}{space 3} 2.03e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-4.95e-06{col 32}{space 2} 3.29e-06{col 43}{space 1}   -1.50{col 52}{space 3}0.133{col 60}{space 4}-.0000114{col 73}{space 3} 1.51e-06
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-5.35e-07{col 32}{space 2} 5.35e-07{col 43}{space 1}   -1.00{col 52}{space 3}0.317{col 60}{space 4}-1.58e-06{col 73}{space 3} 5.14e-07
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} 2.41e-07{col 32}{space 2} 9.05e-07{col 43}{space 1}    0.27{col 52}{space 3}0.790{col 60}{space 4}-1.53e-06{col 73}{space 3} 2.01e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} 3.97e-09{col 32}{space 2} 6.15e-09{col 43}{space 1}    0.65{col 52}{space 3}0.519{col 60}{space 4}-8.09e-09{col 73}{space 3} 1.60e-08
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}  .000688{col 32}{space 2} 6.57e-06{col 43}{space 1}  104.65{col 52}{space 3}0.000{col 60}{space 4} .0006751{col 73}{space 3} .0007009
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(6, 2714)      = {res}    99.10
+{txt}       Model {c |} {res} .086082829         6  .014347138   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .392924588     2,714  .000144777   {txt}R-squared       ={res}    0.1797
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1779
+{txt}       Total {c |} {res} .479007416     2,720  .000176106   {txt}Root MSE        =   {res} .01203
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0005129{col 32}{space 2} .0008037{col 43}{space 1}    0.64{col 52}{space 3}0.523{col 60}{space 4}-.0010631{col 73}{space 3} .0020888
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0007217{col 32}{space 2} .0000346{col 43}{space 1}   20.87{col 52}{space 3}0.000{col 60}{space 4} .0006539{col 73}{space 3} .0007895
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0002062{col 32}{space 2} .0013457{col 43}{space 1}   -0.15{col 52}{space 3}0.878{col 60}{space 4}-.0028448{col 73}{space 3} .0024324
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0003534{col 32}{space 2} .0002188{col 43}{space 1}   -1.62{col 52}{space 3}0.106{col 60}{space 4}-.0007824{col 73}{space 3} .0000756
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0004792{col 32}{space 2}   .00037{col 43}{space 1}    1.30{col 52}{space 3}0.195{col 60}{space 4}-.0002462{col 73}{space 3} .0012047
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-8.70e-08{col 32}{space 2} 2.51e-06{col 43}{space 1}   -0.03{col 52}{space 3}0.972{col 60}{space 4}-5.02e-06{col 73}{space 3} 4.84e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0550218{col 32}{space 2} .0026883{col 43}{space 1}   20.47{col 52}{space 3}0.000{col 60}{space 4} .0497504{col 73}{space 3} .0602932
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(6, 2714)      = {res}    45.59
+{txt}       Model {c |} {res} .199767534         6  .033294589   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.98220975     2,714  .000730365   {txt}R-squared       ={res}    0.0916
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0895
+{txt}       Total {c |} {res} 2.18197728     2,720  .000802198   {txt}Root MSE        =   {res} .02703
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0043034{col 32}{space 2} .0018052{col 43}{space 1}   -2.38{col 52}{space 3}0.017{col 60}{space 4}-.0078431{col 73}{space 3}-.0007637
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0010855{col 32}{space 2} .0000777{col 43}{space 1}  -13.98{col 52}{space 3}0.000{col 60}{space 4}-.0012378{col 73}{space 3}-.0009332
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0040793{col 32}{space 2} .0030224{col 43}{space 1}    1.35{col 52}{space 3}0.177{col 60}{space 4}-.0018472{col 73}{space 3} .0100057
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0000279{col 32}{space 2} .0004914{col 43}{space 1}    0.06{col 52}{space 3}0.955{col 60}{space 4}-.0009357{col 73}{space 3} .0009915
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0003945{col 32}{space 2}  .000831{col 43}{space 1}    0.47{col 52}{space 3}0.635{col 60}{space 4}-.0012349{col 73}{space 3} .0020239
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-5.19e-06{col 32}{space 2} 5.65e-06{col 43}{space 1}   -0.92{col 52}{space 3}0.358{col 60}{space 4}-.0000163{col 73}{space 3} 5.88e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6740189{col 32}{space 2} .0060381{col 43}{space 1}  111.63{col 52}{space 3}0.000{col 60}{space 4} .6621792{col 73}{space 3} .6858587
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(6, 2714)      = {res}    25.14
+{txt}       Model {c |} {res} .009643087         6  .001607181   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .173497284     2,714  .000063927   {txt}R-squared       ={res}    0.0527
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0506
+{txt}       Total {c |} {res} .183140371     2,720  .000067331   {txt}Root MSE        =   {res}   .008
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0009454{col 32}{space 2} .0005341{col 43}{space 1}    1.77{col 52}{space 3}0.077{col 60}{space 4}-.0001018{col 73}{space 3} .0019927
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0001635{col 32}{space 2}  .000023{col 43}{space 1}    7.12{col 52}{space 3}0.000{col 60}{space 4} .0001184{col 73}{space 3} .0002085
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0012112{col 32}{space 2} .0008942{col 43}{space 1}    1.35{col 52}{space 3}0.176{col 60}{space 4}-.0005422{col 73}{space 3} .0029645
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0001865{col 32}{space 2} .0001454{col 43}{space 1}   -1.28{col 52}{space 3}0.200{col 60}{space 4}-.0004716{col 73}{space 3} .0000985
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0004372{col 32}{space 2} .0002458{col 43}{space 1}   -1.78{col 52}{space 3}0.075{col 60}{space 4}-.0009192{col 73}{space 3} .0000449
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-8.31e-06{col 32}{space 2} 1.67e-06{col 43}{space 1}   -4.97{col 52}{space 3}0.000{col 60}{space 4}-.0000116{col 73}{space 3}-5.04e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1236074{col 32}{space 2} .0017864{col 43}{space 1}   69.19{col 52}{space 3}0.000{col 60}{space 4} .1201046{col 73}{space 3} .1271102
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. 
+. **Model 2: Interaction with AD PGS tertile**
+.  
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' c.poororalhealth_sev##c.AD_PGStert AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & SEX==2
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(8, 2712)      = {res}    64.17
+{txt}       Model {c |} {res} .187763421         8  .023470428   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .991876719     2,712  .000365736   {txt}R-squared       ={res}    0.1592
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1567
+{txt}       Total {c |} {res} 1.17964014     2,720  .000433691   {txt}Root MSE        =   {res} .01912
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          FA_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2}-.0030446{col 47}{space 2} .0032423{col 58}{space 1}   -0.94{col 67}{space 3}0.348{col 75}{space 4}-.0094022{col 88}{space 3} .0033131
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2} .0000574{col 47}{space 2} .0004742{col 58}{space 1}    0.12{col 67}{space 3}0.904{col 75}{space 4}-.0008724{col 88}{space 3} .0009872
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2}-.0005383{col 47}{space 2} .0015038{col 58}{space 1}   -0.36{col 67}{space 3}0.720{col 75}{space 4}-.0034871{col 88}{space 3} .0024105
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2}-.0009521{col 47}{space 2}  .000055{col 58}{space 1}  -17.30{col 67}{space 3}0.000{col 75}{space 4}-.0010601{col 88}{space 3}-.0008442
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2} .0003588{col 47}{space 2} .0021389{col 58}{space 1}    0.17{col 67}{space 3}0.867{col 75}{space 4}-.0038352{col 88}{space 3} .0045529
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2} .0004884{col 47}{space 2} .0003478{col 58}{space 1}    1.40{col 67}{space 3}0.160{col 75}{space 4}-.0001935{col 88}{space 3} .0011703
+{txt}{space 30}SES {c |}{col 35}{res}{space 2}  .000843{col 47}{space 2} .0005885{col 58}{space 1}    1.43{col 67}{space 3}0.152{col 75}{space 4}-.0003109{col 88}{space 3} .0019969
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2} .0000133{col 47}{space 2} 4.01e-06{col 58}{space 1}    3.33{col 67}{space 3}0.001{col 75}{space 4} 5.48e-06{col 88}{space 3} .0000212
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .6047082{col 47}{space 2} .0044397{col 58}{space 1}  136.21{col 67}{space 3}0.000{col 75}{space 4} .5960028{col 88}{space 3} .6134137
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(8, 2712)      = {res}    83.44
+{txt}       Model {c |} {res} 5.7802e-07         8  7.2253e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.3484e-06     2,712  8.6593e-10   {txt}R-squared       ={res}    0.1975
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1952
+{txt}       Total {c |} {res} 2.9264e-06     2,720  1.0759e-09   {txt}Root MSE        =   {res} 2.9e-05
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          MD_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2} 3.48e-07{col 47}{space 2} 4.99e-06{col 58}{space 1}    0.07{col 67}{space 3}0.944{col 75}{space 4}-9.43e-06{col 88}{space 3} .0000101
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2}-9.23e-07{col 47}{space 2} 7.30e-07{col 58}{space 1}   -1.27{col 67}{space 3}0.206{col 75}{space 4}-2.35e-06{col 88}{space 3} 5.08e-07
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2} 1.64e-06{col 47}{space 2} 2.31e-06{col 58}{space 1}    0.71{col 67}{space 3}0.479{col 75}{space 4}-2.90e-06{col 88}{space 3} 6.17e-06
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2} 1.86e-06{col 47}{space 2} 8.47e-08{col 58}{space 1}   21.96{col 67}{space 3}0.000{col 75}{space 4} 1.69e-06{col 88}{space 3} 2.03e-06
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2}-4.95e-06{col 47}{space 2} 3.29e-06{col 58}{space 1}   -1.51{col 67}{space 3}0.132{col 75}{space 4}-.0000114{col 88}{space 3} 1.50e-06
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2}-5.28e-07{col 47}{space 2} 5.35e-07{col 58}{space 1}   -0.99{col 67}{space 3}0.324{col 75}{space 4}-1.58e-06{col 88}{space 3} 5.22e-07
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} 1.98e-07{col 47}{space 2} 9.05e-07{col 58}{space 1}    0.22{col 67}{space 3}0.827{col 75}{space 4}-1.58e-06{col 88}{space 3} 1.97e-06
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2} 3.68e-09{col 47}{space 2} 6.17e-09{col 58}{space 1}    0.60{col 67}{space 3}0.551{col 75}{space 4}-8.41e-09{col 88}{space 3} 1.58e-08
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .0006902{col 47}{space 2} 6.83e-06{col 58}{space 1}  101.04{col 67}{space 3}0.000{col 75}{space 4} .0006768{col 88}{space 3} .0007036
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(8, 2712)      = {res}    74.66
+{txt}       Model {c |} {res} .086453732         8  .010806716   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .392553684     2,712  .000144747   {txt}R-squared       ={res}    0.1805
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1781
+{txt}       Total {c |} {res} .479007416     2,720  .000176106   {txt}Root MSE        =   {res} .01203
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                       ISOVF_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2}-4.88e-06{col 47}{space 2} .0020397{col 58}{space 1}   -0.00{col 67}{space 3}0.998{col 75}{space 4}-.0040045{col 88}{space 3} .0039947
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2}-.0004724{col 47}{space 2} .0002983{col 58}{space 1}   -1.58{col 67}{space 3}0.113{col 75}{space 4}-.0010573{col 88}{space 3} .0001126
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2} .0002573{col 47}{space 2} .0009461{col 58}{space 1}    0.27{col 67}{space 3}0.786{col 75}{space 4}-.0015978{col 88}{space 3} .0021124
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2}  .000719{col 47}{space 2} .0000346{col 58}{space 1}   20.77{col 67}{space 3}0.000{col 75}{space 4} .0006511{col 88}{space 3} .0007868
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2} -.000218{col 47}{space 2} .0013456{col 58}{space 1}   -0.16{col 67}{space 3}0.871{col 75}{space 4}-.0028564{col 88}{space 3} .0024205
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2}-.0003496{col 47}{space 2} .0002188{col 58}{space 1}   -1.60{col 67}{space 3}0.110{col 75}{space 4}-.0007786{col 88}{space 3} .0000794
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} .0004621{col 47}{space 2} .0003702{col 58}{space 1}    1.25{col 67}{space 3}0.212{col 75}{space 4}-.0002638{col 88}{space 3}  .001188
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-3.23e-07{col 47}{space 2} 2.52e-06{col 58}{space 1}   -0.13{col 67}{space 3}0.898{col 75}{space 4}-5.27e-06{col 88}{space 3} 4.62e-06
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .0562355{col 47}{space 2}  .002793{col 58}{space 1}   20.13{col 67}{space 3}0.000{col 75}{space 4} .0507589{col 88}{space 3} .0617121
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(8, 2712)      = {res}    34.28
+{txt}       Model {c |} {res} .200405336         8  .025050667   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 1.98157195     2,712  .000730668   {txt}R-squared       ={res}    0.0918
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0892
+{txt}       Total {c |} {res} 2.18197728     2,720  .000802198   {txt}Root MSE        =   {res} .02703
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                        ICVF_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2}-.0010843{col 47}{space 2} .0045828{col 58}{space 1}   -0.24{col 67}{space 3}0.813{col 75}{space 4}-.0100704{col 88}{space 3} .0079018
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2} .0005032{col 47}{space 2} .0006702{col 58}{space 1}    0.75{col 67}{space 3}0.453{col 75}{space 4} -.000811{col 88}{space 3} .0018174
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2}-.0016214{col 47}{space 2} .0021256{col 58}{space 1}   -0.76{col 67}{space 3}0.446{col 75}{space 4}-.0057894{col 88}{space 3} .0025465
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2}-.0010842{col 47}{space 2} .0000778{col 58}{space 1}  -13.94{col 67}{space 3}0.000{col 75}{space 4}-.0012367{col 88}{space 3}-.0009317
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2} .0040719{col 47}{space 2} .0030232{col 58}{space 1}    1.35{col 67}{space 3}0.178{col 75}{space 4}-.0018561{col 88}{space 3} .0099999
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2} .0000236{col 47}{space 2} .0004915{col 58}{space 1}    0.05{col 67}{space 3}0.962{col 75}{space 4}-.0009403{col 88}{space 3} .0009874
+{txt}{space 30}SES {c |}{col 35}{res}{space 2} .0004244{col 47}{space 2} .0008318{col 58}{space 1}    0.51{col 67}{space 3}0.610{col 75}{space 4}-.0012066{col 88}{space 3} .0020553
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-5.14e-06{col 47}{space 2} 5.66e-06{col 58}{space 1}   -0.91{col 67}{space 3}0.364{col 75}{space 4}-.0000162{col 88}{space 3} 5.96e-06
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .6729228{col 47}{space 2} .0062752{col 58}{space 1}  107.24{col 67}{space 3}0.000{col 75}{space 4} .6606182{col 88}{space 3} .6852274
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     2,721
+{txt}{hline 13}{c +}{hline 34}   F(8, 2712)      = {res}    19.07
+{txt}       Model {c |} {res} .009755834         8  .001219479   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .173384537     2,712  .000063932   {txt}R-squared       ={res}    0.0533
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0505
+{txt}       Total {c |} {res} .183140371     2,720  .000067331   {txt}Root MSE        =   {res}   .008
+
+{txt}{hline 34}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                          OD_mean{col 35}{c |} Coefficient{col 47}  Std. err.{col 59}      t{col 67}   P>|t|{col 75}     [95% con{col 88}f. interval]
+{hline 34}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 15}poororalhealth_sev {c |}{col 35}{res}{space 2} .0008939{col 47}{space 2} .0013556{col 58}{space 1}    0.66{col 67}{space 3}0.510{col 75}{space 4}-.0017642{col 88}{space 3}  .003552
+{txt}{space 23}AD_PGStert {c |}{col 35}{res}{space 2} .0002472{col 47}{space 2} .0001983{col 58}{space 1}    1.25{col 67}{space 3}0.213{col 75}{space 4}-.0001416{col 88}{space 3} .0006359
+{txt}{space 33} {c |}
+c.poororalhealth_sev#c.AD_PGStert {c |}{col 35}{res}{space 2} .0000283{col 47}{space 2} .0006288{col 58}{space 1}    0.04{col 67}{space 3}0.964{col 75}{space 4}-.0012046{col 88}{space 3} .0012611
+{txt}{space 33} {c |}
+{space 30}AGE {c |}{col 35}{res}{space 2} .0001651{col 47}{space 2}  .000023{col 58}{space 1}    7.18{col 67}{space 3}0.000{col 75}{space 4}   .00012{col 88}{space 3} .0002102
+{txt}{space 30}SEX {c |}{col 35}{res}{space 2}        0{col 47}{txt}  (omitted)
+{space 25}NonWhite {c |}{col 35}{res}{space 2} .0012197{col 47}{space 2} .0008943{col 58}{space 1}    1.36{col 67}{space 3}0.173{col 75}{space 4}-.0005338{col 88}{space 3} .0029732
+{txt}{space 20}householdsize {c |}{col 35}{res}{space 2}-.0001885{col 47}{space 2} .0001454{col 58}{space 1}   -1.30{col 67}{space 3}0.195{col 75}{space 4}-.0004736{col 88}{space 3} .0000966
+{txt}{space 30}SES {c |}{col 35}{res}{space 2}-.0004297{col 47}{space 2}  .000246{col 58}{space 1}   -1.75{col 67}{space 3}0.081{col 75}{space 4}-.0009121{col 88}{space 3} .0000528
+{txt}{space 19}LE8_TOTALSCORE {c |}{col 35}{res}{space 2}-8.16e-06{col 47}{space 2} 1.68e-06{col 58}{space 1}   -4.87{col 67}{space 3}0.000{col 75}{space 4}-.0000114{col 88}{space 3}-4.88e-06
+{txt}{space 28}_cons {c |}{col 35}{res}{space 2} .1229485{col 47}{space 2} .0018562{col 58}{space 1}   66.24{col 67}{space 3}0.000{col 75}{space 4} .1193088{col 88}{space 3} .1265883
+{txt}{hline 34}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. **Stratified analysis by AD PGS TERTILES**
+. 
+. **LOWEST TERTILE**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & AD_PGStert==1 & SEX==2
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       903
+{txt}{hline 13}{c +}{hline 34}   F(6, 896)       = {res}    27.53
+{txt}       Model {c |} {res} .067633819         6  .011272303   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .366837927       896  .000409417   {txt}R-squared       ={res}    0.1557
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1500
+{txt}       Total {c |} {res} .434471746       902  .000481676   {txt}Root MSE        =   {res} .02023
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} -.002749{col 32}{space 2} .0023035{col 43}{space 1}   -1.19{col 52}{space 3}0.233{col 60}{space 4}-.0072699{col 73}{space 3} .0017718
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0010098{col 32}{space 2}  .000103{col 43}{space 1}   -9.80{col 52}{space 3}0.000{col 60}{space 4} -.001212{col 73}{space 3}-.0008076
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0012631{col 32}{space 2} .0037658{col 43}{space 1}   -0.34{col 52}{space 3}0.737{col 60}{space 4} -.008654{col 73}{space 3} .0061278
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0005164{col 32}{space 2} .0006674{col 43}{space 1}    0.77{col 52}{space 3}0.439{col 60}{space 4}-.0007933{col 73}{space 3} .0018262
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0007849{col 32}{space 2} .0010852{col 43}{space 1}    0.72{col 52}{space 3}0.470{col 60}{space 4}-.0013448{col 73}{space 3} .0029147
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000145{col 32}{space 2} 7.50e-06{col 43}{space 1}    1.93{col 52}{space 3}0.054{col 60}{space 4}-2.30e-07{col 73}{space 3} .0000292
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6073221{col 32}{space 2} .0081326{col 43}{space 1}   74.68{col 52}{space 3}0.000{col 60}{space 4} .5913609{col 73}{space 3} .6232833
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       903
+{txt}{hline 13}{c +}{hline 34}   F(6, 896)       = {res}    34.54
+{txt}       Model {c |} {res} 1.9912e-07         6  3.3187e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 8.6082e-07       896  9.6074e-10   {txt}R-squared       ={res}    0.1879
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1824
+{txt}       Total {c |} {res} 1.0599e-06       902  1.1751e-09   {txt}Root MSE        =   {res} 3.1e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 7.34e-07{col 32}{space 2} 3.53e-06{col 43}{space 1}    0.21{col 52}{space 3}0.835{col 60}{space 4}-6.19e-06{col 73}{space 3} 7.66e-06
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.94e-06{col 32}{space 2} 1.58e-07{col 43}{space 1}   12.30{col 52}{space 3}0.000{col 60}{space 4} 1.63e-06{col 73}{space 3} 2.25e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} 1.04e-06{col 32}{space 2} 5.77e-06{col 43}{space 1}    0.18{col 52}{space 3}0.857{col 60}{space 4}-.0000103{col 73}{space 3} .0000124
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-4.36e-07{col 32}{space 2} 1.02e-06{col 43}{space 1}   -0.43{col 52}{space 3}0.670{col 60}{space 4}-2.44e-06{col 73}{space 3} 1.57e-06
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} 3.72e-07{col 32}{space 2} 1.66e-06{col 43}{space 1}    0.22{col 52}{space 3}0.823{col 60}{space 4}-2.89e-06{col 73}{space 3} 3.63e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} 2.26e-09{col 32}{space 2} 1.15e-08{col 43}{space 1}    0.20{col 52}{space 3}0.844{col 60}{space 4}-2.03e-08{col 73}{space 3} 2.48e-08
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0006856{col 32}{space 2} .0000125{col 43}{space 1}   55.03{col 52}{space 3}0.000{col 60}{space 4} .0006611{col 73}{space 3}   .00071
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       903
+{txt}{hline 13}{c +}{hline 34}   F(6, 896)       = {res}    32.87
+{txt}       Model {c |} {res} .031696073         6  .005282679   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .144007814       896  .000160723   {txt}R-squared       ={res}    0.1804
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1749
+{txt}       Total {c |} {res} .175703887       902  .000194794   {txt}Root MSE        =   {res} .01268
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0001625{col 32}{space 2} .0014432{col 43}{space 1}    0.11{col 52}{space 3}0.910{col 60}{space 4}  -.00267{col 73}{space 3}  .002995
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0007668{col 32}{space 2} .0000645{col 43}{space 1}   11.88{col 52}{space 3}0.000{col 60}{space 4} .0006401{col 73}{space 3} .0008934
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}  -.00043{col 32}{space 2} .0023595{col 43}{space 1}   -0.18{col 52}{space 3}0.855{col 60}{space 4}-.0050607{col 73}{space 3} .0042008
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0002519{col 32}{space 2} .0004181{col 43}{space 1}   -0.60{col 52}{space 3}0.547{col 60}{space 4}-.0010725{col 73}{space 3} .0005687
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0002434{col 32}{space 2} .0006799{col 43}{space 1}    0.36{col 52}{space 3}0.720{col 60}{space 4} -.001091{col 73}{space 3} .0015778
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-5.77e-07{col 32}{space 2} 4.70e-06{col 43}{space 1}   -0.12{col 52}{space 3}0.902{col 60}{space 4}-9.80e-06{col 73}{space 3} 8.65e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}   .05338{col 32}{space 2} .0050955{col 43}{space 1}   10.48{col 52}{space 3}0.000{col 60}{space 4} .0433796{col 73}{space 3} .0633805
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       903
+{txt}{hline 13}{c +}{hline 34}   F(6, 896)       = {res}    15.18
+{txt}       Model {c |} {res} .062917833         6  .010486306   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .619101153       896  .000690961   {txt}R-squared       ={res}    0.0923
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0862
+{txt}       Total {c |} {res} .682018987       902  .000756119   {txt}Root MSE        =   {res} .02629
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0014061{col 32}{space 2} .0029925{col 43}{space 1}   -0.47{col 52}{space 3}0.639{col 60}{space 4}-.0072791{col 73}{space 3} .0044669
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0010839{col 32}{space 2} .0001338{col 43}{space 1}   -8.10{col 52}{space 3}0.000{col 60}{space 4}-.0013466{col 73}{space 3}-.0008213
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0029701{col 32}{space 2} .0048922{col 43}{space 1}   -0.61{col 52}{space 3}0.544{col 60}{space 4}-.0125716{col 73}{space 3} .0066315
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0002463{col 32}{space 2}  .000867{col 43}{space 1}    0.28{col 52}{space 3}0.776{col 60}{space 4}-.0014552{col 73}{space 3} .0019479
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0002789{col 32}{space 2} .0014097{col 43}{space 1}   -0.20{col 52}{space 3}0.843{col 60}{space 4}-.0030457{col 73}{space 3} .0024879
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-3.38e-06{col 32}{space 2} 9.74e-06{col 43}{space 1}   -0.35{col 52}{space 3}0.729{col 60}{space 4}-.0000225{col 73}{space 3} .0000157
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6723764{col 32}{space 2} .0105651{col 43}{space 1}   63.64{col 52}{space 3}0.000{col 60}{space 4} .6516412{col 73}{space 3} .6931116
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       903
+{txt}{hline 13}{c +}{hline 34}   F(6, 896)       = {res}     9.32
+{txt}       Model {c |} {res} .004013198         6  .000668866   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .064282411       896  .000071744   {txt}R-squared       ={res}    0.0588
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0525
+{txt}       Total {c |} {res} .068295609       902  .000075716   {txt}Root MSE        =   {res} .00847
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0013049{col 32}{space 2} .0009643{col 43}{space 1}    1.35{col 52}{space 3}0.176{col 60}{space 4}-.0005876{col 73}{space 3} .0031973
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}  .000185{col 32}{space 2} .0000431{col 43}{space 1}    4.29{col 52}{space 3}0.000{col 60}{space 4} .0001003{col 73}{space 3} .0002696
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0001994{col 32}{space 2} .0015764{col 43}{space 1}   -0.13{col 52}{space 3}0.899{col 60}{space 4}-.0032933{col 73}{space 3} .0028945
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0001685{col 32}{space 2} .0002794{col 43}{space 1}   -0.60{col 52}{space 3}0.547{col 60}{space 4}-.0007168{col 73}{space 3} .0003798
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0006491{col 32}{space 2} .0004543{col 43}{space 1}   -1.43{col 52}{space 3}0.153{col 60}{space 4}-.0015406{col 73}{space 3} .0002424
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-8.69e-06{col 32}{space 2} 3.14e-06{col 43}{space 1}   -2.77{col 52}{space 3}0.006{col 60}{space 4}-.0000149{col 73}{space 3}-2.53e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}  .122263{col 32}{space 2} .0034044{col 43}{space 1}   35.91{col 52}{space 3}0.000{col 60}{space 4} .1155815{col 73}{space 3} .1289445
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. 
+. **MIDDLE TERTILE**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & AD_PGStert==2 & SEX==2
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       905
+{txt}{hline 13}{c +}{hline 34}   F(6, 898)       = {res}    33.52
+{txt}       Model {c |} {res} .067626552         6  .011271092   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .301949646       898  .000336247   {txt}R-squared       ={res}    0.1830
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1775
+{txt}       Total {c |} {res} .369576198       904  .000408823   {txt}Root MSE        =   {res} .01834
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0050689{col 32}{space 2} .0021696{col 43}{space 1}   -2.34{col 52}{space 3}0.020{col 60}{space 4} -.009327{col 73}{space 3}-.0008108
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0010133{col 32}{space 2} .0000907{col 43}{space 1}  -11.18{col 52}{space 3}0.000{col 60}{space 4}-.0011912{col 73}{space 3}-.0008354
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0020215{col 32}{space 2} .0039068{col 43}{space 1}   -0.52{col 52}{space 3}0.605{col 60}{space 4}-.0096891{col 73}{space 3} .0056462
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0002222{col 32}{space 2} .0005786{col 43}{space 1}    0.38{col 52}{space 3}0.701{col 60}{space 4}-.0009134{col 73}{space 3} .0013578
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0014412{col 32}{space 2} .0009703{col 43}{space 1}    1.49{col 52}{space 3}0.138{col 60}{space 4}-.0004631{col 73}{space 3} .0033454
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000103{col 32}{space 2} 6.65e-06{col 43}{space 1}    1.55{col 52}{space 3}0.122{col 60}{space 4}-2.77e-06{col 73}{space 3} .0000233
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6103474{col 32}{space 2} .0071024{col 43}{space 1}   85.94{col 52}{space 3}0.000{col 60}{space 4} .5964082{col 73}{space 3} .6242866
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       905
+{txt}{hline 13}{c +}{hline 34}   F(6, 898)       = {res}    39.46
+{txt}       Model {c |} {res} 2.0537e-07         6  3.4228e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 7.7890e-07       898  8.6737e-10   {txt}R-squared       ={res}    0.2086
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2034
+{txt}       Total {c |} {res} 9.8427e-07       904  1.0888e-09   {txt}Root MSE        =   {res} 2.9e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 5.26e-06{col 32}{space 2} 3.48e-06{col 43}{space 1}    1.51{col 52}{space 3}0.131{col 60}{space 4}-1.58e-06{col 73}{space 3} .0000121
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.91e-06{col 32}{space 2} 1.46e-07{col 43}{space 1}   13.15{col 52}{space 3}0.000{col 60}{space 4} 1.63e-06{col 73}{space 3} 2.20e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-4.92e-06{col 32}{space 2} 6.27e-06{col 43}{space 1}   -0.78{col 52}{space 3}0.434{col 60}{space 4}-.0000172{col 73}{space 3} 7.40e-06
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-5.91e-07{col 32}{space 2} 9.29e-07{col 43}{space 1}   -0.64{col 52}{space 3}0.525{col 60}{space 4}-2.42e-06{col 73}{space 3} 1.23e-06
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-1.04e-06{col 32}{space 2} 1.56e-06{col 43}{space 1}   -0.67{col 52}{space 3}0.506{col 60}{space 4}-4.10e-06{col 73}{space 3} 2.02e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} 6.91e-09{col 32}{space 2} 1.07e-08{col 43}{space 1}    0.65{col 52}{space 3}0.518{col 60}{space 4}-1.40e-08{col 73}{space 3} 2.79e-08
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0006832{col 32}{space 2} .0000114{col 43}{space 1}   59.89{col 52}{space 3}0.000{col 60}{space 4} .0006608{col 73}{space 3} .0007055
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       905
+{txt}{hline 13}{c +}{hline 34}   F(6, 898)       = {res}    30.22
+{txt}       Model {c |} {res} .026354501         6  .004392417   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .130525982       898  .000145352   {txt}R-squared       ={res}    0.1680
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1624
+{txt}       Total {c |} {res} .156880483       904   .00017354   {txt}Root MSE        =   {res} .01206
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} -.000123{col 32}{space 2} .0014265{col 43}{space 1}   -0.09{col 52}{space 3}0.931{col 60}{space 4}-.0029226{col 73}{space 3} .0026766
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}  .000677{col 32}{space 2} .0000596{col 43}{space 1}   11.36{col 52}{space 3}0.000{col 60}{space 4}   .00056{col 73}{space 3} .0007939
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0007421{col 32}{space 2} .0025687{col 43}{space 1}    0.29{col 52}{space 3}0.773{col 60}{space 4}-.0042992{col 73}{space 3} .0057834
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0005805{col 32}{space 2} .0003804{col 43}{space 1}   -1.53{col 52}{space 3}0.127{col 60}{space 4}-.0013271{col 73}{space 3} .0001661
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0000347{col 32}{space 2} .0006379{col 43}{space 1}    0.05{col 52}{space 3}0.957{col 60}{space 4}-.0012173{col 73}{space 3} .0012868
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} 3.40e-08{col 32}{space 2} 4.37e-06{col 43}{space 1}    0.01{col 52}{space 3}0.994{col 60}{space 4}-8.55e-06{col 73}{space 3} 8.61e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2}   .05733{col 32}{space 2} .0046696{col 43}{space 1}   12.28{col 52}{space 3}0.000{col 60}{space 4} .0481653{col 73}{space 3} .0664947
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       905
+{txt}{hline 13}{c +}{hline 34}   F(6, 898)       = {res}    21.52
+{txt}       Model {c |} {res} .085323444         6  .014220574   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .593422255       898  .000660827   {txt}R-squared       ={res}    0.1257
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1199
+{txt}       Total {c |} {res} .678745698       904  .000750825   {txt}Root MSE        =   {res} .02571
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0072201{col 32}{space 2} .0030416{col 43}{space 1}   -2.37{col 52}{space 3}0.018{col 60}{space 4}-.0131895{col 73}{space 3}-.0012507
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0012015{col 32}{space 2} .0001271{col 43}{space 1}   -9.45{col 52}{space 3}0.000{col 60}{space 4}-.0014509{col 73}{space 3}-.0009521
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0057201{col 32}{space 2}  .005477{col 43}{space 1}    1.04{col 52}{space 3}0.297{col 60}{space 4}-.0050291{col 73}{space 3} .0164692
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2} .0000164{col 32}{space 2} .0008112{col 43}{space 1}    0.02{col 52}{space 3}0.984{col 60}{space 4}-.0015756{col 73}{space 3} .0016084
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0012025{col 32}{space 2} .0013602{col 43}{space 1}    0.88{col 52}{space 3}0.377{col 60}{space 4}-.0014671{col 73}{space 3} .0038721
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-6.39e-06{col 32}{space 2} 9.32e-06{col 43}{space 1}   -0.69{col 52}{space 3}0.493{col 60}{space 4}-.0000247{col 73}{space 3} .0000119
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6804131{col 32}{space 2} .0099567{col 43}{space 1}   68.34{col 52}{space 3}0.000{col 60}{space 4} .6608719{col 73}{space 3} .6999543
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       905
+{txt}{hline 13}{c +}{hline 34}   F(6, 898)       = {res}     7.64
+{txt}       Model {c |} {res} .002685747         6  .000447625   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .052633416       898  .000058612   {txt}R-squared       ={res}    0.0486
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0422
+{txt}       Total {c |} {res} .055319163       904  .000061194   {txt}Root MSE        =   {res} .00766
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0002903{col 32}{space 2} .0009058{col 43}{space 1}   -0.32{col 52}{space 3}0.749{col 60}{space 4}-.0020681{col 73}{space 3} .0014874
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0001638{col 32}{space 2} .0000378{col 43}{space 1}    4.33{col 52}{space 3}0.000{col 60}{space 4} .0000895{col 73}{space 3} .0002381
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}  .002782{col 32}{space 2} .0016311{col 43}{space 1}    1.71{col 52}{space 3}0.088{col 60}{space 4}-.0004193{col 73}{space 3} .0059833
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0000123{col 32}{space 2} .0002416{col 43}{space 1}   -0.05{col 52}{space 3}0.959{col 60}{space 4}-.0004865{col 73}{space 3} .0004618
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0004161{col 32}{space 2} .0004051{col 43}{space 1}   -1.03{col 52}{space 3}0.305{col 60}{space 4}-.0012112{col 73}{space 3} .0003789
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-7.90e-06{col 32}{space 2} 2.78e-06{col 43}{space 1}   -2.84{col 52}{space 3}0.005{col 60}{space 4}-.0000133{col 73}{space 3}-2.45e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1231892{col 32}{space 2} .0029653{col 43}{space 1}   41.54{col 52}{space 3}0.000{col 60}{space 4} .1173695{col 73}{space 3} .1290089
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+.  
+. **HIGHEST TERTILE**
+. 
+. foreach y of varlist FA_mean MD_mean ISOVF_mean ICVF_mean OD_mean {c -(}
+{txt}  2{com}. reg `y' poororalhealth_sev AGE SEX NonWhite householdsize SES LE8_TOTALSCORE if sample_final==1 & AD_PGStert==3 & SEX==2
+{txt}  3{com}. {c )-}
+{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       913
+{txt}{hline 13}{c +}{hline 34}   F(6, 906)       = {res}    25.54
+{txt}       Model {c |} {res} .054293738         6  .009048956   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .321018921       906  .000354326   {txt}R-squared       ={res}    0.1447
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1390
+{txt}       Total {c |} {res} .375312659       912  .000411527   {txt}Root MSE        =   {res} .01882
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           FA_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0045564{col 32}{space 2} .0021865{col 43}{space 1}   -2.08{col 52}{space 3}0.037{col 60}{space 4}-.0088475{col 73}{space 3}-.0002653
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0008377{col 32}{space 2} .0000931{col 43}{space 1}   -9.00{col 52}{space 3}0.000{col 60}{space 4}-.0010204{col 73}{space 3}-.0006549
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0041734{col 32}{space 2} .0035111{col 43}{space 1}    1.19{col 52}{space 3}0.235{col 60}{space 4}-.0027175{col 73}{space 3} .0110642
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}  .000718{col 32}{space 2} .0005682{col 43}{space 1}    1.26{col 52}{space 3}0.207{col 60}{space 4}-.0003972{col 73}{space 3} .0018332
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0001664{col 32}{space 2} .0010104{col 43}{space 1}    0.16{col 52}{space 3}0.869{col 60}{space 4}-.0018166{col 73}{space 3} .0021495
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} .0000149{col 32}{space 2} 6.71e-06{col 43}{space 1}    2.23{col 52}{space 3}0.026{col 60}{space 4} 1.77e-06{col 73}{space 3} .0000281
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .5972868{col 32}{space 2} .0071069{col 43}{space 1}   84.04{col 52}{space 3}0.000{col 60}{space 4} .5833389{col 73}{space 3} .6112348
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       913
+{txt}{hline 13}{c +}{hline 34}   F(6, 906)       = {res}    37.38
+{txt}       Model {c |} {res} 1.7404e-07         6  2.9006e-08   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 7.0306e-07       906  7.7600e-10   {txt}R-squared       ={res}    0.1984
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1931
+{txt}       Total {c |} {res} 8.7709e-07       912  9.6172e-10   {txt}Root MSE        =   {res} 2.8e-05
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           MD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} 4.88e-06{col 32}{space 2} 3.24e-06{col 43}{space 1}    1.51{col 52}{space 3}0.132{col 60}{space 4}-1.47e-06{col 73}{space 3} .0000112
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} 1.72e-06{col 32}{space 2} 1.38e-07{col 43}{space 1}   12.51{col 52}{space 3}0.000{col 60}{space 4} 1.45e-06{col 73}{space 3} 1.99e-06
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0000119{col 32}{space 2} 5.20e-06{col 43}{space 1}   -2.28{col 52}{space 3}0.023{col 60}{space 4}-.0000221{col 73}{space 3}-1.66e-06
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-5.23e-07{col 32}{space 2} 8.41e-07{col 43}{space 1}   -0.62{col 52}{space 3}0.534{col 60}{space 4}-2.17e-06{col 73}{space 3} 1.13e-06
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} 1.33e-06{col 32}{space 2} 1.50e-06{col 43}{space 1}    0.89{col 52}{space 3}0.374{col 60}{space 4}-1.61e-06{col 73}{space 3} 4.26e-06
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2} 2.67e-09{col 32}{space 2} 9.93e-09{col 43}{space 1}    0.27{col 52}{space 3}0.788{col 60}{space 4}-1.68e-08{col 73}{space 3} 2.22e-08
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0006957{col 32}{space 2} .0000105{col 43}{space 1}   66.15{col 52}{space 3}0.000{col 60}{space 4} .0006751{col 73}{space 3} .0007164
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       913
+{txt}{hline 13}{c +}{hline 34}   F(6, 906)       = {res}    35.88
+{txt}       Model {c |} {res} .027783721         6   .00463062   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .116914484       906  .000129045   {txt}R-squared       ={res}    0.1920
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1867
+{txt}       Total {c |} {res} .144698205       912   .00015866   {txt}Root MSE        =   {res} .01136
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        ISOVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2} .0011716{col 32}{space 2} .0013195{col 43}{space 1}    0.89{col 52}{space 3}0.375{col 60}{space 4} -.001418{col 73}{space 3} .0037613
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0007124{col 32}{space 2} .0000562{col 43}{space 1}   12.68{col 52}{space 3}0.000{col 60}{space 4} .0006021{col 73}{space 3} .0008227
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2}-.0011069{col 32}{space 2} .0021189{col 43}{space 1}   -0.52{col 52}{space 3}0.602{col 60}{space 4}-.0052654{col 73}{space 3} .0030517
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0002109{col 32}{space 2} .0003429{col 43}{space 1}   -0.62{col 52}{space 3}0.539{col 60}{space 4} -.000884{col 73}{space 3} .0004621
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0010444{col 32}{space 2} .0006098{col 43}{space 1}    1.71{col 52}{space 3}0.087{col 60}{space 4}-.0001523{col 73}{space 3} .0022412
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-3.18e-07{col 32}{space 2} 4.05e-06{col 43}{space 1}   -0.08{col 52}{space 3}0.937{col 60}{space 4}-8.27e-06{col 73}{space 3} 7.63e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .0551382{col 32}{space 2} .0042889{col 43}{space 1}   12.86{col 52}{space 3}0.000{col 60}{space 4} .0467207{col 73}{space 3} .0635556
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       913
+{txt}{hline 13}{c +}{hline 34}   F(6, 906)       = {res}    11.29
+{txt}       Model {c |} {res} .056991129         6  .009498521   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .762137177       906  .000841211   {txt}R-squared       ={res}    0.0696
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0634
+{txt}       Total {c |} {res} .819128306       912  .000898167   {txt}Root MSE        =   {res}   .029
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         ICVF_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}-.0049429{col 32}{space 2}  .003369{col 43}{space 1}   -1.47{col 52}{space 3}0.143{col 60}{space 4}-.0115548{col 73}{space 3} .0016689
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2}-.0009647{col 32}{space 2} .0001435{col 43}{space 1}   -6.72{col 52}{space 3}0.000{col 60}{space 4}-.0012463{col 73}{space 3}-.0006831
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0102777{col 32}{space 2}   .00541{col 43}{space 1}    1.90{col 52}{space 3}0.058{col 60}{space 4}-.0003398{col 73}{space 3} .0208953
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0001591{col 32}{space 2} .0008755{col 43}{space 1}   -0.18{col 52}{space 3}0.856{col 60}{space 4}-.0018775{col 73}{space 3} .0015592
+{txt}{space 15}SES {c |}{col 20}{res}{space 2} .0001061{col 32}{space 2} .0015569{col 43}{space 1}    0.07{col 52}{space 3}0.946{col 60}{space 4}-.0029494{col 73}{space 3} .0031616
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-6.29e-06{col 32}{space 2} .0000103{col 43}{space 1}   -0.61{col 52}{space 3}0.543{col 60}{space 4}-.0000266{col 73}{space 3}  .000014
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .6692157{col 32}{space 2} .0109505{col 43}{space 1}   61.11{col 52}{space 3}0.000{col 60}{space 4} .6477245{col 73}{space 3} .6907069
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}{p 0 6 2}note: {bf:SEX} omitted because of collinearity.{p_end}
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}       913
+{txt}{hline 13}{c +}{hline 34}   F(6, 906)       = {res}     9.22
+{txt}       Model {c |} {res} .003415998         6  .000569333   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .055969435       906  .000061776   {txt}R-squared       ={res}    0.0575
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0513
+{txt}       Total {c |} {res} .059385434       912  .000065116   {txt}Root MSE        =   {res} .00786
+
+{txt}{hline 19}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}           OD_mean{col 20}{c |} Coefficient{col 32}  Std. err.{col 44}      t{col 52}   P>|t|{col 60}     [95% con{col 73}f. interval]
+{hline 19}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+poororalhealth_sev {c |}{col 20}{res}{space 2}  .001658{col 32}{space 2}  .000913{col 43}{space 1}    1.82{col 52}{space 3}0.070{col 60}{space 4}-.0001338{col 73}{space 3} .0034497
+{txt}{space 15}AGE {c |}{col 20}{res}{space 2} .0001463{col 32}{space 2} .0000389{col 43}{space 1}    3.76{col 52}{space 3}0.000{col 60}{space 4} .0000699{col 73}{space 3} .0002226
+{txt}{space 15}SEX {c |}{col 20}{res}{space 2}        0{col 32}{txt}  (omitted)
+{space 10}NonWhite {c |}{col 20}{res}{space 2} .0015551{col 32}{space 2} .0014661{col 43}{space 1}    1.06{col 52}{space 3}0.289{col 60}{space 4}-.0013222{col 73}{space 3} .0044324
+{txt}{space 5}householdsize {c |}{col 20}{res}{space 2}-.0003793{col 32}{space 2} .0002373{col 43}{space 1}   -1.60{col 52}{space 3}0.110{col 60}{space 4}-.0008449{col 73}{space 3} .0000864
+{txt}{space 15}SES {c |}{col 20}{res}{space 2}-.0002069{col 32}{space 2} .0004219{col 43}{space 1}   -0.49{col 52}{space 3}0.624{col 60}{space 4}-.0010349{col 73}{space 3} .0006212
+{txt}{space 4}LE8_TOTALSCORE {c |}{col 20}{res}{space 2}-8.27e-06{col 32}{space 2} 2.80e-06{col 43}{space 1}   -2.95{col 52}{space 3}0.003{col 60}{space 4}-.0000138{col 73}{space 3}-2.77e-06
+{txt}{space 13}_cons {c |}{col 20}{res}{space 2} .1250843{col 32}{space 2} .0029675{col 43}{space 1}   42.15{col 52}{space 3}0.000{col 60}{space 4} .1192603{col 73}{space 3} .1309083
+{txt}{hline 19}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}.  
+.  
+. 
+. save, replace
+{txt}{p 0 4 2}
+file {bf}
+E:\16GBBACKUPUSB\BACKUP_USB_SEPTEMBER2014\May Baydoun_folder\UK_BIOBANK_PROJECT\UKB_PAPER8C_PERIODONTALDISEASE_DMRI_PROTEOMICS\DATA\finaldata_unimputedfin.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. 
+. *****************************************************************************************************************************************************************************
+. capture log close
+{smcl}
+{com}{sf}{ul off}
